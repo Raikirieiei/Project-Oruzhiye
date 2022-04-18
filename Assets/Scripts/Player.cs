@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {    
     [SerializeField]
     private float moveForce = 10f;
-    // [SerializeField]
-    // private float jumpForce = 11f;
+    [SerializeField]
+    private float jumpForce = 13f;
+
+    private bool isGrounded;
     // public float maxVelocity = 22f;
     [SerializeField]
     private float dashForce = 20f;
@@ -19,7 +21,12 @@ public class Player : MonoBehaviour
 
     // private bool dash = false;
 
+
     private float movementX;
+
+    private string GROUND_TAG = "Ground";
+
+    // private string ENEMY_TAG = "Enemy";
 
     private Rigidbody2D myBody;
 
@@ -40,7 +47,7 @@ public class Player : MonoBehaviour
     void Start()
     {   
         activeMoveForce = moveForce;
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -49,7 +56,8 @@ public class Player : MonoBehaviour
         PlayerMoveKeyboard();
         PlayerDash();
         // AnimatePlayer();
-        // PlayerJump();
+        PlayerJump();
+        PlayerAttack();
     }
 
     void PlayerMoveKeyboard(){
@@ -86,6 +94,30 @@ public class Player : MonoBehaviour
         if(dashCoolCounter > 0){
             dashCoolCounter -= Time.deltaTime;
         }     
+    }
+
+    void PlayerJump(){
+        if (Input.GetButtonDown("Jump") && isGrounded) {
+            isGrounded = false;
+            myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+
+    }
+
+    void PlayerAttack(){
+         if(Input.GetKeyDown(KeyCode.Z)){
+            Debug.Log("Attack");
+         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag(GROUND_TAG)) 
+        {
+            isGrounded = true;
+        }
+        
     }
     
 }
