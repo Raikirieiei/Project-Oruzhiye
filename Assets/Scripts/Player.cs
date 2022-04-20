@@ -19,14 +19,15 @@ public class Player : MonoBehaviour
     private float dashCounter;
     private float dashCoolCounter;
 
-    // private bool dash = false;
-
+  
+    public int maxHealth = 100;
+    public int currentHealth;
 
     private float movementX;
 
     private string GROUND_TAG = "Ground";
 
-    private string ENEMY_TAG = "Enemy";
+    // private string ENEMY_TAG = "Enemy";
 
     private Rigidbody2D myBody;
 
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
     private Animator anim;
 
     private BoxCollider2D myBodyColl;
+
+    public HealthBar healthBar;
 
     private void Awake(){
 
@@ -47,6 +50,8 @@ public class Player : MonoBehaviour
     void Start()
     {   
         activeMoveForce = moveForce;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         
     }
 
@@ -57,6 +62,11 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
+
+        if(Input.GetKeyDown(KeyCode.K)){
+
+            TakeDamage(20);
+        }
     }
 
     void PlayerMoveKeyboard(){
@@ -96,11 +106,17 @@ public class Player : MonoBehaviour
     }
 
     void PlayerJump(){
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             isGrounded = false;
             myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
 
+    }
+
+    void TakeDamage(int damage){
+
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
