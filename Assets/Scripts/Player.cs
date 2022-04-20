@@ -19,8 +19,9 @@ public class Player : MonoBehaviour
     private float dashCounter;
     private float dashCoolCounter;
 
-    // private bool dash = false;
-
+  
+    public int maxHealth = 100;
+    public int currentHealth;
 
     private float movementX;
 
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
 
     private BoxCollider2D myBodyColl;
 
+    public HealthBar healthBar;
+
     private void Awake(){
 
         myBody = GetComponent<Rigidbody2D>();
@@ -47,6 +50,8 @@ public class Player : MonoBehaviour
     void Start()
     {   
         activeMoveForce = moveForce;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         
     }
 
@@ -96,20 +101,40 @@ public class Player : MonoBehaviour
     }
 
     void PlayerJump(){
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             isGrounded = false;
             myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
 
     }
 
+    public void TakeDamage(int damage){
+
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.CompareTag(GROUND_TAG)) 
-            isGrounded = true;
+            isGrounded = true;    
         
-        
+        if (collision.gameObject.CompareTag(ENEMY_TAG))
+        {
+            TakeDamage(20);
+            Debug.Log("-20 HP");
+        }
+           
+    }
+
+    void Die(){
+        Destroy(gameObject);
     }
     
 }
