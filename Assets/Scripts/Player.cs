@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private string GROUND_TAG = "Ground";
 
-    // private string ENEMY_TAG = "Enemy";
+    private string ENEMY_TAG = "Enemy";
 
     private Rigidbody2D myBody;
 
@@ -62,11 +62,6 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
-
-        if(Input.GetKeyDown(KeyCode.K)){
-
-            TakeDamage(20);
-        }
     }
 
     void PlayerMoveKeyboard(){
@@ -113,19 +108,33 @@ public class Player : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage){
+    public void TakeDamage(int damage){
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.CompareTag(GROUND_TAG)) 
-            isGrounded = true;
+            isGrounded = true;    
         
-        
+        if (collision.gameObject.CompareTag(ENEMY_TAG))
+        {
+            TakeDamage(20);
+            Debug.Log("-20hp");
+        }
+           
+    }
+
+    void Die(){
+        Destroy(gameObject);
     }
     
 }
