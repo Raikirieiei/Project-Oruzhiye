@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag(ENEMY_TAG))
         {
             TakeDamage(20);
-            Debug.Log("-20hp");
+            Debug.Log("-20 HP");
         }
            
     }
