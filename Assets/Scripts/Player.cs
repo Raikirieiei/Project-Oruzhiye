@@ -119,5 +119,15 @@ public class Player : MonoBehaviour
         }
         
     }
-    
+
+    // Map Interaction Section
+    void OnLevelWasLoaded(int level)
+    {
+        FindStartPos();
+    }
+
+    void FindStartPos()
+    {
+        transform.position = GameObject.FindWithTag("StartPos").transform.position;
+    }
 }

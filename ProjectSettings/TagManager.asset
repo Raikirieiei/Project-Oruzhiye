@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Loading Zone
   - Ground
+  - StartPos
   layers:
   - Default
   - TransparentFX
