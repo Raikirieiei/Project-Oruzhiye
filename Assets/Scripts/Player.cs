@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
         myBodyColl = GetComponent<BoxCollider2D>();
     }
 
+    
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -65,6 +67,15 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
+        RotateAnimation(); //temporary
+    }
+
+    private void RotateAnimation() //temporary
+    {
+        if (Input.GetAxis("Horizontal") > 0.01f)
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        else if (Input.GetAxis("Horizontal") < -0.01f)
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
     }
 
 
@@ -73,6 +84,7 @@ public class Player : MonoBehaviour
         movementX = Input.GetAxisRaw("Horizontal");
 
         transform.position += new Vector3(movementX, 0f, 0f) * activeMoveForce * Time.deltaTime ;
+
     }
 
     void PlayerDash(){
@@ -83,6 +95,7 @@ public class Player : MonoBehaviour
                 activeMoveForce = dashForce;
                 dashCounter = dashLength;
                 Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+                // myBody.velocity = Vector2.zero;   
             }
 
         }
