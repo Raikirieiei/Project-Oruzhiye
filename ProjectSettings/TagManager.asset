@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Loading Zone
   - StartPos
+  - Wall
   layers:
   - Default
   - TransparentFX
