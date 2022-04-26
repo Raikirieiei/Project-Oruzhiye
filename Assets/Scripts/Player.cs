@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         activeMoveForce = moveForce;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -137,4 +137,14 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
     
+    private void OnLevelWasLoaded(int level)
+    {
+        FindStartPos();
+    }
+
+    void FindStartPos()
+    {
+        transform.position = GameObject.FindWithTag("StartPos").transform.position;
+    }
+
 }
