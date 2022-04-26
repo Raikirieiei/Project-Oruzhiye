@@ -6,15 +6,17 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Loading Zone
+  - StartPos
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Enemy
-  - 
+  - Wall
   - Collectable
   - 
   - 
