@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9055368399998508796}
   - component: {fileID: 9055368399998508797}
   - component: {fileID: 9055368399998508736}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   jumpForce: 11
-  dashForce: 20
+  dashForce: 30
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9055368400701345321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

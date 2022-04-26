@@ -12,10 +12,10 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     // public float maxVelocity = 22f;
     [SerializeField]
-    private float dashForce = 20f;
+    private float dashForce = 30f;
     private float activeMoveForce;
 
-    private float dashLength =.1f, dashCooldown = 1f;
+    private float dashLength =.2f, dashCooldown = 1f;
     private float dashCounter;
     private float dashCoolCounter;
 
@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     private string GROUND_TAG = "Ground";
 
     private string ENEMY_TAG = "Enemy";
+
+    private int PLAYER_LAYER = 3;
+    private int ENEMY_LAYER = 6;
 
     private Rigidbody2D myBody;
 
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
         myBodyColl = GetComponent<BoxCollider2D>();
     }
 
+    
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -62,13 +67,24 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
+        RotateAnimation(); //temporary
     }
+
+    private void RotateAnimation() //temporary
+    {
+        if (Input.GetAxis("Horizontal") > 0.01f)
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        else if (Input.GetAxis("Horizontal") < -0.01f)
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+    }
+
 
     void PlayerMoveKeyboard(){
 
         movementX = Input.GetAxisRaw("Horizontal");
 
         transform.position += new Vector3(movementX, 0f, 0f) * activeMoveForce * Time.deltaTime ;
+
     }
 
     void PlayerDash(){
@@ -78,8 +94,8 @@ public class Player : MonoBehaviour
             if (dashCoolCounter <=0  && dashCounter <= 0){
                 activeMoveForce = dashForce;
                 dashCounter = dashLength;
-                myBodyColl.enabled = false;
-                myBody.bodyType = RigidbodyType2D.Kinematic;
+                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+                // myBody.velocity = Vector2.zero;   
             }
 
         }
@@ -90,8 +106,7 @@ public class Player : MonoBehaviour
             if(dashCounter <= 0){
                 activeMoveForce = moveForce;
                 dashCoolCounter = dashCooldown;
-                myBodyColl.enabled = true;
-                myBody.bodyType = RigidbodyType2D.Dynamic;
+                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
             }
         }
 
@@ -100,11 +115,17 @@ public class Player : MonoBehaviour
         }     
     }
 
+
     void PlayerJump(){
         if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             isGrounded = false;
             myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
+
+        // else if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && !isGrounded)
+        //     Debug.Log("not grounded");
+            
+        
 
     }
 
@@ -121,7 +142,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        // Debug.Log("coll tag: " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag(GROUND_TAG)) 
             isGrounded = true;    
         
