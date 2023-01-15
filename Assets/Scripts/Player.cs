@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
     void Die(){
         Destroy(gameObject);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("EndMenu");
     }
     
     private void OnLevelWasLoaded(int level)
