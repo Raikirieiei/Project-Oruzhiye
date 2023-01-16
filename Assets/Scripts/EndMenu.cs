@@ -12,5 +12,4 @@ public class EndMenu : MonoBehaviour
     public void ReturnMainMenu(){
         SceneManager.LoadScene(0);
     }
-
 }
