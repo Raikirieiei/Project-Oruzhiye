@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1025241629}
+  player: {fileID: 0}
 --- !u!1 &1025241629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5571,6 +5572,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1596857439, guid: 7df881c351462fa4a8cd9d82994c9e25, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596857439, guid: 7df881c351462fa4a8cd9d82994c9e25, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596857439, guid: 7df881c351462fa4a8cd9d82994c9e25, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 1596857440, guid: 7df881c351462fa4a8cd9d82994c9e25, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -5593,12 +5606,12 @@ PrefabInstance:
     - target: {fileID: 3543616719227086471, guid: 7df881c351462fa4a8cd9d82994c9e25,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -308
+      value: 670
       objectReference: {fileID: 0}
     - target: {fileID: 3543616719227086471, guid: 7df881c351462fa4a8cd9d82994c9e25,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 180
+      value: -354
       objectReference: {fileID: 0}
     - target: {fileID: 3543616720302766383, guid: 7df881c351462fa4a8cd9d82994c9e25,
         type: 3}
