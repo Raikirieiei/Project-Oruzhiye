@@ -269,12 +269,12 @@ PrefabInstance:
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.940521
+      value: 146.14052
       objectReference: {fileID: 0}
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0192213
+      value: -64.18078
       objectReference: {fileID: 0}
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
@@ -595,12 +595,12 @@ PrefabInstance:
     - target: {fileID: 3437241025170354333, guid: defec0ac9c54450448dff7ffa8c3064e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 117.2
       objectReference: {fileID: 0}
     - target: {fileID: 3437241025170354333, guid: defec0ac9c54450448dff7ffa8c3064e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -67.2
       objectReference: {fileID: 0}
     - target: {fileID: 3437241025170354333, guid: defec0ac9c54450448dff7ffa8c3064e,
         type: 3}
@@ -665,12 +665,12 @@ PrefabInstance:
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.9716
+      value: 136.1716
       objectReference: {fileID: 0}
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.006752
+      value: -64.193245
       objectReference: {fileID: 0}
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
@@ -1871,7 +1871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321186262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 117.2, y: -67.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 51010243}
