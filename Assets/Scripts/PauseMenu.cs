@@ -18,10 +18,12 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPause) {
+                Debug.Log("unpause");
                 Resume();
                 Debug.Log("Resume");
             }
             else{
+                Debug.Log("pause");
                 Pause();
                 Debug.Log("Pause");
             }
