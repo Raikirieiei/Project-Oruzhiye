@@ -11,6 +11,8 @@ public class loadLevel : MonoBehaviour
 
     public bool useIntegerToLoadLevel = false;
 
+    public GameObject player;
+
     void Start()
     {
         
@@ -36,7 +38,13 @@ public class loadLevel : MonoBehaviour
     {
         if (useIntegerToLoadLevel)
         {
+            if (iLevelToLoad == 0) { // fix this later
+                player = GameObject.FindWithTag("Player");
+                Destroy(player);
+                SceneManager.LoadScene(iLevelToLoad);
+            }else{
             SceneManager.LoadScene(iLevelToLoad);
+            }
         }
         else
         {
