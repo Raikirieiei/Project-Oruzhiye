@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {    
     [SerializeField]
     private float moveForce = 10f;
@@ -69,10 +69,6 @@ public class Player : MonoBehaviour
         // AnimatePlayer();
         PlayerJump();
         RotateAnimation(); //temporary
-    }
-
-    private void FixedUpdate() {
-        
     }
 
     private void RotateAnimation() //temporary
