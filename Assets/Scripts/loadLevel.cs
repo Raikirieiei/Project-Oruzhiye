@@ -48,7 +48,13 @@ public class loadLevel : MonoBehaviour
         }
         else
         {
+            if (sLevelToLoad == "MainMenu") { // fix this later
+                player = GameObject.FindWithTag("Player");
+                Destroy(player);
+                SceneManager.LoadScene(sLevelToLoad);
+            }else{
             SceneManager.LoadScene(sLevelToLoad);
+            }
         }
     }
 }
