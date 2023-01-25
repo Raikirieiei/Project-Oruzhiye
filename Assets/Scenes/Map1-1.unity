@@ -7674,7 +7674,7 @@ PrefabInstance:
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 11.97
       objectReference: {fileID: 0}
     - target: {fileID: 2059032646019577684, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
@@ -7724,7 +7724,7 @@ PrefabInstance:
     - target: {fileID: 2059032646019577690, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
         type: 3}
       propertyPath: m_Name
-      value: frog-idle-1
+      value: frog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ede2cb058c3ae4bbe22a87d3848c06, type: 3}
@@ -7734,6 +7734,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1393572464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1393572466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2059032646019577690, guid: c8ede2cb058c3ae4bbe22a87d3848c06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1393572464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1393572467
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393572466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 705ad6e15b8d3c34195904bc757bb182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1735054290
 PrefabInstance:
   m_ObjectHideFlags: 0
