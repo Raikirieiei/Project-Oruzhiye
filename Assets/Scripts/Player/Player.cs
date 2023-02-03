@@ -2,42 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {    
-    [SerializeField]
-    private float moveForce = 10f;
-    [SerializeField]
-    private float jumpForce = 13f;
+    public PlayerController controller;
+    float horizontalMove = 0f;
+    public float runSpeed = 40f;
+    bool jump = false;
+    bool dash = false;
+    
 
-    private bool isGrounded;
-    // public float maxVelocity = 22f;
-    [SerializeField]
-    private float dashForce = 30f;
-    private float activeMoveForce;
-
-    private float dashLength =.2f, dashCooldown = 1f;
-    private float dashCounter;
-    private float dashCoolCounter;
-
-  
     public int maxHealth = 100;
     public int currentHealth;
 
-    private float movementX;
-
-    private string GROUND_TAG = "Ground";
-
+    // private string GROUND_TAG = "Ground";
     private string ENEMY_TAG = "Enemy";
 
-    private int PLAYER_LAYER = 3;
-    private int ENEMY_LAYER = 6;
-
     private Rigidbody2D myBody;
-
     private SpriteRenderer sr;
     private Animator anim;
-
     private BoxCollider2D myBodyColl;
 
     public HealthBar healthBar;
@@ -55,10 +39,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        activeMoveForce = moveForce;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         DontDestroyOnLoad(gameObject);
+        gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     // Update is called once per frame
@@ -68,70 +52,33 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
-        RotateAnimation(); //temporary
     }
 
-    private void FixedUpdate() {
-        
+    void FixedUpdate() {
+        controller.Move(horizontalMove * Time.fixedDeltaTime, dash, jump);
+        jump = false;
+        dash = false;
     }
-
-    private void RotateAnimation() //temporary
-    {
-        if (Input.GetAxis("Horizontal") > 0.01f)
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        else if (Input.GetAxis("Horizontal") < -0.01f)
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-    }
-
 
     void PlayerMoveKeyboard(){
 
-        movementX = Input.GetAxisRaw("Horizontal");
-
-        transform.position += new Vector3(movementX, 0f, 0f) * activeMoveForce * Time.deltaTime ;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
     }
 
     void PlayerDash(){
-        
-        if(Input.GetKeyDown(KeyCode.LeftShift)){
 
-            if (dashCoolCounter <=0  && dashCounter <= 0){
-                activeMoveForce = dashForce;
-                dashCounter = dashLength;
-                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
-                // myBody.velocity = Vector2.zero;   
-            }
-
-        }
-
-        if(dashCounter > 0){
-            dashCounter -= Time.deltaTime;
-
-            if(dashCounter <= 0){
-                activeMoveForce = moveForce;
-                dashCoolCounter = dashCooldown;
-                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
-            }
-        }
-
-        if(dashCoolCounter > 0){
-            dashCoolCounter -= Time.deltaTime;
-        }     
+        if(Input.GetKeyDown(KeyCode.LeftShift)){  
+            Debug.Log("dashed");  
+            dash = true;       
+        }  
     }
 
 
     void PlayerJump(){
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
-            isGrounded = false;
-            myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))) {
+            jump = true;
         }
-
-        // else if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && !isGrounded)
-        //     Debug.Log("not grounded");
-            
-        
-
     }
 
     public void TakeDamage(int damage){
@@ -147,9 +94,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Debug.Log("coll tag: " + collision.gameObject.tag);
-        if (collision.gameObject.CompareTag(GROUND_TAG)) 
-            isGrounded = true;    
+        // // Debug.Log("coll tag: " + collision.gameObject.tag);
+        // if (collision.gameObject.CompareTag(GROUND_TAG)) 
+        //     isGrounded = true;    
         
         if (collision.gameObject.CompareTag(ENEMY_TAG))
         {
