@@ -172,15 +172,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!4 &311278240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9055368399998508737, guid: 7df881c351462fa4a8cd9d82994c9e25,
     type: 3}
   m_PrefabInstance: {fileID: 1256413929}
   m_PrefabAsset: {fileID: 0}
->>>>>>> master
 --- !u!1 &722919817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,8 +3699,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< HEAD
-=======
 --- !u!1001 &1256413929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3787,7 +3782,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7df881c351462fa4a8cd9d82994c9e25, type: 3}
->>>>>>> master
 --- !u!1 &1275047581
 GameObject:
   m_ObjectHideFlags: 0
