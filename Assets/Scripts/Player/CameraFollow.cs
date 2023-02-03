@@ -12,9 +12,14 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float minX, maxX;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        // player = GameObject.FindWithTag("Player").transform;
+    }
+
+    void Update(){
         player = GameObject.FindWithTag("Player").transform;
     }
 
@@ -27,6 +32,7 @@ public class CameraFollow : MonoBehaviour
 
         tempPos = transform.position;
         tempPos.x = player.position.x;
+        tempPos.y = player.position.y+3;
 
         // if (tempPos.x < minX)
         //     tempPos.x = minX;

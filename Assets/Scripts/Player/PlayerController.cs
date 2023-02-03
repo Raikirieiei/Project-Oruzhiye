@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
+	private bool m_FacingRight = true;
 	private Rigidbody2D m_Rigidbody2D;
 	private Vector3 m_Velocity = Vector3.zero;
 
@@ -93,19 +94,21 @@ public class PlayerController : MonoBehaviour
 
 
 			// If the input is moving the player right and the player is facing left...
-			if (move > 0)
+			if (move > 0 && !m_FacingRight)
 			{
 				// ... flip the player.
 				facingDir = 1;
-				gameObject.GetComponent<SpriteRenderer>().flipX = true; // need to change when using good sprite
+				Flip();
+				// gameObject.GetComponent<SpriteRenderer>().flipX = true; // need to change when using good sprite
 
 			}
 			// Otherwise if the input is moving the player left and the player is facing right...
-			else if (move < 0)
+			else if (move < 0 && m_FacingRight)
 			{
 				// ... flip the player.
 				facingDir = -1;
-				gameObject.GetComponent<SpriteRenderer>().flipX = false; // need to change when using good sprite
+				Flip();
+				// gameObject.GetComponent<SpriteRenderer>().flipX = false; // need to change when using good 
 			}
 		}
 		// If the player should jump...
@@ -143,14 +146,14 @@ public class PlayerController : MonoBehaviour
 
 
 
-	// private void Flip()
-	// {
-	// 	// Switch the way the player is labelled as facing.
-	// 	m_FacingRight = !m_FacingRight;
+	private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
 
-	// 	// Multiply the player's x local scale by -1.
-	// 	Vector3 theScale = transform.localScale;
-	// 	theScale.x *= -1;
-	// 	transform.localScale = theScale;
-	// }
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 }

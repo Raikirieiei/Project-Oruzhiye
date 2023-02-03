@@ -9,6 +9,7 @@ TagManager:
   - Loading Zone
   - StartPos
   - Wall
+  - HealthBar
   layers:
   - Default
   - TransparentFX
@@ -20,6 +21,7 @@ TagManager:
   - Wall
   - Collectable
   - Ground
+  - Obstacle
   - 
   - 
   - 

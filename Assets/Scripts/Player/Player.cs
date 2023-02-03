@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         DontDestroyOnLoad(gameObject);
+        gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     // Update is called once per frame
