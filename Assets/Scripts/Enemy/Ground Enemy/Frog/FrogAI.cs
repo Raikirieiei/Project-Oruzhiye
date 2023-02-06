@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,10 +39,14 @@ public class FrogAI : MonoBehaviour
     {
         enemyRB = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
+    
+        Invoke(nameof(Find_player), 1);
+        if (player == null) return;
     }
 
     void FixedUpdate()
     {
+        if (player == null) return;
         checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, obstaclesLayer);
         checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, obstaclesLayer);
         isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, obstaclesLayer);
@@ -51,6 +56,18 @@ public class FrogAI : MonoBehaviour
         if (!canSeePlayer && isGrounded)
         {
             Petrolling();
+        }
+    }
+
+    private void Find_player()
+    {
+        try
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("target gameObjects is not present in hierarchy ");
         }
     }
 
