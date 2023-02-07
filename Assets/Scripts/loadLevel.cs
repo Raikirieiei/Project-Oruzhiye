@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +13,30 @@ public class loadLevel : MonoBehaviour
     public bool useIntegerToLoadLevel = false;
 
     public GameObject player;
+    private GameObject playerSet;
 
     void Start()
     {
-        
+        Invoke(nameof(Find_player), 1);
+        if (player == null) return;
+    }
+
+    private void Find_player()
+    {
+        try
+        {
+            player = GameObject.FindWithTag("PlayerSet");
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("target gameObjects is not present in hierarchy ");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (player == null) return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -39,7 +54,7 @@ public class loadLevel : MonoBehaviour
         if (useIntegerToLoadLevel)
         {
             if (iLevelToLoad == 0) { // fix this later
-                player = GameObject.FindWithTag("Player");
+                player = GameObject.FindWithTag("PlayerSet");
                 Destroy(player);
                 SceneManager.LoadScene(iLevelToLoad);
             }else{
@@ -49,7 +64,7 @@ public class loadLevel : MonoBehaviour
         else
         {
             if (sLevelToLoad == "MainMenu") { // fix this later
-                player = GameObject.FindWithTag("Player");
+                player = GameObject.FindWithTag("PlayerSet");
                 Destroy(player);
                 SceneManager.LoadScene(sLevelToLoad);
             }else{

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 namespace Pathfinding {
 	/// <summary>
@@ -17,6 +18,23 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
 		IAstarAI ai;
+
+		void Start() {
+			Invoke(nameof(Find_target), 1);
+			if (target == null) return;
+		}
+
+		void Find_target()
+    {
+        try
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("target gameObjects is not present in hierarchy ");
+        }
+    }
 
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();

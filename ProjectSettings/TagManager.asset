@@ -10,6 +10,7 @@ TagManager:
   - StartPos
   - Wall
   - HealthBar
+  - PlayerSet
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,6 @@ TagManager:
   - Collectable
   - Ground
   - Obstacle
-  - 
   - 
   - 
   - 
