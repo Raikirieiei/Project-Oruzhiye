@@ -25,7 +25,7 @@ public class loadLevel : MonoBehaviour
     {
         try
         {
-            player = GameObject.FindWithTag("Player");
+            player = GameObject.FindWithTag("PlayerSet");
         }
         catch (NullReferenceException)
         {
@@ -54,7 +54,7 @@ public class loadLevel : MonoBehaviour
         if (useIntegerToLoadLevel)
         {
             if (iLevelToLoad == 0) { // fix this later
-                player = GameObject.FindWithTag("Player");
+                player = GameObject.FindWithTag("PlayerSet");
                 Destroy(player);
                 SceneManager.LoadScene(iLevelToLoad);
             }else{
@@ -64,7 +64,7 @@ public class loadLevel : MonoBehaviour
         else
         {
             if (sLevelToLoad == "MainMenu") { // fix this later
-                player = GameObject.FindWithTag("Player");
+                player = GameObject.FindWithTag("PlayerSet");
                 Destroy(player);
                 SceneManager.LoadScene(sLevelToLoad);
             }else{
