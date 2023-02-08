@@ -21405,6 +21405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81945532092838154, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a,
+        type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 1263071255}
     - target: {fileID: 81945532092838155, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -21517,6 +21522,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a, type: 3}
+--- !u!1 &1263071255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 81945532081772840, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1263071254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561221494
 GameObject:
   m_ObjectHideFlags: 0
