@@ -304,6 +304,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &840256409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 81945532081772840, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 81945531226647349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1015825259
 GameObject:
   m_ObjectHideFlags: 0
@@ -25123,7 +25129,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pauseMenuUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 840256409}
     - target: {fileID: 81945532092838155, guid: ff4d7fb6ddfe040b5b27d4a85ef86b1a,
         type: 3}
       propertyPath: m_Pivot.x
