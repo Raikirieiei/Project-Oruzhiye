@@ -9,7 +9,28 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     
-    private GameObject player;
+    private GameObject playerSet;
+    private GameObject gameManager;
+
+    public static PauseMenu instance;
+
+    void Awake(){
+         if (instance == null) {
+            instance = this;
+        } 
+        else if (instance != this){
+            Destroy (gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+
+    
+    private void OnDestroy() {
+
+    }
+
+    void Start() {
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,12 +39,10 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPause) {
-                Debug.Log("unpause");
                 Resume();
                 Debug.Log("Resume");
             }
             else{
-                Debug.Log("pause");
                 Pause();
                 Debug.Log("Pause");
             }
@@ -46,8 +65,12 @@ public class PauseMenu : MonoBehaviour
     // need to fix player not include in scene *****
     public void MainMenu() {
         Time.timeScale = 1;
-        player = GameObject.FindWithTag("Player");
-        Destroy(player);
+        playerSet = GameObject.FindWithTag("PlayerSet");
+        gameManager = GameObject.Find("GameManager");
+        Destroy(playerSet);
+        Destroy(gameObject);
+        Destroy(gameManager);
         SceneManager.LoadScene(0);
+        
     }
 }

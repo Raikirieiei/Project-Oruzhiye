@@ -78,6 +78,10 @@ public class PlayerController : MonoBehaviour
 			facingDir = 1;
 	}
 
+	public int getFacingDirection(){
+		return facingDir;
+	}
+
 
 	public void Move(float move, bool dash, bool jump)
 	{
@@ -143,8 +147,6 @@ public class PlayerController : MonoBehaviour
 		yield return new WaitForSeconds(0.01f);
 		jumpOnCooldown = false;
 	}
-
-
 
 	private void Flip()
 	{

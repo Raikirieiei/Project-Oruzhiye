@@ -8,7 +8,10 @@ public class Player : MonoBehaviour
 {    
     public PlayerController controller;
     float horizontalMove = 0f;
-    public float runSpeed = 40f;
+    private Vector2 movementInput;
+    public float runSpeed;
+    [HideInInspector]
+    public float normalRunSpeed = 40f;
     bool jump = false;
     bool dash = false;
     
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D myBodyColl;
 
     public HealthBar healthBar;
+    private GameObject playerSet;
 
     private void Awake(){
 
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         myBodyColl = GetComponent<BoxCollider2D>();
+        runSpeed = normalRunSpeed;
     }
 
     
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movementInput.x = Input.GetAxisRaw("Horizontal");
         PlayerMoveKeyboard();
         PlayerDash();
         // AnimatePlayer();
@@ -81,6 +87,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Vector2 getMovementInput(){
+        return movementInput;
+    }
+
     public void TakeDamage(int damage){
 
         currentHealth -= damage;
@@ -107,7 +117,8 @@ public class Player : MonoBehaviour
     }
 
     void Die(){
-        Destroy(gameObject);
+        playerSet = GameObject.FindWithTag("PlayerSet");
+        Destroy(playerSet);
         SceneManager.LoadScene("EndMenu");
     }
     
