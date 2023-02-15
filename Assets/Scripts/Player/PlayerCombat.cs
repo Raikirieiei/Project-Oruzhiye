@@ -9,9 +9,19 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     public Animator animator;
-    
+    private CharacterStats characterStats;
+
     public float attackRange = 1f;
-    public int attackDamage = 50;
+
+    private int attackDamage;
+
+    void Awake(){
+        characterStats = GetComponent<CharacterStats>();
+    }
+
+    void Start(){
+        attackDamage = characterStats.baseAttack.getValue();
+    }
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.Z)){

@@ -15,8 +15,7 @@ public class Player : MonoBehaviour
     bool jump = false;
     bool dash = false;
     
-
-    public int maxHealth = 100;
+    [HideInInspector]
     public int currentHealth;
 
     // private string GROUND_TAG = "Ground";
@@ -26,6 +25,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     private BoxCollider2D myBodyColl;
+    private CharacterStats characterStats;
 
     public HealthBar healthBar;
     private GameObject playerSet;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         myBodyColl = GetComponent<BoxCollider2D>();
+        characterStats = GetComponent<CharacterStats>();
         runSpeed = normalRunSpeed;
     }
 
@@ -44,8 +45,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        currentHealth = characterStats.currentHealth;
+        healthBar.SetMaxHealth(currentHealth);
         DontDestroyOnLoad(gameObject);
         gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }

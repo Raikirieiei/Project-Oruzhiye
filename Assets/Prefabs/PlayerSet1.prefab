@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 309392723469676323}
   - component: {fileID: 8710594732369028046}
   - component: {fileID: 6867233966306962849}
+  - component: {fileID: 3526438813718270855}
   - component: {fileID: 380869002510497885}
   m_Layer: 3
   m_Name: Player 1
@@ -587,7 +588,22 @@ MonoBehaviour:
   ability:
   - {fileID: 11400000, guid: 473514c3048054ec781e272fdedebf83, type: 2}
   - {fileID: 0}
-  key: 7800000063000000
+--- !u!114 &3526438813718270855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710594732369028080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b9efc695ae548639b67960f10dd6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAttack:
+    baseValue: 20
+  baseHealth:
+    baseValue: 100
 --- !u!95 &380869002510497885
 Animator:
   serializedVersion: 3
