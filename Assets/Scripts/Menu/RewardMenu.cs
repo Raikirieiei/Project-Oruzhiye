@@ -59,7 +59,7 @@ public class RewardMenu : MonoBehaviour
         textList = button.GetComponentsInChildren<Text>();
         textList[0].text = reward.name;
         textList[1].text = reward.desc;
-        Debug.Log(reward.name + reward.desc);
+        // Debug.Log(reward.name + reward.desc);
     }
 
     // this function assign new reward from reward pools when scene changed.
