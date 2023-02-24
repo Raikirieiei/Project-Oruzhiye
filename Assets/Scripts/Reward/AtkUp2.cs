@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class AtkUp1 : StatReward
+public class AtkUp2 : StatReward
 {
     public override void Selected(CharacterStats characterStat){
         Debug.Log("Reward Selected: " + this.name);

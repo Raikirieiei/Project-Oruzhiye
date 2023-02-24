@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e70d69d07e48454884689e261cae055, type: 3}
-  m_Name: AtkUp1
+  m_Script: {fileID: 11500000, guid: bc88a9aecb0c546b5844dca4ed7747ff, type: 3}
+  m_Name: AtkUp2
   m_EditorClassIdentifier: 
-  name: Attack Up 1
+  name: Attack Up 2
   desc: Increase player attack damage by 10 points
-  baseValue: 10
+  baseValue: 20

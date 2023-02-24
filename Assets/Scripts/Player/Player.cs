@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     public float runSpeed;
     [HideInInspector]
-    public float normalRunSpeed = 40f;
+    // public float normalRunSpeed = 40f;
     bool jump = false;
     bool dash = false;
     
@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         myBodyColl = GetComponent<BoxCollider2D>();
         characterStats = GetComponent<CharacterStats>();
-        runSpeed = normalRunSpeed;
     }
 
     
@@ -45,6 +44,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        runSpeed = (float)characterStats.baseMoveSpeed.getValue();
         currentHealth = characterStats.currentHealth;
         healthBar.SetMaxHealth(currentHealth);
         DontDestroyOnLoad(gameObject);
