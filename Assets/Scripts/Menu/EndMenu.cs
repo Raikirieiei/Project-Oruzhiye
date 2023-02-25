@@ -8,20 +8,24 @@ public class EndMenu : MonoBehaviour
 
     private GameObject pauseMenu;
     private GameObject gameManager;
+    private GameObject rewardManager;
 
-    public void Retry(){
+    private void DestroyOnLoadObject(){
         pauseMenu = GameObject.Find("PauseMenu");
         gameManager = GameObject.Find("GameManager");
+        rewardManager = GameObject.Find("RewardSelector");
         Destroy(pauseMenu);
         Destroy(gameManager);
+        Destroy(rewardManager);
+    }
+
+    public void Retry(){
+        DestroyOnLoadObject();
         SceneManager.LoadScene(1);
     }
  
     public void ReturnMainMenu(){
-        pauseMenu = GameObject.Find("PauseMenu");
-        gameManager = GameObject.Find("GameManager");
-        Destroy(pauseMenu);
-        Destroy(gameManager);
+        DestroyOnLoadObject();
         SceneManager.LoadScene(0);
     }
 }

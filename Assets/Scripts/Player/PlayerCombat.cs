@@ -9,9 +9,19 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     public Animator animator;
-    
+    private CharacterStats characterStats;
+
     public float attackRange = 1f;
-    public int attackDamage = 50;
+
+    private int attackDamage;
+
+    void Awake(){
+        characterStats = GetComponent<CharacterStats>();
+    }
+
+    void Start(){
+        attackDamage = characterStats.baseAttack.getValue();
+    }
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.Z)){
@@ -25,7 +35,7 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   
-            Debug.Log("Hit"+ enemy.name);
+            Debug.Log("Hit"+ enemy.name + "Atk =" + attackDamage);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
@@ -36,6 +46,10 @@ public class PlayerCombat : MonoBehaviour
             return;    
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
+   }
+
+   void OnLevelWasLoaded(){
+        attackDamage = characterStats.baseAttack.getValue();
    }
 
    
