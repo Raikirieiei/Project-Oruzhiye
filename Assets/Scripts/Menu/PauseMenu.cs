@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     
     private GameObject playerSet;
     private GameObject gameManager;
+    private GameObject rewardManager;
 
     public static PauseMenu instance;
 
@@ -67,9 +68,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         playerSet = GameObject.FindWithTag("PlayerSet");
         gameManager = GameObject.Find("GameManager");
+        rewardManager = GameObject.Find("RewardSelector");
         Destroy(playerSet);
         Destroy(gameObject);
         Destroy(gameManager);
+        Destroy(rewardManager);
         SceneManager.LoadScene(0);
         
     }

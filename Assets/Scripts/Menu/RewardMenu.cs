@@ -25,6 +25,7 @@ public class RewardMenu : MonoBehaviour
         else if (instance != this){
             Destroy (gameObject);
         }
+        DontDestroyOnLoad(gameObject);
         
         GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
         button1 = GameObject.Find("Reward1");
@@ -87,16 +88,22 @@ public class RewardMenu : MonoBehaviour
         button1.GetComponent<Button>().onClick.AddListener( delegate {
             reward.Selected(characterStats);
             rewardPools.Remove(reward);
+            GameManager.instance.UpdateGameState(GameState.Normal);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         });
 
         button2.GetComponent<Button>().onClick.AddListener( delegate {
             reward2.Selected(characterStats);
             rewardPools.Remove(reward2);
+            GameManager.instance.UpdateGameState(GameState.Normal);
+            gameObject.SetActive(false);
         });
 
         button3.GetComponent<Button>().onClick.AddListener( delegate {
             reward3.Selected(characterStats);
             rewardPools.Remove(reward3);
+            GameManager.instance.UpdateGameState(GameState.Normal);
+            gameObject.SetActive(false);
         });
     }
 

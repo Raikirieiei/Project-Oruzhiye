@@ -35,7 +35,7 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   
-            Debug.Log("Hit"+ enemy.name);
+            Debug.Log("Hit"+ enemy.name + "Atk =" + attackDamage);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
@@ -46,6 +46,10 @@ public class PlayerCombat : MonoBehaviour
             return;    
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
+   }
+
+   void OnLevelWasLoaded(){
+        attackDamage = characterStats.baseAttack.getValue();
    }
 
    
