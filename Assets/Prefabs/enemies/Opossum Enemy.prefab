@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55420356020780144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24700002, y: -0.0169999, z: 118.99424}
+  m_LocalPosition: {x: -0.253, y: -0.008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 55420357230579434}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55420356035086076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.247, y: -0.195, z: 118.99424}
+  m_LocalPosition: {x: -0.2529999, y: -0.18600026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 55420357230579434}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 55420357230579413}
   - component: {fileID: 55420357230579414}
   - component: {fileID: 55420357230579433}
-  - component: {fileID: 55420357230579432}
+  - component: {fileID: 629435845058819454}
   m_Layer: 6
   m_Name: Opossum Enemy
   m_TagString: Enemy
@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55420357230579415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 50, z: 0}
+  m_LocalPosition: {x: -28.131794, y: -9.2474575, z: 49.92365}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 55420356035086067}
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018548548, y: -0.03797529}
+  m_Offset: {x: -0.03, y: -0.032}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -206,7 +206,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3094623, y: 0.20404945}
+  m_Size: {x: 0.2796, y: 0.1856}
   m_EdgeRadius: 0
 --- !u!50 &55420357230579433
 Rigidbody2D:
@@ -229,7 +229,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &55420357230579432
+--- !u!95 &629435845058819454
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

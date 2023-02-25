@@ -61,10 +61,13 @@ public class GoblinAI : MonoBehaviour
         isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, obstaclesLayer);
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
     
-        // AnimationController();
+        AnimationController();
         if (!canSeePlayer && isGrounded)
         {
             Petrolling();
+        } else if (canSeePlayer && isGrounded)
+        {
+            MoveTowardPlayer();
         }
     }
 
@@ -95,31 +98,44 @@ public class GoblinAI : MonoBehaviour
         enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
     }
 
-    void JumpAttack()
+    void MoveTowardPlayer()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
+        float playerDirection = distanceFromPlayer/Math.Abs(distanceFromPlayer);
 
-        if(isGrounded)
+        if (checkingGround)
         {
-            enemyRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+            FlipTowardsPlayer();
+            enemyRB.velocity = new Vector2(moveSpeed * playerDirection, enemyRB.velocity.y);
         }
     }
 
     // Attack Pattern 1: Slightly move forward toward player and slash
     void SlashAttack()
     {
-      
+        float distanceFromPlayer = player.position.x - transform.position.x;
+
+        enemyRB.AddForce(new Vector2(distanceFromPlayer, 0), ForceMode2D.Impulse);
     }
 
     // Attack Pattern 2: Backflip and dash forward to the player with fixed amount of distance
+    void Dash()
+    {
+        float distanceFromPlayer = player.position.x - transform.position.x;
+
+        enemyRB.AddForce(new Vector2(distanceFromPlayer, 0), ForceMode2D.Impulse);
+    }
+
     void DashAttack()
     {
-
+      
     }
 
     void Backflip()
     {
+        float distanceFromPlayer = player.position.x - transform.position.x;
 
+        enemyRB.AddForce(new Vector2(distanceFromPlayer, 5), ForceMode2D.Impulse);
     }
 
     void FlipTowardsPlayer()
@@ -145,6 +161,7 @@ public class GoblinAI : MonoBehaviour
 
     void AnimationController()
     {
+        enemyAnim.SetFloat("speed", Math.Abs(enemyRB.velocity.x));
         enemyAnim.SetBool("canSeePlayer", canSeePlayer);
         enemyAnim.SetBool("isGrounded", isGrounded);
     }
