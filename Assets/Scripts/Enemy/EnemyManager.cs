@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
         if (transform.childCount == 0)
         {
             Debug.Log("All enemy has been defeated. Stage Clear!!");
-            // GameManager.instance.UpdateGameState(GameState.RewardSelect);
+            GameManager.instance.UpdateGameState(GameState.RewardSelect);
             Destroy(gameObject);
         }
 
