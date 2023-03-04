@@ -18,23 +18,28 @@ public class GoblinAI : MonoBehaviour
     private float moveDirection = 1;
     private bool facingRight = true;
 
-    [Header("For Jump Attacking")]
-    [SerializeField] float jumpHeight;
-    [SerializeField] Transform player;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] Vector2 boxSize;
-    private bool isGrounded;
+    [Header("For Attacking")]
+    [SerializeField] int attackDamage;
+    [SerializeField] float attackCooldown;
+    private float attackTime;
+    private bool canAttack;
 
     [Header("Attack Pattern 1")]
-    [SerializeField] Vector2 attackRange;
-    private bool playerInRange1;
+    [SerializeField] Transform attackHitbox1;
+    [SerializeField] Vector2 attackRange1;
+    [SerializeField] Vector2 hitboxSize1;
+    private bool inRangeAttack1;
 
     [Header("Attack Pattern 2")]
-    private float backFlipDistance;
-    private float dashDistance;
-    private bool playerInRange2;
+    [SerializeField] Transform attackHitbox2;
+    [SerializeField] Vector2 attackRange2;
+    [SerializeField] Vector2 hitboxSize2;
+    [SerializeField] private float backFlipDistance;
+    [SerializeField] private float dashDistance;
+    private bool inRangeAttack2;
 
     [Header("For Seeing Player")]
+    [SerializeField] Transform player;
     [SerializeField] Vector2 lineOfSight;
     [SerializeField] LayerMask playerLayer;
     private bool canSeePlayer;
@@ -48,7 +53,6 @@ public class GoblinAI : MonoBehaviour
     {
         enemyRB = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
-    
         Invoke(nameof(Find_player), 1);
         if (player == null) return;
     }
@@ -58,16 +62,20 @@ public class GoblinAI : MonoBehaviour
         if (player == null) return;
         checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, obstaclesLayer);
         checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, obstaclesLayer);
-        isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, obstaclesLayer);
+
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
-    
+        inRangeAttack1 = Physics2D.OverlapBox(transform.position, attackRange1, 0, playerLayer);
+        inRangeAttack2 = Physics2D.OverlapBox(transform.position, attackRange2, 0, playerLayer);
+
+        if (Time.time >= attackTime + attackCooldown)
+        {
+            canAttack = true;
+        }
+
         AnimationController();
-        if (!canSeePlayer && isGrounded)
+        if (!canSeePlayer)
         {
             Petrolling();
-        } else if (canSeePlayer && isGrounded)
-        {
-            MoveTowardPlayer();
         }
     }
 
@@ -100,42 +108,66 @@ public class GoblinAI : MonoBehaviour
 
     void MoveTowardPlayer()
     {
-        float distanceFromPlayer = player.position.x - transform.position.x;
-        float playerDirection = distanceFromPlayer/Math.Abs(distanceFromPlayer);
+        float playerDir = playerDirection();
 
         if (checkingGround)
         {
             FlipTowardsPlayer();
-            enemyRB.velocity = new Vector2(moveSpeed * playerDirection, enemyRB.velocity.y);
+            enemyRB.velocity = new Vector2(moveSpeed * playerDir, enemyRB.velocity.y);
         }
     }
 
-    // Attack Pattern 1: Slightly move forward toward player and slash
+    void attackOnCooldown()
+    {
+        canAttack = false;
+        attackTime = Time.time;
+    }
+
+    // Attack Pattern 1: Slightly move toward player and slash
     void SlashAttack()
     {
-        float distanceFromPlayer = player.position.x - transform.position.x;
+        float playerDir = playerDirection();
 
-        enemyRB.AddForce(new Vector2(distanceFromPlayer, 0), ForceMode2D.Impulse);
+        // move toward player
+        enemyRB.AddForce(new Vector2(5 * playerDir, 0), ForceMode2D.Impulse);
+
+        // enable attack 1 hitbox
+        bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
+        if (playerHit)
+        {
+            Debug.Log("player hit by Attack1: -" + attackDamage + " HP");
+            Player playerScript = player.GetComponent<Player>();
+            playerScript.TakeDamage(attackDamage);
+        }
     }
 
     // Attack Pattern 2: Backflip and dash forward to the player with fixed amount of distance
     void Dash()
     {
-        float distanceFromPlayer = player.position.x - transform.position.x;
+        float playerDir = playerDirection();
 
-        enemyRB.AddForce(new Vector2(distanceFromPlayer, 0), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(playerDir * dashDistance, 0), ForceMode2D.Impulse);
     }
 
     void DashAttack()
     {
-      
+        float playerDir = playerDirection();
+
+        // enable attack 2 hitbox
+        bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
+        if (playerHit)
+        {
+            Debug.Log("player hit by Attack2: -" + attackDamage + " HP");
+            Player playerScript = player.GetComponent<Player>();
+            playerScript.TakeDamage(attackDamage);
+        }
     }
 
     void Backflip()
     {
-        float distanceFromPlayer = player.position.x - transform.position.x;
+        float jumpDirection = playerDirection() * -1;
 
-        enemyRB.AddForce(new Vector2(distanceFromPlayer, 5), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(backFlipDistance * jumpDirection, 3), ForceMode2D.Impulse);
     }
 
     void FlipTowardsPlayer()
@@ -159,11 +191,19 @@ public class GoblinAI : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
+    private float playerDirection()
+    {
+        float distanceFromPlayer = player.position.x - transform.position.x;
+        return distanceFromPlayer/Math.Abs(distanceFromPlayer);
+    }
+
     void AnimationController()
     {
         enemyAnim.SetFloat("speed", Math.Abs(enemyRB.velocity.x));
         enemyAnim.SetBool("canSeePlayer", canSeePlayer);
-        enemyAnim.SetBool("isGrounded", isGrounded);
+        enemyAnim.SetBool("canAttack", canAttack);
+        enemyAnim.SetBool("inRangeAttack1", inRangeAttack1);
+        enemyAnim.SetBool("inRangeAttack2", inRangeAttack2);
     }
 
     private void OnDrawGizmosSelected() 
@@ -172,10 +212,15 @@ public class GoblinAI : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawCube(groundCheck.position, boxSize);
-
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, lineOfSight);  
+        Gizmos.DrawWireCube(transform.position, lineOfSight);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(attackHitbox1.position, hitboxSize1);
+        Gizmos.DrawWireCube(attackHitbox2.position, hitboxSize2);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(transform.position, attackRange1); 
+        Gizmos.DrawWireCube(transform.position, attackRange2); 
     }
 }
