@@ -7,7 +7,6 @@ using Pathfinding;
 public class GoblinAI : MonoBehaviour
 {
     [Header("For Petrolling")]
-
     [SerializeField] float moveSpeed;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
