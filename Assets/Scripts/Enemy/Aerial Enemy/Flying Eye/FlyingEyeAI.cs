@@ -72,6 +72,7 @@ public class FlyingEyeAI : MonoBehaviour
         if (Time.time >= attackTime + attackCooldown)
         {
             canAttack = true;
+            canMove = true;
         }
 
         AnimationController();
@@ -82,9 +83,6 @@ public class FlyingEyeAI : MonoBehaviour
         } else if (canSeePlayer && canMove)
         {
             MoveTowardPlayer();
-        } else if (canAttack)
-        {
-            canMove = true;
         }
     }
 
