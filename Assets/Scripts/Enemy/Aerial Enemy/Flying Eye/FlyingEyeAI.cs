@@ -217,10 +217,6 @@ public class FlyingEyeAI : MonoBehaviour
 
     private void OnDrawGizmosSelected() 
     {
-        // Gizmos.color = Color.green;
-        // Gizmos.DrawWireCube(centerCheckPoint.position, petrollingRange);
-        // Gizmos.DrawWireSphere(frontCheckPoint.position, circleRadius);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, lineOfSight);
 
