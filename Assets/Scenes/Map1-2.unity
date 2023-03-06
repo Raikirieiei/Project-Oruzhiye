@@ -30181,12 +30181,12 @@ PrefabInstance:
     - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: sLevelToLoad
-      value: MainMenu
+      value: Map1-3
       objectReference: {fileID: 0}
     - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: useIntegerToLoadLevel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1271886180919539061, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
