@@ -12,6 +12,8 @@ public class PlayerCombat : MonoBehaviour
     private CharacterStats characterStats;
 
     public float attackRange = 1f;
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
 
     private int attackDamage;
 
@@ -24,9 +26,13 @@ public class PlayerCombat : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Z)){
-            Debug.Log("Attack");
-            Attack();
+        Debug.Log(nextAttackTime);
+        if (Time.time >= nextAttackTime){
+            if(Input.GetKeyDown(KeyCode.Z)){
+                Debug.Log("Attack");
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
