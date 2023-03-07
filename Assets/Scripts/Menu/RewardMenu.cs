@@ -42,6 +42,7 @@ public class RewardMenu : MonoBehaviour
     }
 
     private void GameManagerOnGameStageChanged(GameState state) {
+        Debug.Log("rewardmenu");
         rewardMenuUI.SetActive(state == GameState.RewardSelect);
     }
 
@@ -96,14 +97,14 @@ public class RewardMenu : MonoBehaviour
             reward2.Selected(characterStats);
             rewardPools.Remove(reward2);
             GameManager.instance.UpdateGameState(GameState.Normal);
-            gameObject.SetActive(false);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         });
 
         button3.GetComponent<Button>().onClick.AddListener( delegate {
             reward3.Selected(characterStats);
             rewardPools.Remove(reward3);
             GameManager.instance.UpdateGameState(GameState.Normal);
-            gameObject.SetActive(false);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         });
     }
 
