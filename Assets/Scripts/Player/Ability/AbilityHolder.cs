@@ -23,11 +23,9 @@ public class AbilityHolder : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.X)){
             keyIndex = 0;
-            Debug.Log(key[keyIndex]);
         }
         // else if (Input.GetKey(KeyCode.C)){
         //     keyIndex = 1;
-        //     Debug.Log(key[keyIndex]);
         // }
 
         switch (state)

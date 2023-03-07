@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
         PlayerDash();
         // AnimatePlayer();
         PlayerJump();
+        controller.Move(horizontalMove * Time.fixedDeltaTime, dash, jump);
     }
 
     void FixedUpdate() {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, dash, jump);
         jump = false;
         dash = false;
     }
