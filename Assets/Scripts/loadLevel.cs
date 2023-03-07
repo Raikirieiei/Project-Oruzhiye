@@ -6,17 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class loadLevel : MonoBehaviour
 {
+    [Header("For Loading Destination")]
     // Start is called before the first frame update
     public int iLevelToLoad;
     public string sLevelToLoad;
 
     public bool useIntegerToLoadLevel = false;
 
+    [Header("For Checking States")]
+    public GameObject enemy;
     public GameObject player;
     private GameObject playerSet;
 
+    private bool isOpen = false;
+    private Animator loaderAnim;
+
     void Start()
     {
+        loaderAnim = GetComponent<Animator>();
+
         Invoke(nameof(Find_player), 1);
         if (player == null) return;
     }
@@ -36,14 +44,23 @@ public class loadLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AnimationController();
+
         if (player == null) return;
+        if (enemy == null)
+        {
+            isOpen = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         GameObject collisionGameObject = collision.gameObject;
 
-        if(collision.gameObject.CompareTag("Player"))
+        // do nothing if there's enemy in the map
+        if (!isOpen) return;
+
+        if (collision.gameObject.CompareTag("Player"))
         {
             LoadScene();
         }
@@ -71,5 +88,10 @@ public class loadLevel : MonoBehaviour
             SceneManager.LoadScene(sLevelToLoad);
             }
         }
+    }
+
+    void AnimationController()
+    {
+        loaderAnim.SetBool("isOpen", isOpen);
     }
 }

@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class GoblinAI : MonoBehaviour
+public class FlyingEyeAI : MonoBehaviour
 {
-    [Header("For Petrolling")]
-    [SerializeField] float moveSpeed;
-    [SerializeField] Transform groundCheckPoint;
-    [SerializeField] Transform wallCheckPoint;
-    [SerializeField] float circleRadius;
+    [Header("For Flight")]
+    [SerializeField] float flightSpeed;
+    [SerializeField] float chaseSpeed;
+    [SerializeField] List<Transform> waypoints = new List<Transform>();
+    private bool canMove = true;
+    private Transform nextWaypoint;
+    private int waypointNum = 0;
+    public float waypointReachedDistance = 0.1f;
+
     [SerializeField] LayerMask obstaclesLayer;
-    private bool checkingGround;
-    private bool checkingWall;
     private float moveDirection = 1;
     private bool facingRight = true;
 
@@ -22,19 +24,19 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] float attackCooldown;
     private float attackTime;
     private bool canAttack;
+    private int atkPatternValue = 0;
 
-    [Header("Attack Pattern 1")]
+    [Header("Bite Attack")]
     [SerializeField] Transform attackHitbox1;
-    [SerializeField] Vector2 attackRange1;
     [SerializeField] Vector2 hitboxSize1;
+    [SerializeField] Vector2 attackRange1;
     private bool inRangeAttack1;
 
-    [Header("Attack Pattern 2")]
+    [Header("Spin Attack")]
+    [SerializeField] float dashDistance;
     [SerializeField] Transform attackHitbox2;
+    [SerializeField] float hitboxRadius;
     [SerializeField] Vector2 attackRange2;
-    [SerializeField] Vector2 hitboxSize2;
-    [SerializeField] private float backFlipDistance;
-    [SerializeField] private float dashDistance;
     private bool inRangeAttack2;
 
     [Header("For Seeing Player")]
@@ -52,6 +54,9 @@ public class GoblinAI : MonoBehaviour
     {
         enemyRB = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
+
+        nextWaypoint = waypoints[waypointNum];
+
         Invoke(nameof(Find_player), 1);
         if (player == null) return;
     }
@@ -59,22 +64,25 @@ public class GoblinAI : MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
-        checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, obstaclesLayer);
-        checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, obstaclesLayer);
-
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
+
         inRangeAttack1 = Physics2D.OverlapBox(transform.position, attackRange1, 0, playerLayer);
         inRangeAttack2 = Physics2D.OverlapBox(transform.position, attackRange2, 0, playerLayer);
 
         if (Time.time >= attackTime + attackCooldown)
         {
             canAttack = true;
+            canMove = true;
         }
 
         AnimationController();
-        if (!canSeePlayer)
+
+        if (!canSeePlayer && canMove)
         {
-            Petrolling();
+            Flight();
+        } else if (canSeePlayer && canMove)
+        {
+            MoveTowardPlayer();
         }
     }
 
@@ -90,83 +98,71 @@ public class GoblinAI : MonoBehaviour
         }
     }
 
-    void Petrolling()
+    void Flight()
     {
-        if (!checkingGround || checkingWall)
+        FlipTowardsWaypoint();
+        Vector2 directionToWaypoint = (nextWaypoint.position - transform.position).normalized;
+
+        float distance = Vector2.Distance(nextWaypoint.position, transform.position);
+        enemyRB.velocity = directionToWaypoint * flightSpeed;
+
+        if (distance <= waypointReachedDistance)
         {
-            if (facingRight)
+            waypointNum++;
+
+            if (waypointNum >= waypoints.Count)
             {
-                Flip();
-            } else if (!facingRight)
-            {
-                Flip();
+                waypointNum = 0;
             }
+            nextWaypoint = waypoints[waypointNum];
         }
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
     }
 
     void MoveTowardPlayer()
     {
-        float playerDir = playerDirection();
-
-        if (checkingGround)
-        {
-            FlipTowardsPlayer();
-            enemyRB.velocity = new Vector2(moveSpeed * playerDir, enemyRB.velocity.y);
-        }
+        FlipTowardsPlayer();
+        Vector2 directionToPlayer = (player.position - transform.position).normalized;
+        enemyRB.velocity = directionToPlayer * chaseSpeed;
     }
 
     void attackOnCooldown()
     {
         canAttack = false;
         attackTime = Time.time;
+        canMove = false;
     }
 
-    // Attack Pattern 1: Slightly move toward player and slash
-    void SlashAttack()
+    // Attack Pattern 1: Attack enemy in front and deal damage
+    void BiteAttack()
     {
-        float playerDir = playerDirection();
-
-        // move toward player
-        enemyRB.AddForce(new Vector2(5 * playerDir, 0), ForceMode2D.Impulse);
-
-        // enable attack 1 hitbox
+        enemyRB.velocity = Vector3.zero;
+        atkPatternValue += 1;
+    
         bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
         if (playerHit)
         {
-            Debug.Log("player hit by Attack1: -" + attackDamage + " HP");
+            Debug.Log("player hit by bite attack: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
             playerScript.TakeDamage(attackDamage);
         }
     }
 
-    // Attack Pattern 2: Backflip and dash forward to the player with fixed amount of distance
-    void Dash()
+    // Attack Pattern 2: Spinning toward player and deal damage
+    void SpinAttack()
     {
-        float playerDir = playerDirection();
+        enemyRB.velocity = Vector3.zero;
+        atkPatternValue = 0;
 
+        float playerDir = playerDirection();
         enemyRB.AddForce(new Vector2(playerDir * dashDistance, 0), ForceMode2D.Impulse);
-    }
 
-    void DashAttack()
-    {
-        float playerDir = playerDirection();
-
-        // enable attack 2 hitbox
-        bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
+        bool playerHit = Physics2D.OverlapCircle(attackHitbox2.position, hitboxRadius, playerLayer);
         if (playerHit)
         {
-            Debug.Log("player hit by Attack2: -" + attackDamage + " HP");
+            Debug.Log("player hit by spinning attack: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage);
+            playerScript.TakeDamage(attackDamage + 5);
         }
-    }
-
-    void Backflip()
-    {
-        float jumpDirection = playerDirection() * -1;
-
-        enemyRB.AddForce(new Vector2(backFlipDistance * jumpDirection, 3), ForceMode2D.Impulse);
     }
 
     void FlipTowardsPlayer()
@@ -178,6 +174,20 @@ public class GoblinAI : MonoBehaviour
             Flip();
         }
         else if (playerPosition > 0 && !facingRight)
+        {
+            Flip();
+        }
+    }
+
+    void FlipTowardsWaypoint()
+    {
+        float waypointPosition = nextWaypoint.position.x - transform.position.x;
+
+        if (waypointPosition < 0 && facingRight)
+        {
+            Flip();
+        }
+        else if (waypointPosition > 0 && !facingRight)
         {
             Flip();
         }
@@ -198,28 +208,24 @@ public class GoblinAI : MonoBehaviour
 
     void AnimationController()
     {
-        enemyAnim.SetFloat("speed", Math.Abs(enemyRB.velocity.x));
         enemyAnim.SetBool("canSeePlayer", canSeePlayer);
         enemyAnim.SetBool("canAttack", canAttack);
         enemyAnim.SetBool("inRangeAttack1", inRangeAttack1);
         enemyAnim.SetBool("inRangeAttack2", inRangeAttack2);
+        enemyAnim.SetInteger("atkPatternValue", atkPatternValue);
     }
 
     private void OnDrawGizmosSelected() 
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, lineOfSight);
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(attackHitbox1.position, hitboxSize1);
-        Gizmos.DrawWireCube(attackHitbox2.position, hitboxSize2);
+        Gizmos.DrawWireSphere(attackHitbox2.position, hitboxRadius);
 
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(transform.position, attackRange1); 
-        Gizmos.DrawWireCube(transform.position, attackRange2); 
+        Gizmos.DrawWireCube(transform.position, attackRange1);
+        Gizmos.DrawWireCube(transform.position, attackRange2);
     }
 }

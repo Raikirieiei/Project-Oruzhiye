@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
 
     // private Component[] enemyArray;
-    // private bool isEnemyDead = false;    
+    // private bool isEnemyDead = false;
 
     // Update is called once per frame
     void Update()
