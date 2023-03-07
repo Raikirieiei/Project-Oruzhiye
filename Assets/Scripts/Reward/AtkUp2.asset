@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AtkUp2
   m_EditorClassIdentifier: 
   name: Attack Up 2
-  desc: Increase player attack damage by 10 points
+  desc: Increase player attack damage by 20 points
   baseValue: 20

@@ -27,6 +27,7 @@ public class loadLevel : MonoBehaviour
 
         Invoke(nameof(Find_player), 1);
         if (player == null) return;
+
     }
 
     private void Find_player()
@@ -94,4 +95,5 @@ public class loadLevel : MonoBehaviour
     {
         loaderAnim.SetBool("isOpen", isOpen);
     }
+
 }

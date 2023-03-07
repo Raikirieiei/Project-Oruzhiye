@@ -26,7 +26,6 @@ public class PlayerCombat : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log(nextAttackTime);
         if (Time.time >= nextAttackTime){
             if(Input.GetKeyDown(KeyCode.Z)){
                 Debug.Log("Attack");
