@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 
 	[SerializeField]
-    private float dashForce = 80f;
+    private float dashForce = 30f;
 	private int facingDir = 0;
 	private bool dashOnCooldown = false;
 	private float dashCooldownTime = 1f;

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightSpeed: 4
-  chaseSpeed: 80
+  chaseSpeed: 40
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

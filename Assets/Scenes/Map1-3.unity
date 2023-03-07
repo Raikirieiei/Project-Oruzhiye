@@ -244,7 +244,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -5150,6 +5150,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1690238887}
     - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: iLevelToLoad

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd08a05f9c2044cf8ffd5c5d69a8ccb, type: 3}
   m_Name: MoveUp2
   m_EditorClassIdentifier: 
-  name: 
-  desc: 
-  baseValue: 0
+  name: MoveSpeed 2
+  desc: Moderately increase player move speed
+  baseValue: 10
