@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7479c04e1478d45f2b5e2bf80468d99e, type: 3}
-  m_Name: SpinningSlash
+  m_Script: {fileID: 11500000, guid: b9ce079f684bd4c358948d53df9fef6e, type: 3}
+  m_Name: New Sword Wave
   m_EditorClassIdentifier: 
-  name: SpinningSlash
-  cooldownTime: 5
-  activeTime: 5
-  dashVelocity: 20
+  name: 
+  cooldownTime: 0
+  activeTime: 0
+  swordWaveProjectile: {fileID: 0}

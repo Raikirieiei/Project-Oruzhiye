@@ -17,23 +17,23 @@ public class AbilityHolder : MonoBehaviour
 
     private KeyCode[] key = {KeyCode.X , KeyCode.C};
     private int keyIndex;
-    AbilityState state = AbilityState.ready;
+    AbilityState[] state = {AbilityState.ready, AbilityState.ready};
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKey(KeyCode.X)){
             keyIndex = 0;
         }
-        // else if (Input.GetKey(KeyCode.C)){
-        //     keyIndex = 1;
-        // }
+        else if (Input.GetKey(KeyCode.C)){
+            keyIndex = 1;
+        }
 
-        switch (state)
+        switch (state[keyIndex])
         {
             case AbilityState.ready:
                 if(Input.GetKeyDown(key[keyIndex])){
                     ability[keyIndex].Activate(gameObject);
-                    state = AbilityState.active;
+                    state[keyIndex] = AbilityState.active;
                     activeTime = ability[keyIndex].activeTime;
                 } 
             break;
@@ -43,7 +43,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else{
                     ability[keyIndex].BeginCooldown(gameObject);
-                    state = AbilityState.cooldown;
+                    state[keyIndex] = AbilityState.cooldown;
                     cooldownTime = ability[keyIndex].cooldownTime;
                 }
             break;
@@ -52,7 +52,7 @@ public class AbilityHolder : MonoBehaviour
                     cooldownTime -= Time.deltaTime;
                 }
                 else{
-                    state = AbilityState.ready;
+                    state[keyIndex] = AbilityState.ready;
                 }
             break;
         }

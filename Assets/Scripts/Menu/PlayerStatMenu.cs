@@ -20,7 +20,7 @@ public class PlayerStatMenu : MonoBehaviour
         else if (instance != this){
             Destroy (gameObject);
         }
-        characterStats = GameObject.Find("Player 1").GetComponent<CharacterStats>();
+        characterStats = GameObject.FindWithTag("Player").GetComponent<CharacterStats>();
         statText = characterStatUI.transform.Find("StatAmount").gameObject;
         
     }
