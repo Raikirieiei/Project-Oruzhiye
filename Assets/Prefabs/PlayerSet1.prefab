@@ -1576,8 +1576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability:
-  - {fileID: 11400000, guid: 473514c3048054ec781e272fdedebf83, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 45e1cb9a638c54874905b915ce35fec9, type: 2}
+  - {fileID: 11400000, guid: 303c46c2ce8ea4cffac6bf73d9449ad8, type: 2}
 --- !u!114 &3526438813718270855
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -91,6 +91,7 @@ public class RewardMenu : MonoBehaviour
             rewardPools.Remove(reward);
             GameManager.instance.UpdateGameState(GameState.Normal);
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Time.timeScale = 1;
         });
 
         button2.GetComponent<Button>().onClick.AddListener( delegate {
@@ -98,6 +99,7 @@ public class RewardMenu : MonoBehaviour
             rewardPools.Remove(reward2);
             GameManager.instance.UpdateGameState(GameState.Normal);
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Time.timeScale = 1;
         });
 
         button3.GetComponent<Button>().onClick.AddListener( delegate {
@@ -105,6 +107,7 @@ public class RewardMenu : MonoBehaviour
             rewardPools.Remove(reward3);
             GameManager.instance.UpdateGameState(GameState.Normal);
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Time.timeScale = 1;
         });
     }
 
