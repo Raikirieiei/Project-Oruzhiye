@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ce079f684bd4c358948d53df9fef6e, type: 3}
   m_Name: New Sword Wave
   m_EditorClassIdentifier: 
-  name: 
-  cooldownTime: 0
-  activeTime: 0
-  swordWaveProjectile: {fileID: 0}
+  name: SwordWave
+  cooldownTime: 2
+  activeTime: 2
+  swordWaveProjectile: {fileID: 4227213497373665052, guid: 07aacb2cd08c6431dbdab170d49c4a15,
+    type: 3}

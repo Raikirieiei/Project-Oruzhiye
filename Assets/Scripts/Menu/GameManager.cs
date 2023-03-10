@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void HandleRewardSelect() {
-
+        Time.timeScale = 0;
     }
 }
 
