@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SpinningSlash : Ability
 {
+    public float dashVelocity;
     public override void Activate(GameObject parent){
         Debug.Log("Spin");
         PlayerCombat playerCombat = parent.GetComponent<PlayerCombat>();

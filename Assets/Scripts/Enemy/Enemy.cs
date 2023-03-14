@@ -6,7 +6,12 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    private Rigidbody2D myBody;
     // Start is called before the first frame update
+
+    void Awake(){
+        myBody = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
         currentHealth = maxHealth;   
@@ -18,6 +23,9 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public void KnockBack(Vector2 damageDirection){
+        myBody.AddForce(damageDirection.normalized * -20f, ForceMode2D.Impulse);
+    }
 
     public void TakeDamage(int damage){
         currentHealth -= damage;

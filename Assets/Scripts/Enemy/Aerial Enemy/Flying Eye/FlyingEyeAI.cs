@@ -138,12 +138,13 @@ public class FlyingEyeAI : MonoBehaviour
         enemyRB.velocity = Vector3.zero;
         atkPatternValue += 1;
     
+        float playerDir = playerDirection();
         bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
         if (playerHit)
         {
             Debug.Log("player hit by bite attack: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage);
+            playerScript.TakeDamage(attackDamage, new Vector2(-playerDir, 0f));
         }
     }
 
@@ -161,7 +162,7 @@ public class FlyingEyeAI : MonoBehaviour
         {
             Debug.Log("player hit by spinning attack: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage + 5);
+            playerScript.TakeDamage(attackDamage + 5, new Vector2(-playerDir, 0f));
         }
     }
 

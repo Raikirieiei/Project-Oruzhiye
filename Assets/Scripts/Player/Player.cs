@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
     private GameObject playerSet;
 
+    private int PLAYER_LAYER;
+    private int ENEMY_LAYER;
+
+    private bool isInvincible = false;
+
     private void Awake(){
 
         myBody = GetComponent<Rigidbody2D>();
@@ -37,6 +42,8 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         myBodyColl = GetComponent<BoxCollider2D>();
         characterStats = GetComponent<CharacterStats>();
+        PLAYER_LAYER = LayerMask.NameToLayer("Player");
+		ENEMY_LAYER = LayerMask.NameToLayer("Enemy");
     }
 
     
@@ -93,27 +100,44 @@ public class Player : MonoBehaviour
         return movementInput;
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage, Vector2 damageDirection){
 
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
 
-        if (currentHealth <= 0)
+        if (!isInvincible)
         {
-            Die();
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                isInvincible = true;
+                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+                StartCoroutine(VulnerableAgain(1f)); 
+
+                // Apply knockback
+                KnockBack(damageDirection);
+        }
         }
     }
 
+    public void KnockBack(Vector2 damageDirection){
+        myBody.AddForce(damageDirection.normalized * -40f, ForceMode2D.Impulse);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // // Debug.Log("coll tag: " + collision.gameObject.tag);
-        // if (collision.gameObject.CompareTag(GROUND_TAG)) 
-        //     isGrounded = true;    
-        
+    {   
+        Vector2 damageDirection = (collision.contacts[0].point - (Vector2)transform.position).normalized;
+        damageDirection.y = 0f;
+  
         if (collision.gameObject.CompareTag(ENEMY_TAG))
         {
-            TakeDamage(20);
-            Debug.Log("-20 HP");
+            if(!isInvincible){
+                TakeDamage(20, damageDirection);
+                Debug.Log("-20 HP");
+            }
         }
            
     }
@@ -132,6 +156,13 @@ public class Player : MonoBehaviour
     void FindStartPos()
     {
         transform.position = GameObject.FindWithTag("StartPos").transform.position;
+    }
+
+    IEnumerator VulnerableAgain(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
+        isInvincible = false;
     }
 
 }

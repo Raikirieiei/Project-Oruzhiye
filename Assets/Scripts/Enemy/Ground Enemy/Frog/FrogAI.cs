@@ -83,7 +83,6 @@ public class FrogAI : MonoBehaviour
                 Flip();
             }
         }
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
     }
 
     void JumpAttack()
