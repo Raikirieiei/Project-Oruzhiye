@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityHolder : MonoBehaviour
+public class AbilityHolder2 : MonoBehaviour
 {
     public Ability ability;
     float cooldownTime;
@@ -15,7 +15,7 @@ public class AbilityHolder : MonoBehaviour
         cooldown,
     }
 
-    private KeyCode key = KeyCode.X;
+    private KeyCode key = KeyCode.C;
 
     AbilityState state =  AbilityState.ready;
     // Update is called once per frame
