@@ -12,10 +12,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D enemyRB;
 
     // Start is called before the first frame update
-
-    void Awake(){
-        myBody = GetComponent<Rigidbody2D>();
-    }
     void Start()
     {
         currentHealth = maxHealth;
