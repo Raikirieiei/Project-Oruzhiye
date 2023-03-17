@@ -75,6 +75,9 @@ public class GoblinAI : MonoBehaviour
         if (!canSeePlayer)
         {
             Petrolling();
+        } else if (canSeePlayer & canAttack)
+        {
+            MoveTowardPlayer();
         }
     }
 
@@ -102,7 +105,7 @@ public class GoblinAI : MonoBehaviour
                 Flip();
             }
         }
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        enemyRB.AddForce(new Vector2(moveSpeed * moveDirection, 0));
     }
 
     void MoveTowardPlayer()
@@ -112,7 +115,7 @@ public class GoblinAI : MonoBehaviour
         if (checkingGround)
         {
             FlipTowardsPlayer();
-            enemyRB.velocity = new Vector2(moveSpeed * playerDir, enemyRB.velocity.y);
+            enemyRB.AddForce(new Vector2(moveSpeed * playerDir, 0));
         }
     }
 
@@ -143,9 +146,7 @@ public class GoblinAI : MonoBehaviour
     // Attack Pattern 2: Backflip and dash forward to the player with fixed amount of distance
     void Dash()
     {
-        float playerDir = playerDirection();
-
-        enemyRB.AddForce(new Vector2(playerDir * dashDistance, 0), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(moveDirection * dashDistance, 0), ForceMode2D.Impulse);
     }
 
     void DashAttack()

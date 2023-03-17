@@ -276,15 +276,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: -2.3344364e+37
+      e02: 1.5905263e+29
+      e03: -0.0000000019691218
+      e10: NaN
+      e11: 4.5905e-41
+      e12: 6.8e-43
+      e13: 6.77e-43
+      e20: 1.3e-44
+      e21: -1.850142e-20
+      e22: -1.8499998e-20
+      e23: -1.8499998e-20
+      e30: 0
+      e31: 3.14e-43
+      e32: 3.14e-43
+      e33: 3.14e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: 1.5905263e+29, g: 1.5905263e+29, b: 1.5905263e+29, a: 1.5905263e+29}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 51, y: 17, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -26541,7 +26565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1091295493, guid: a66efacea070e465f80f1fc3e795c727, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2514757191482398201, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}
@@ -26586,7 +26610,7 @@ PrefabInstance:
     - target: {fileID: 5232109210405729256, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5890571078938861728, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}
@@ -26716,7 +26740,7 @@ PrefabInstance:
     - target: {fileID: 6208060804820395871, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7841917941773029411, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}

@@ -102,7 +102,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 10
   pickNextWaypointDist: 1.2
-  endReachedDistance: 0.2
+  endReachedDistance: 0.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
@@ -130,7 +130,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 310677424197259710}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c57fe2eb481e3cd40b8ddf6a6b49ecb9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
