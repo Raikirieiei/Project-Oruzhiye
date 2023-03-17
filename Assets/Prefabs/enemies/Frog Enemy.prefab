@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7944733377b567448a71e8b01ee16d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 12
   groundCheckPoint: {fileID: 3790142568583256786}
   wallCheckPoint: {fileID: 3790142567436307845}
   circleRadius: 0.2
@@ -170,7 +170,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3790142567528915809}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c57fe2eb481e3cd40b8ddf6a6b49ecb9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -203,7 +203,7 @@ Rigidbody2D:
   m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: c57fe2eb481e3cd40b8ddf6a6b49ecb9, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

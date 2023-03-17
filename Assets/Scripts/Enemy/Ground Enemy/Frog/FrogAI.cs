@@ -83,6 +83,7 @@ public class FrogAI : MonoBehaviour
                 Flip();
             }
         }
+        enemyRB.AddForce(new Vector2(moveSpeed * moveDirection, 0));
     }
 
     void JumpAttack()
