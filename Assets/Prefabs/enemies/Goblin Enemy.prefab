@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5603ab63c4ffb53459d14bb83d837981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 12
   groundCheckPoint: {fileID: 9106419997285750481}
   wallCheckPoint: {fileID: 9106419997299092565}
   circleRadius: 0.2
@@ -174,11 +174,11 @@ MonoBehaviour:
   attackDamage: 30
   attackCooldown: 2
   attackHitbox1: {fileID: 750798263}
-  attackRange1: {x: 7.5, y: 2.5}
+  attackRange1: {x: 6, y: 2.5}
   hitboxSize1: {x: 4.5, y: 2.25}
   attackHitbox2: {fileID: 2022674681}
-  attackRange2: {x: 15, y: 2}
-  hitboxSize2: {x: 4, y: 1.5}
+  attackRange2: {x: 12, y: 2}
+  hitboxSize2: {x: 4.25, y: 1.5}
   backFlipDistance: 5
   dashDistance: 15
   player: {fileID: 0}

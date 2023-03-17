@@ -47,7 +47,7 @@ public class OpossumAI : MonoBehaviour
                 Flip();
             }
         }
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        enemyRB.AddForce(new Vector2(moveSpeed * moveDirection, 0));
     }
 
     void Flip() 
