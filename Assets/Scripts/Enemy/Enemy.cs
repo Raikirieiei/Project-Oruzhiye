@@ -23,10 +23,6 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void KnockBack(Vector2 damageDirection){
-        myBody.AddForce(damageDirection.normalized * -20f, ForceMode2D.Impulse);
-    }
-
     public void TakeDamage(int damage){
         currentHealth -= damage;
 

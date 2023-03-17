@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
     }
 
     public void KnockBack(Vector2 damageDirection){
-        myBody.AddForce(damageDirection.normalized * -40f, ForceMode2D.Impulse);
+        myBody.AddForce(damageDirection.normalized * -20f, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
