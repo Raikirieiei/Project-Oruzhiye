@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class GoblinAI : MonoBehaviour
+public class MushroomAI : MonoBehaviour
 {
     [Header("For Petrolling")]
     [SerializeField] float moveSpeed;
@@ -22,6 +22,7 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] float attackCooldown;
     private float attackTime;
     private bool canAttack = true;
+    private int atkPatternValue = 0;
 
     [Header("Attack Pattern 1")]
     [SerializeField] Transform attackHitbox1;
@@ -33,7 +34,6 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] Transform attackHitbox2;
     [SerializeField] Vector2 attackRange2;
     [SerializeField] Vector2 hitboxSize2;
-    [SerializeField] private float backFlipDistance;
     [SerializeField] private float dashDistance;
     private bool inRangeAttack2;
 
@@ -125,14 +125,12 @@ public class GoblinAI : MonoBehaviour
         attackTime = Time.time;
     }
 
-    // Attack Pattern 1: Slightly move toward player and slash
-    void SlashAttack()
+    // Attack Pattern 1: 
+    void SlabAttack()
     {
         float playerDir = playerDirection();
+        atkPatternValue += 1;
         enemyRB.velocity = Vector3.zero;
-
-        // move toward player
-        enemyRB.AddForce(new Vector2(5 * playerDir, 0), ForceMode2D.Impulse);
 
         // enable attack 1 hitbox
         bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
@@ -140,36 +138,30 @@ public class GoblinAI : MonoBehaviour
         {
             Debug.Log("player hit by Attack1: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage, new Vector2(-playerDir, 0f));
+            playerScript.TakeDamage(attackDamage);
         }
     }
 
-    // Attack Pattern 2: Backflip and dash forward to the player with fixed amount of distance
+    // Attack Pattern 2: 
     void Dash()
     {
         enemyRB.AddForce(new Vector2(moveDirection * dashDistance, 0), ForceMode2D.Impulse);
     }
 
-    void DashAttack()
+    void BiteAttack()
     {
         float playerDir = playerDirection();
+        atkPatternValue = 0;
         enemyRB.velocity = Vector3.zero;
-
+        
         // enable attack 2 hitbox
         bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
         if (playerHit)
         {
             Debug.Log("player hit by Attack2: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage, new Vector2(-playerDir, 0f));
+            playerScript.TakeDamage(attackDamage);
         }
-    }
-
-    void Backflip()
-    {
-        float jumpDirection = playerDirection() * -1;
-
-        enemyRB.AddForce(new Vector2(backFlipDistance * jumpDirection, 3), ForceMode2D.Impulse);
     }
 
     void FlipTowardsPlayer()
@@ -206,6 +198,7 @@ public class GoblinAI : MonoBehaviour
         enemyAnim.SetBool("canAttack", canAttack);
         enemyAnim.SetBool("inRangeAttack1", inRangeAttack1);
         enemyAnim.SetBool("inRangeAttack2", inRangeAttack2);
+        enemyAnim.SetInteger("atkPatternValue", atkPatternValue);
     }
 
     private void OnDrawGizmosSelected() 
