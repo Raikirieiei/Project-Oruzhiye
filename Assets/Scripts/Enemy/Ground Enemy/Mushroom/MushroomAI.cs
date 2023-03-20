@@ -138,7 +138,7 @@ public class MushroomAI : MonoBehaviour
         {
             Debug.Log("player hit by Attack1: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage);
+            playerScript.TakeDamage(attackDamage, new Vector2(-playerDir, 0f));
         }
     }
 
@@ -160,7 +160,7 @@ public class MushroomAI : MonoBehaviour
         {
             Debug.Log("player hit by Attack2: -" + attackDamage + " HP");
             Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage);
+            playerScript.TakeDamage(attackDamage + 5, new Vector2(-playerDir, 0f));
         }
     }
 
