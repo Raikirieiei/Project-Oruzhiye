@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public int currentHealth;
 
+    [HideInInspector]
+    public int defend;
+
     // private string GROUND_TAG = "Ground";
     private string ENEMY_TAG = "Enemy";
 
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
     {   
         runSpeed = (float)characterStats.baseMoveSpeed.getValue();
         currentHealth = characterStats.currentHealth;
+        defend = characterStats.baseDefend.getValue();
         healthBar.SetMaxHealth(currentHealth);
         DontDestroyOnLoad(gameObject);
         gameObject.GetComponent<SpriteRenderer>().flipX = true;
@@ -102,10 +106,15 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage, Vector2 damageDirection){
 
+        int finalDamage;
+        float damageReduction;
+        damageReduction = damage * (float)defend/100;
+        finalDamage = damage - (int)damageReduction;
+        Debug.Log("Damage Receive" + finalDamage);
 
         if (!isInvincible)
         {
-            currentHealth -= damage;
+            currentHealth -= finalDamage;
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
@@ -136,7 +145,6 @@ public class Player : MonoBehaviour
         {
             if(!isInvincible){
                 TakeDamage(20, damageDirection);
-                Debug.Log("-20 HP");
             }
         }
            
