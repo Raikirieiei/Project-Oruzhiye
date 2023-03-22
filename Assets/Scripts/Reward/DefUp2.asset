@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7479c04e1478d45f2b5e2bf80468d99e, type: 3}
-  m_Name: New Spinning Slash
+  m_Script: {fileID: 11500000, guid: 6c193922dd3d740419a5b9b64068a4c2, type: 3}
+  m_Name: DefUp2
   m_EditorClassIdentifier: 
-  name: SpinningSlash
-  cooldownTime: 4
-  activeTime: 0
-  dashVelocity: 0
+  name: Defend up 2
+  desc: Moderately increase player defend
+  baseValue: 10

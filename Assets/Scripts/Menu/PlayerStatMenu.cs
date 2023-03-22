@@ -44,7 +44,7 @@ public class PlayerStatMenu : MonoBehaviour
                     item.text = characterStats.baseAttack.getValue().ToString();
                     break;
                 case "Defend":
-                    Debug.Log("defend does not implement yet");
+                    item.text = characterStats.baseDefend.getValue().ToString();
                     break; 
                 default:
                     Debug.Log("noth found stat amount");
