@@ -26737,6 +26737,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5890571079177665774, guid: a66efacea070e465f80f1fc3e795c727,
+        type: 3}
+      propertyPath: rewardPools.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890571079177665774, guid: a66efacea070e465f80f1fc3e795c727,
+        type: 3}
+      propertyPath: rewardPools.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 63b5c8458a81541acb16414d150c7f5c,
+        type: 2}
+    - target: {fileID: 5890571079177665774, guid: a66efacea070e465f80f1fc3e795c727,
+        type: 3}
+      propertyPath: rewardPools.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: d4ea7b601055d4bfb983b13b770da052,
+        type: 2}
     - target: {fileID: 6208060804820395871, guid: a66efacea070e465f80f1fc3e795c727,
         type: 3}
       propertyPath: m_RootOrder

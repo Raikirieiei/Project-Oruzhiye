@@ -4,6 +4,7 @@ public class CharacterStats : MonoBehaviour
 {
     public Stat baseAttack;
     public Stat baseMoveSpeed;
+    public Stat baseDefend;
     public int baseMaxHealth = 100;
     public int currentHealth;
 
