@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
     private Rigidbody2D enemyRB;
+    private Animator enemyAnim;
 
     // Start is called before the first frame update
     void Start()

@@ -21,7 +21,7 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] int attackDamage;
     [SerializeField] float attackCooldown;
     private float attackTime;
-    private bool canAttack;
+    private bool canAttack = true;
 
     [Header("Attack Pattern 1")]
     [SerializeField] Transform attackHitbox1;
@@ -129,6 +129,7 @@ public class GoblinAI : MonoBehaviour
     void SlashAttack()
     {
         float playerDir = playerDirection();
+        enemyRB.velocity = Vector3.zero;
 
         // move toward player
         enemyRB.AddForce(new Vector2(5 * playerDir, 0), ForceMode2D.Impulse);
@@ -152,6 +153,7 @@ public class GoblinAI : MonoBehaviour
     void DashAttack()
     {
         float playerDir = playerDirection();
+        enemyRB.velocity = Vector3.zero;
 
         // enable attack 2 hitbox
         bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
