@@ -106,6 +106,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.7
+    functionName: playAttackSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7
     functionName: BiteAttack
     data: 
     objectReferenceParameter: {fileID: 0}
