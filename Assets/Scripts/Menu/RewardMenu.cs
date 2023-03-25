@@ -61,6 +61,8 @@ public class RewardMenu : MonoBehaviour
         textList = button.GetComponentsInChildren<Text>();
         textList[0].text = reward.name;
         textList[1].text = reward.desc;
+        Image[] img = button.GetComponentsInChildren<Image>();
+        img[1].sprite = reward.img;
         // Debug.Log(reward.name + reward.desc);
     }
 

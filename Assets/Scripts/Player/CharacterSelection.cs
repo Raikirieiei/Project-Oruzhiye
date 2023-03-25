@@ -8,7 +8,9 @@ public class CharacterSelection : MonoBehaviour
 {
     public CharacterDatabase characterDB;
 
-    public SpriteRenderer artworkSprite;
+    // public SpriteRenderer artworkSprite;
+
+    public Image imgSprite;
 
     private int selectedOption = 0;
 
@@ -28,7 +30,7 @@ public class CharacterSelection : MonoBehaviour
 
     private void UpdateCharacter(int selectedOption){
         Character character = characterDB.getCharacter(selectedOption);
-        artworkSprite.sprite = character.characterSprite;
+        imgSprite.sprite = character.characterSprite;
     }
 
     private void Load(){
