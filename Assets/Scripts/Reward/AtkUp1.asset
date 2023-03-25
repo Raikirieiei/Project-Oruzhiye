@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Attack Up 1
   desc: Increase player attack damage by 10 points
   baseValue: 10
+  img: {fileID: 21300000, guid: 093978648cffe4479830f024dae1a233, type: 3}
