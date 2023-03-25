@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Defend up 2
   desc: Moderately increase player defend
   baseValue: 10
+  img: {fileID: 21300000, guid: 4824b67df5a204097ada068e7002aecb, type: 3}
