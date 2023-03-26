@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 66503cd469b222545874ded67eaae5f2
+guid: b2b176bf8b8bcff4b8f3e1e481eb3229
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8248874143158181610
-    second: SlimeDeath_0
+      213: 7946164058938682587
+    second: Disappear_0
   - first:
-      213: 4607122159584648237
-    second: SlimeDeath_1
+      213: -1657915531250736757
+    second: Disappear_1
   - first:
-      213: 6474343901315240914
-    second: SlimeDeath_2
+      213: 3010373698220286977
+    second: Disappear_2
   - first:
-      213: -8535977896162509796
-    second: SlimeDeath_3
+      213: 5121264671528501787
+    second: Disappear_3
   - first:
-      213: 1932137430910769947
-    second: SlimeDeath_4
+      213: 8664136694452466062
+    second: Disappear_4
   - first:
-      213: 8411027701798509436
-    second: SlimeDeath_5
+      213: 5071038595313498216
+    second: Disappear_5
   - first:
-      213: -3713719809455526825
-    second: SlimeDeath_6
+      213: -5365465075554290933
+    second: Disappear_6
+  - first:
+      213: -224743855519800945
+    second: Disappear_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeDeath_0
+      name: Disappear_0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,20 +147,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 611e624dbac168d80800000000000000
-      internalID: -8248874143158181610
+      spriteID: bdc240c6c12764e60800000000000000
+      internalID: 7946164058938682587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_1
+      name: Disappear_1
       rect:
         serializedVersion: 2
         x: 32
@@ -165,20 +168,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2c9fdec139cfef30800000000000000
-      internalID: 4607122159584648237
+      spriteID: b81623cbb96edf8e0800000000000000
+      internalID: -1657915531250736757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_2
+      name: Disappear_2
       rect:
         serializedVersion: 2
         x: 64
@@ -186,20 +189,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d39c97c97d79d950800000000000000
-      internalID: 6474343901315240914
+      spriteID: 104699bcdeef6c920800000000000000
+      internalID: 3010373698220286977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_3
+      name: Disappear_3
       rect:
         serializedVersion: 2
         x: 96
@@ -207,20 +210,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1cb5a8345d1a8980800000000000000
-      internalID: -8535977896162509796
+      spriteID: b12c63bc513621740800000000000000
+      internalID: 5121264671528501787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_4
+      name: Disappear_4
       rect:
         serializedVersion: 2
         x: 128
@@ -228,20 +231,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1b1caaa1c450da10800000000000000
-      internalID: 1932137430910769947
+      spriteID: e8134464b623d3870800000000000000
+      internalID: 8664136694452466062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_5
+      name: Disappear_5
       rect:
         serializedVersion: 2
         x: 160
@@ -249,20 +252,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7b9ba99129f9b470800000000000000
-      internalID: 8411027701798509436
+      spriteID: 868f4f32cb2ff5640800000000000000
+      internalID: 5071038595313498216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeDeath_6
+      name: Disappear_6
       rect:
         serializedVersion: 2
         x: 192
@@ -270,14 +273,35 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75c621a6287367cc0800000000000000
-      internalID: -3713719809455526825
+      spriteID: b0372d4f0f90a85b0800000000000000
+      internalID: -5365465075554290933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Disappear_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f816a4677ac81ecf0800000000000000
+      internalID: -224743855519800945
       vertices: []
       indices: 
       edges: []
