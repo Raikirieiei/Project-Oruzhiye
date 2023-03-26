@@ -210,17 +210,21 @@ public class GoblinAI : MonoBehaviour
 
     private void OnDrawGizmosSelected() 
     {
+        //groundCheckPoint & wallCheckPoint marker
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
 
+        // LineOfSight marker
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, lineOfSight);
 
+        // Attack Hitbox marker
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(attackHitbox1.position, hitboxSize1);
         Gizmos.DrawWireCube(attackHitbox2.position, hitboxSize2);
 
+        // Attack Range marker
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(transform.position, attackRange1); 
         Gizmos.DrawWireCube(transform.position, attackRange2); 

@@ -59,6 +59,7 @@ public class OpossumAI : MonoBehaviour
 
     private void OnDrawGizmosSelected() 
     {
+        //groundCheckPoint & wallCheckPoint marker
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
