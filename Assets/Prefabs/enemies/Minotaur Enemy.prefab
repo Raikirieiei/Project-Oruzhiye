@@ -244,7 +244,7 @@ MonoBehaviour:
   boxSize: {x: 2, y: 0.15}
   jumpHeight: 25
   dropSpeed: 20
-  attackRange2: {x: 5, y: 30}
+  attackRange2: {x: 3.5, y: 30}
   player: {fileID: 0}
   lineOfSight: {x: 20, y: 10}
   playerLayer:
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacb39e6ae2439e4cb76411965f4dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 550
+  maxHealth: 1000
   currentHealth: 0
 --- !u!61 &5282265951052719164
 BoxCollider2D:
