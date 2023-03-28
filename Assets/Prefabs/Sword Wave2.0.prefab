@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6632085294809139408}
   - component: {fileID: 2872686769429142235}
   - component: {fileID: 1872132489499226315}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sword Wave2.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,9 +145,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8

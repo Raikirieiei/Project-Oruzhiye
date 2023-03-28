@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CharacterDatabase
   m_EditorClassIdentifier: 
   character:
-  - characterSprite: {fileID: 21300000, guid: f22540e8ea335034b92c27795aa254c6, type: 3}
-  - characterSprite: {fileID: 21300112, guid: f22540e8ea335034b92c27795aa254c6, type: 3}
+  - characterSprite: {fileID: 21300000, guid: 8cefa38b7825c704ea31772f7cd35bc2, type: 3}
+  - characterSprite: {fileID: 21300000, guid: 234c5759e4afa2e4a808d708a7e0fe94, type: 3}
+  - characterSprite: {fileID: 21300000, guid: 2e66b507b37e31f408f88d4119f20c79, type: 3}

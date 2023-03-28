@@ -7,6 +7,8 @@ public class AbilityHolder : MonoBehaviour
     public Ability ability;
     float cooldownTime;
     float activeTime;
+
+    public Animator animator;
     
     enum AbilityState
     {
@@ -21,13 +23,16 @@ public class AbilityHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ActivateSkill();
+        
+    }
+
+    void ActivateSkill(){
         switch (state)
         {
             case AbilityState.ready:
                 if(Input.GetKeyDown(key)){
-                    ability.Activate(gameObject);
-                    state = AbilityState.active;
-                    activeTime = ability.activeTime;
+                    animator.SetBool("Spinning Slash", true);
                 } 
             break;
             case AbilityState.active:
@@ -38,6 +43,7 @@ public class AbilityHolder : MonoBehaviour
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
+                    animator.SetBool("Spinning Slash", false);
                 }
             break;
             case AbilityState.cooldown:
@@ -49,7 +55,12 @@ public class AbilityHolder : MonoBehaviour
                 }
             break;
         }
-        
+    }
+
+    void useSpinningSlash(){
+        ability.Activate(gameObject);
+        state = AbilityState.active;
+        activeTime = ability.activeTime;
     }
 }
 
