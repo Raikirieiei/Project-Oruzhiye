@@ -10,7 +10,7 @@ public class SpinningSlash : Ability
         Debug.Log("Spin");
         PlayerCombat playerCombat = parent.GetComponent<PlayerCombat>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerCombat.attackPoint.position, 2.5f, playerCombat.enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(playerCombat.spinningPoint.position, playerCombat.spinningRange , 0, playerCombat.enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   
             Debug.Log("Hit with skill"+ enemy.name);

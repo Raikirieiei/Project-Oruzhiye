@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Transform attackPoint;
+    public Transform spinningPoint;
 
     public LayerMask enemyLayers;
 
     public Animator animator;
     private CharacterStats characterStats;
 
-    [SerializeField]
     public Vector2 attackRange;
+    public Vector2 spinningRange;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
@@ -54,5 +55,6 @@ public class PlayerCombat : MonoBehaviour
     {
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(attackPoint.position, attackRange);
+        Gizmos.DrawWireCube(spinningPoint.position, spinningRange);
     }
 }

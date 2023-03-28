@@ -55,7 +55,7 @@ public class AbilityHolder2 : MonoBehaviour
         }
     }
 
-    void useAbility(){
+    void useSwordWave(){
         ability.Activate(gameObject);
         state = AbilityState.active;
         activeTime = ability.activeTime;

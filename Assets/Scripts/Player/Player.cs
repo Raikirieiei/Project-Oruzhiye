@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     public float runSpeed;
     [HideInInspector]
     // public float normalRunSpeed = 40f;
-    bool jump = false;
-    bool dash = false;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask obstaclesLayer;
@@ -47,7 +45,7 @@ public class Player : MonoBehaviour
     private int facingDir = 1;
     [SerializeField] private float jumpForce;
 
-	private float invincibleTime = 0.1f;
+	// private float invincibleTime = 0.1f;
 
     public float DashForce;
     public float StartDashTimer;
