@@ -306,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5400606433015841528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.009, y: -0.002, z: 0}
+  m_LocalPosition: {x: -0.0027, y: -0.1733, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 8710594732369028047}
@@ -369,10 +369,8 @@ GameObject:
   - component: {fileID: 8710594732369028047}
   - component: {fileID: 8710594732369028044}
   - component: {fileID: 8710594732369028045}
-  - component: {fileID: 5414558447371217176}
   - component: {fileID: 8710594732369028082}
   - component: {fileID: 8710594732369028083}
-  - component: {fileID: 309392723469676323}
   - component: {fileID: 8710594732369028046}
   - component: {fileID: 6867233966306962849}
   - component: {fileID: 4532811893321015708}
@@ -393,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710594732369028080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.76, y: -2.33, z: 50}
-  m_LocalScale: {x: 2.4350126, y: 2.69, z: 1}
+  m_LocalPosition: {x: 3.18, y: -3.83, z: 50}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 8710594733876065063}
   - {fileID: 5803085926528690183}
@@ -441,7 +439,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f22540e8ea335034b92c27795aa254c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3a34d4ba74b0aa45b8b555571436695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -465,35 +463,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020990789, y: 0.34044015}
+  m_Offset: {x: -0.0023269653, y: -0.023747407}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31838185, y: 0.6748291}
+  m_Size: {x: 0.16687536, y: 0.3131761}
   m_EdgeRadius: 0
---- !u!58 &5414558447371217176
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710594732369028080}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: a0c3bed12cd484c1d80622b0f0c7d3ab, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: 0.2}
-  serializedVersion: 2
-  m_Radius: 0.2089258
 --- !u!50 &8710594732369028082
 Rigidbody2D:
   serializedVersion: 4
@@ -527,34 +509,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3d0255b0796cd4b8cb7dfc3d3bca48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 309392723469676323}
-  runSpeed: 40
+  animator: {fileID: 380869002510497885}
+  runSpeed: 10
+  groundCheck: {fileID: 5803085926528690183}
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  boxSize: {x: 1, y: 0.1}
   currentHealth: 0
   defend: 0
   healthBar: {fileID: 1420827334872983049}
---- !u!114 &309392723469676323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710594732369028080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf7dcafed13b49f7aca0e448287abfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 750
+  jumpForce: 15
+  DashForce: 30
+  StartDashTimer: 0.15
+  DashCoolDown: 1.5
   m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 512
-  m_GroundCheck: {fileID: 5803085926528690183}
-  dashForce: 60
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8710594732369028046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +541,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 380869002510497885}
-  attackRange: 0.5
+  attackRange: {x: 2.75, y: 2}
   attackRate: 2
 --- !u!114 &6867233966306962849
 MonoBehaviour:
@@ -600,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 303c46c2ce8ea4cffac6bf73d9449ad8, type: 2}
+  animator: {fileID: 380869002510497885}
 --- !u!114 &3526438813718270855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +585,7 @@ MonoBehaviour:
   baseAttack:
     baseValue: 20
   baseMoveSpeed:
-    baseValue: 40
+    baseValue: 10
   baseDefend:
     baseValue: 0
   baseMaxHealth: 100
@@ -630,7 +600,7 @@ Animator:
   m_GameObject: {fileID: 8710594732369028080}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 736381a6ed52941489b1f3fe407d07a8, type: 2}
+  m_Controller: {fileID: 9100000, guid: fe38d646b9de84708925e1259f64a5a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -663,7 +633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710594733876065060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.291, y: 0.257, z: 0}
+  m_LocalPosition: {x: 0.119, y: 0.032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8710594732369028047}

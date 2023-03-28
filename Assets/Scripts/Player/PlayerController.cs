@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 750f;							// Amount of force added when the player jumps.
+	[SerializeField] private float m_JumpForce = 50f;							// Amount of force added when the player jumps.
 	private bool jumpOnCooldown = false;
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
 				m_Grounded = true;
 				if (!wasGrounded){
 					OnLandEvent.Invoke();
-					StartCoroutine(JumpCoolDown());
 				}
 			}
 		}
@@ -119,7 +118,7 @@ public class PlayerController : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
-			m_Grounded = false;
+			m_Grounded = true;
 			if(!jumpOnCooldown){
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 			}

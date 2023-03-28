@@ -6,14 +6,19 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {    
-    public PlayerController controller;
     float horizontalMove = 0f;
     private Vector2 movementInput;
+    public Animator animator;
     public float runSpeed;
     [HideInInspector]
     // public float normalRunSpeed = 40f;
     bool jump = false;
     bool dash = false;
+
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask obstaclesLayer;
+    [SerializeField] Vector2 boxSize;
+    private bool isGrounded;
     
     [HideInInspector]
     public int currentHealth;
@@ -38,6 +43,24 @@ public class Player : MonoBehaviour
 
     private bool isInvincible = false;
 
+    private bool m_FacingRight = true;
+    private int facingDir = 1;
+    [SerializeField] private float jumpForce;
+
+	private float invincibleTime = 0.1f;
+
+    public float DashForce;
+    public float StartDashTimer;
+    public float DashCoolDown;
+    float CurrentDashTimer;
+    float DashTime;
+    bool canDash = true;
+    bool isDashing;
+
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
+
+    
     private void Awake(){
 
         myBody = GetComponent<Rigidbody2D>();
@@ -59,7 +82,6 @@ public class Player : MonoBehaviour
         defend = characterStats.baseDefend.getValue();
         healthBar.SetMaxHealth(currentHealth);
         DontDestroyOnLoad(gameObject);
-        gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     // Update is called once per frame
@@ -69,36 +91,66 @@ public class Player : MonoBehaviour
         movementInput.x = Input.GetAxisRaw("Horizontal");
         PlayerMoveKeyboard();
         PlayerDash();
-        // AnimatePlayer();
         PlayerJump();
-        controller.Move(horizontalMove * Time.fixedDeltaTime, dash, jump);
     }
 
     void FixedUpdate() {
-        jump = false;
-        dash = false;
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, obstaclesLayer);
+
+        if(Time.time >= DashTime + DashCoolDown){
+            canDash = true;
+        }
+
+        AnimationController();
     }
 
     void PlayerMoveKeyboard(){
-
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
+        Vector3 targetVelocity = new Vector2(horizontalMove, myBody.velocity.y);
+		myBody.velocity = Vector3.SmoothDamp(myBody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        if (horizontalMove < 0 && m_FacingRight)
+        {
+            Flip();
+        }
+        else if (horizontalMove > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
     }
 
     void PlayerDash(){
+        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){  
+            isDashing = true;
+            Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+            CurrentDashTimer = StartDashTimer;
+            myBody.velocity = Vector2.zero;
+            canDash = false;
+            DashTime = Time.time;
+        } 
 
-        if(Input.GetKeyDown(KeyCode.LeftShift)){  
-            Debug.Log("dashed");  
-            dash = true;       
-        }  
+        if (isDashing){
+            myBody.velocity = new Vector2(facingDir * DashForce,0);
+            CurrentDashTimer -= Time.deltaTime;
+            if(CurrentDashTimer <= 0){
+                isDashing = false;
+                Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
+            }
+        } 
     }
 
 
     void PlayerJump(){
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow))) {
-            jump = true;
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
+            myBody.AddForce(new Vector2(myBody.velocity.x, jumpForce), ForceMode2D.Impulse);
         }
     }
+
+    private void Flip()
+	{
+		m_FacingRight = !m_FacingRight;
+		transform.Rotate(0f, 180f, 0f);
+        facingDir *= -1;
+	}
 
     public Vector2 getMovementInput(){
         return movementInput;
@@ -133,7 +185,7 @@ public class Player : MonoBehaviour
     }
 
     public void KnockBack(Vector2 damageDirection){
-        myBody.AddForce(damageDirection.normalized * -20f, ForceMode2D.Impulse);
+        myBody.AddForce(damageDirection.normalized * -30f, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -148,6 +200,14 @@ public class Player : MonoBehaviour
             }
         }
            
+    }
+
+    
+    void AnimationController()
+    {
+        animator.SetFloat("Speed", Mathf.Abs(movementInput.x * runSpeed));
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isDashing", isDashing);
     }
 
     void Die(){
@@ -171,6 +231,20 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
         isInvincible = false;
+    }
+
+    // IEnumerator DashCoolDown () {
+	// 	dashOnCooldown = true;
+	// 	yield return new WaitForSeconds (invincibleTime);
+	// 	Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
+	// 	yield return new WaitForSeconds (dashCooldownTime);
+	// 	dashOnCooldown = false;
+ 	// }
+
+    private void OnDrawGizmosSelected() 
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(groundCheck.position, boxSize);
     }
 
 }

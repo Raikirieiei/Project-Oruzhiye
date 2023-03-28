@@ -28,6 +28,12 @@ public class CharacterSelection : MonoBehaviour
         Save();
     }
 
+    public void GreatSwordOption(){
+        selectedOption = 2;
+        UpdateCharacter(selectedOption);
+        Save();
+    }
+
     private void UpdateCharacter(int selectedOption){
         Character character = characterDB.getCharacter(selectedOption);
         imgSprite.sprite = character.characterSprite;

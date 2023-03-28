@@ -7,6 +7,7 @@ public class AbilityHolder2 : MonoBehaviour
     public Ability ability;
     float cooldownTime;
     float activeTime;
+    public Animator animator;
     
     enum AbilityState
     {
@@ -21,13 +22,15 @@ public class AbilityHolder2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ActivateSkill();
+    }
+
+    void ActivateSkill(){
         switch (state)
         {
             case AbilityState.ready:
                 if(Input.GetKeyDown(key)){
-                    ability.Activate(gameObject);
-                    state = AbilityState.active;
-                    activeTime = ability.activeTime;
+                    animator.SetBool("Projectile Slash", true);
                 } 
             break;
             case AbilityState.active:
@@ -38,6 +41,7 @@ public class AbilityHolder2 : MonoBehaviour
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
+                    animator.SetBool("Projectile Slash", false);
                 }
             break;
             case AbilityState.cooldown:
@@ -49,7 +53,12 @@ public class AbilityHolder2 : MonoBehaviour
                 }
             break;
         }
-        
+    }
+
+    void useAbility(){
+        ability.Activate(gameObject);
+        state = AbilityState.active;
+        activeTime = ability.activeTime;
     }
 }
 
