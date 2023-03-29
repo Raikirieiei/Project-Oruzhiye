@@ -10,18 +10,18 @@ public class Player : MonoBehaviour
     private Vector2 movementInput;
     public Animator animator;
     public float runSpeed;
-    [HideInInspector]
-    // public float normalRunSpeed = 40f;
+
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask obstaclesLayer;
     [SerializeField] Vector2 boxSize;
+
     private bool isGrounded;
     
-    [HideInInspector]
+ 
     public int currentHealth;
 
-    [HideInInspector]
+ 
     public int defend;
 
     // private string GROUND_TAG = "Ground";
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        GameManager.OnGameStateChanged += ChangeStatOnGameStageChanged;
         runSpeed = (float)characterStats.baseMoveSpeed.getValue();
         currentHealth = characterStats.currentHealth;
         defend = characterStats.baseDefend.getValue();
@@ -100,6 +101,20 @@ public class Player : MonoBehaviour
         }
 
         AnimationController();
+    }
+
+    private void ChangeStatOnGameStageChanged(GameState state) {
+        Debug.Log("changeStat");
+        if(state == GameState.AdjustStat){
+            runSpeed = (float)characterStats.baseMoveSpeed.getValue();
+            currentHealth = characterStats.currentHealth;
+            defend = characterStats.baseDefend.getValue();
+            GameManager.instance.UpdateGameState(GameState.Normal);
+        }
+    }
+
+    private void OnDestroy() {
+        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
     }
 
     void PlayerMoveKeyboard(){
@@ -138,7 +153,7 @@ public class Player : MonoBehaviour
 
 
     void PlayerJump(){
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
+        if ((Input.GetButtonDown("Jump") && isGrounded || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             myBody.AddForce(new Vector2(myBody.velocity.x, jumpForce), ForceMode2D.Impulse);
         }
     }
@@ -230,14 +245,6 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
         isInvincible = false;
     }
-
-    // IEnumerator DashCoolDown () {
-	// 	dashOnCooldown = true;
-	// 	yield return new WaitForSeconds (invincibleTime);
-	// 	Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, false);
-	// 	yield return new WaitForSeconds (dashCooldownTime);
-	// 	dashOnCooldown = false;
- 	// }
 
     private void OnDrawGizmosSelected() 
     {

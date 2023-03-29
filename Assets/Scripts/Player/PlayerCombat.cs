@@ -17,13 +17,14 @@ public class PlayerCombat : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
-    private int attackDamage;
+    public int attackDamage;
 
     void Awake(){
         characterStats = GetComponent<CharacterStats>();
     }
 
     void Start(){
+        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
         attackDamage = characterStats.baseAttack.getValue();
     }
 
@@ -35,6 +36,18 @@ public class PlayerCombat : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
+    }
+
+    private void ChangeStatOnGameStageChanged(GameState state) {
+        Debug.Log("changeStat");
+        if(state == GameState.AdjustStat){
+            attackDamage = characterStats.baseAttack.getValue();
+            GameManager.instance.UpdateGameState(GameState.Normal);
+        }
+    }
+
+        private void OnDestroy() {
+        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
     }
 
     void Attack(){
