@@ -16,7 +16,10 @@ public class RewardMenu : MonoBehaviour
     private GameObject button2;
     private GameObject button3;
 
-    // Start is called before the first frame update
+    public StatReward reward;
+    public StatReward reward2;
+    public StatReward reward3;
+
 
     void Awake(){
         if (instance == null) {
@@ -34,11 +37,15 @@ public class RewardMenu : MonoBehaviour
     }
 
     void Start(){
-        characterStats = GameObject.Find("Player 1").GetComponent<CharacterStats>();
+        Invoke(nameof(FindCharStat), 1);
     }
 
     private void OnDestroy() {
         GameManager.OnGameStateChanged -= GameManagerOnGameStageChanged;
+    }
+
+    private void FindCharStat(){
+        characterStats = GameObject.Find("Player 1").GetComponent<CharacterStats>();
     }
 
     private void GameManagerOnGameStageChanged(GameState state) {
@@ -63,54 +70,47 @@ public class RewardMenu : MonoBehaviour
         textList[1].text = reward.desc;
         Image[] img = button.GetComponentsInChildren<Image>();
         img[1].sprite = reward.img;
-        // Debug.Log(reward.name + reward.desc);
     }
 
     // this function assign new reward from reward pools when scene changed.
     public void RewardAssign(Scene scene, LoadSceneMode mode){
-        
-        // make a copy of reward pool for randomize 3 distinct reward
-        // TODO make a copy of reward pool
         List<StatReward> instancePool = new List<StatReward>(rewardPools);
-        
-        // random 3 of the reward
-        // TODO after random a reward, pop that reward from the copy pool
-        StatReward reward = instancePool[Random.Range(0,instancePool.Count)];
+
+        reward = instancePool[Random.Range(0,instancePool.Count)];
         instancePool.Remove(instancePool.Find(x => x == reward)); 
         ChangeRewardText(button1, reward);
 
-        StatReward reward2 = instancePool[Random.Range(0,instancePool.Count)];
+        reward2 = instancePool[Random.Range(0,instancePool.Count)];
         instancePool.Remove(instancePool.Find(x => x == reward2)); 
         ChangeRewardText(button2, reward2);
 
-        StatReward reward3 = instancePool[Random.Range(0,instancePool.Count)];
+        reward3 = instancePool[Random.Range(0,instancePool.Count)];
         instancePool.Remove(instancePool.Find(x => x == reward3)); 
         ChangeRewardText(button3, reward3);
+    }
 
-        // assign onClick event to buttons
-        button1.GetComponent<Button>().onClick.AddListener( delegate {
-            reward.Selected(characterStats);
-            rewardPools.Remove(reward);
-            GameManager.instance.UpdateGameState(GameState.Normal);
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            Time.timeScale = 1;
-        });
+    public void SelectOptionOne(){
+        reward.Selected(characterStats);
+        rewardPools.Remove(reward);
+        GameManager.instance.UpdateGameState(GameState.AdjustStat);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
 
-        button2.GetComponent<Button>().onClick.AddListener( delegate {
-            reward2.Selected(characterStats);
-            rewardPools.Remove(reward2);
-            GameManager.instance.UpdateGameState(GameState.Normal);
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            Time.timeScale = 1;
-        });
+    public void SelectOptionTwo(){
+        reward2.Selected(characterStats);
+        rewardPools.Remove(reward2);
+        GameManager.instance.UpdateGameState(GameState.AdjustStat);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
 
-        button3.GetComponent<Button>().onClick.AddListener( delegate {
-            reward3.Selected(characterStats);
-            rewardPools.Remove(reward3);
-            GameManager.instance.UpdateGameState(GameState.Normal);
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            Time.timeScale = 1;
-        });
+    public void SelectOptionThree(){
+        reward3.Selected(characterStats);
+        rewardPools.Remove(reward3);
+        GameManager.instance.UpdateGameState(GameState.AdjustStat);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
 }

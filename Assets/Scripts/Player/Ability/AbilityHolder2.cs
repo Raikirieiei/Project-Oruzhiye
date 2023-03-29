@@ -60,5 +60,9 @@ public class AbilityHolder2 : MonoBehaviour
         state = AbilityState.active;
         activeTime = ability.activeTime;
     }
+
+    public float getCooldownTime(){
+        return this.cooldownTime;
+    }
 }
 
