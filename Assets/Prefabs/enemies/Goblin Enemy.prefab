@@ -201,8 +201,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacb39e6ae2439e4cb76411965f4dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 120
+  maxHealth: 180
   currentHealth: 0
+  dropAmount: 4
+  itemDropsList:
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
 --- !u!61 &9106419995805146868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -284,6 +296,8 @@ MonoBehaviour:
   attackAudio: {fileID: 8206251919335622115}
   dashAudio: {fileID: 8834442846435400287}
   jumpAudio: {fileID: 0}
+  walkAudio: {fileID: 0}
+  slamAudio: {fileID: 0}
 --- !u!82 &8206251919335622115
 AudioSource:
   m_ObjectHideFlags: 0

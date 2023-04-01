@@ -466,8 +466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 72674822975115821}
   runSpeed: 40
-  maxHealth: 100
   currentHealth: 0
+  defend: 0
   healthBar: {fileID: 3543616719227086464}
 --- !u!114 &72674822975115821
 MonoBehaviour:
@@ -510,7 +510,7 @@ MonoBehaviour:
     m_Bits: 64
   animator: {fileID: 1033078099}
   attackRange: 0.5
-  attackDamage: 50
+  attackRate: 2
 --- !u!95 &1033078099
 Animator:
   serializedVersion: 3

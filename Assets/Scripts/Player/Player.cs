@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
+        healthBar.SetHealth(currentHealth);
         jump = false;
         dash = false;
     }
@@ -115,7 +116,6 @@ public class Player : MonoBehaviour
         if (!isInvincible)
         {
             currentHealth -= finalDamage;
-            healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 Die();
