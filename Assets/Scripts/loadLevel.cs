@@ -10,7 +10,6 @@ public class loadLevel : MonoBehaviour
     // Start is called before the first frame update
     public int iLevelToLoad;
     public string sLevelToLoad;
-
     public bool useIntegerToLoadLevel = false;
 
     [Header("For Checking States")]
@@ -20,6 +19,8 @@ public class loadLevel : MonoBehaviour
 
     private bool isOpen = false;
     private Animator loaderAnim;
+    [Header("For Others")]
+    [SerializeField] AudioSource openAudio;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class loadLevel : MonoBehaviour
         if (enemy == null)
         {
             isOpen = true;
+            openAudio.Play();
         }
     }
 
