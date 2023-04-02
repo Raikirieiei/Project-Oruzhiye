@@ -15,5 +15,6 @@ MonoBehaviour:
   name: SwordWave
   cooldownTime: 2
   activeTime: 0
+  icon: {fileID: 21300000, guid: f5e6076339f8547079296531f38eeace, type: 3}
   swordWaveProjectile: {fileID: 4227213497373665052, guid: 07aacb2cd08c6431dbdab170d49c4a15,
     type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityHolder2 : MonoBehaviour
 {
     public Ability ability;
+    public GameObject charChoose;
     float cooldownTime;
     float activeTime;
     public Animator animator;
@@ -29,19 +30,27 @@ public class AbilityHolder2 : MonoBehaviour
         switch (state)
         {
             case AbilityState.ready:
-                if(Input.GetKeyDown(key)){
+                if(Input.GetKeyDown(key) && charChoose.name == "Player 1"){
                     animator.SetBool("Projectile Slash", true);
                 } 
+                else if (Input.GetKeyDown(key) && charChoose.name == "Player 2"){
+                    animator.SetBool("TripleStab", true);
+                }
             break;
             case AbilityState.active:
                 if(activeTime > 0){
                     activeTime -= Time.deltaTime;
                 }
                 else{
+                    if(charChoose.name == "Player 1"){
+                        animator.SetBool("Projectile Slash", false);
+                    }
+                    else if(charChoose.name == "Player 2"){
+                        animator.SetBool("TripleStab", false);
+                    }
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
-                    animator.SetBool("Projectile Slash", false);
                 }
             break;
             case AbilityState.cooldown:
@@ -55,10 +64,14 @@ public class AbilityHolder2 : MonoBehaviour
         }
     }
 
-    void useSwordWave(){
+    void useSkillC(){
         ability.Activate(gameObject);
         state = AbilityState.active;
         activeTime = ability.activeTime;
+    }
+
+    void useSkillCNoCD(){
+        ability.Activate(gameObject);
     }
 
     public float getCooldownTime(){

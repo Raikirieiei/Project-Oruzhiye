@@ -27956,6 +27956,12 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 3437241024733366474}
+    - target: {fileID: 8857968356694746194, guid: bc5e111091fe34d57a4860fbd745f451,
+        type: 3}
+      propertyPath: characterList.Array.data[1]
+      value: 
+      objectReference: {fileID: 7244656005659484141, guid: 4ff2c1f3eaa3347ffa5453fbbfc8b1cd,
+        type: 3}
     - target: {fileID: 8857968356694746195, guid: bc5e111091fe34d57a4860fbd745f451,
         type: 3}
       propertyPath: m_RootOrder
