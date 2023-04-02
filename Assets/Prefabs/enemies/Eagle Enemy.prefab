@@ -192,6 +192,8 @@ MonoBehaviour:
   itemDropsList:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
 --- !u!114 &8229199386023169033
 MonoBehaviour:
   m_ObjectHideFlags: 0

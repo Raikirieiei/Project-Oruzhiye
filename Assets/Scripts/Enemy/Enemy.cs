@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Lootdrop Settings")]
     [SerializeField] int dropAmount;
     [SerializeField] GameObject[] itemDropsList;
+    public GameObject damagePopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,10 @@ public class Enemy : MonoBehaviour
         float playerPosition = player.position.x - transform.position.x;
         float knockbackDir = -playerPosition/Math.Abs(playerPosition);
         currentHealth -= damage;
+
+        // Instanciate Damagepopup
+        GameObject dmgPopUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
+        dmgPopUp.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
 
         enemyRB.velocity = Vector3.zero;
         enemyRB.AddForce(new Vector2(5 * knockbackDir, 1), ForceMode2D.Impulse);

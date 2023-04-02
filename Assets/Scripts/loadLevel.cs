@@ -49,7 +49,7 @@ public class loadLevel : MonoBehaviour
         AnimationController();
 
         if (player == null) return;
-        if (enemy == null)
+        if (enemy == null && !isOpen)
         {
             isOpen = true;
             openAudio.Play();

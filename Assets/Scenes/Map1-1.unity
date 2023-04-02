@@ -1177,6 +1177,7 @@ MonoBehaviour:
   currentHealth: 0
   dropAmount: 0
   itemDropsList: []
+  damagePopUp: {fileID: 0}
 --- !u!66 &722919823
 CompositeCollider2D:
   m_ObjectHideFlags: 0
