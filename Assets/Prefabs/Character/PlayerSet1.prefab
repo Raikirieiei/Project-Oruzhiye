@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 45e1cb9a638c54874905b915ce35fec9, type: 2}
-  charChoose: {fileID: 8710594732369028080}
+  charChoose: {fileID: 8710594732369028083}
   animator: {fileID: 380869002510497885}
 --- !u!114 &4532811893321015708
 MonoBehaviour:
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 303c46c2ce8ea4cffac6bf73d9449ad8, type: 2}
-  charChoose: {fileID: 8710594732369028080}
+  charChoose: {fileID: 8710594732369028083}
   animator: {fileID: 380869002510497885}
 --- !u!114 &3526438813718270855
 MonoBehaviour:
