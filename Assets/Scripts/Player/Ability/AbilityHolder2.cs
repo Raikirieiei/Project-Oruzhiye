@@ -5,7 +5,7 @@ using UnityEngine;
 public class AbilityHolder2 : MonoBehaviour
 {
     public Ability ability;
-    public GameObject charChoose;
+    public Player charChoose;
     float cooldownTime;
     float activeTime;
     public Animator animator;
@@ -36,6 +36,9 @@ public class AbilityHolder2 : MonoBehaviour
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 2"){
                     animator.SetBool("TripleStab", true);
                 }
+                else if (Input.GetKeyDown(key) && charChoose.name == "Player 3"){
+                    animator.SetTrigger("ShieldBarrier");
+                }
             break;
             case AbilityState.active:
                 if(activeTime > 0){
@@ -47,6 +50,9 @@ public class AbilityHolder2 : MonoBehaviour
                     }
                     else if(charChoose.name == "Player 2"){
                         animator.SetBool("TripleStab", false);
+                    }
+                    else if(charChoose.name == "Player 3"){
+                        DefReturnToNormal();
                     }
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
@@ -72,6 +78,10 @@ public class AbilityHolder2 : MonoBehaviour
 
     void useSkillCNoCD(){
         ability.Activate(gameObject);
+    }
+
+    void DefReturnToNormal(){
+        charChoose.defend = charChoose.GetComponent<CharacterStats>().baseDefend.getValue();
     }
 
     public float getCooldownTime(){

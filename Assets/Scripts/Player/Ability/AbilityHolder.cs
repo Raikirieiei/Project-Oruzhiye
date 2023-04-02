@@ -5,7 +5,7 @@ using UnityEngine;
 public class AbilityHolder : MonoBehaviour
 {
     public Ability ability;
-    public GameObject charChoose;
+    public Player charChoose;
     float cooldownTime;
     float activeTime;
 
@@ -42,6 +42,9 @@ public class AbilityHolder : MonoBehaviour
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 2"){
                     animator.SetBool("CrossSlash", true);
                 }
+                else if (Input.GetKeyDown(key) && charChoose.name == "Player 3"){
+                    animator.SetBool("ChargeSlash", true);
+                }
             break;
             case AbilityState.active:
                 if(activeTime > 0){
@@ -53,6 +56,9 @@ public class AbilityHolder : MonoBehaviour
                     }
                     else if(charChoose.name == "Player 2"){
                         animator.SetBool("CrossSlash", false);
+                    }
+                    else if (charChoose.name == "Player 3"){
+                        animator.SetBool("ChargeSlash", false);
                     }
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
@@ -78,6 +84,14 @@ public class AbilityHolder : MonoBehaviour
 
     void useSkillXNoCD(){
         ability.Activate(gameObject);
+    }
+
+    void Slow(){
+        charChoose.runSpeed = 0;
+    }
+
+    void ReturnToNormal(){
+        charChoose.runSpeed = charChoose.GetComponent<CharacterStats>().baseMoveSpeed.getValue();
     }
 
     public float getCooldownTime(){

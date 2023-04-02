@@ -13,7 +13,7 @@ public class SpinningSlash : Ability
         foreach (Collider2D enemy in hitEnemies)
         {   
             Debug.Log("Hit with skill"+ enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(stats.baseAttack.getValue() * 3);
+            enemy.GetComponent<Enemy>().TakeDamage(stats.baseAttack.getValue() * 2);
         }
     }
 
