@@ -45,7 +45,7 @@ public class RewardMenu : MonoBehaviour
     }
 
     private void FindCharStat(){
-        characterStats = GameObject.Find("Player 1").GetComponent<CharacterStats>();
+        characterStats = GameObject.FindWithTag("Player").GetComponent<CharacterStats>();
     }
 
     private void GameManagerOnGameStageChanged(GameState state) {

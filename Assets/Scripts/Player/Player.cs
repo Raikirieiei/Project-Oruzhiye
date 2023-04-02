@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     // private string GROUND_TAG = "Ground";
     private string ENEMY_TAG = "Enemy";
 
-    private Rigidbody2D myBody;
+    public Rigidbody2D myBody;
     private SpriteRenderer sr;
     private Animator anim;
     private BoxCollider2D myBodyColl;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private bool isInvincible = false;
 
     private bool m_FacingRight = true;
-    private int facingDir = 1;
+    public int facingDir = 1;
     [SerializeField] private float jumpForce;
 
 	// private float invincibleTime = 0.1f;
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayerDash(){
+    public void PlayerDash(){
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){  
             isDashing = true;
             Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
@@ -152,13 +152,13 @@ public class Player : MonoBehaviour
     }
 
 
-    void PlayerJump(){
+    public void PlayerJump(){
         if ((Input.GetButtonDown("Jump") && isGrounded || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             myBody.AddForce(new Vector2(myBody.velocity.x, jumpForce), ForceMode2D.Impulse);
         }
     }
 
-    private void Flip()
+    public void Flip()
 	{
 		m_FacingRight = !m_FacingRight;
 		transform.Rotate(0f, 180f, 0f);
@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
         myBody.AddForce(damageDirection.normalized * -30f, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {   
         Vector2 damageDirection = (collision.contacts[0].point - (Vector2)transform.position).normalized;
         damageDirection.y = 0f;
@@ -216,14 +216,14 @@ public class Player : MonoBehaviour
     }
 
     
-    void AnimationController()
+    public void AnimationController()
     {
         animator.SetFloat("Speed", Mathf.Abs(movementInput.x * runSpeed));
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isDashing", isDashing);
     }
 
-    void Die(){
+    public void Die(){
         playerSet = GameObject.FindWithTag("PlayerSet");
         Destroy(playerSet);
         SceneManager.LoadScene("EndMenu");

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu (menuName = "Abilities/SwordWave")]
 public class SwordWave : Ability
 {
     public GameObject swordWaveProjectile;

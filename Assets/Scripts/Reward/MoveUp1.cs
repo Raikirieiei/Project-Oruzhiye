@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu (menuName = "RewardList/MoveUp1")]
 public class MoveUp1 : StatReward
 {
     public override void Selected(CharacterStats characterStat){

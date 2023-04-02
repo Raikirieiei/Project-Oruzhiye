@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MoveSpeed 2
   desc: Moderately increase player move speed
-  baseValue: 10
+  baseValue: 3
   img: {fileID: 21300000, guid: 2ee3ba3d24a9249db92e74509b6a5a92, type: 3}
