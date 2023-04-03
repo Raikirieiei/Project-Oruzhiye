@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterList:
   - {fileID: 7244656005659484141, guid: f6eef9814a89f43149583aa09ca48f86, type: 3}
-  - {fileID: 1115381719924155154, guid: a9682228baa564ceaac495915c3ea75b, type: 3}
+  - {fileID: 7244656005659484141, guid: 4ff2c1f3eaa3347ffa5453fbbfc8b1cd, type: 3}
+  - {fileID: 7244656005659484141, guid: a9b0b291495c34730b7d03a3f99f4686, type: 3}
   spawnPoint: {fileID: 0}

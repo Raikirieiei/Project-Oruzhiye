@@ -15,4 +15,5 @@ MonoBehaviour:
   name: SpinningSlash
   cooldownTime: 4
   activeTime: 0
+  icon: {fileID: 21300000, guid: c5b16e0831b8142ee9eae9b5779fdcb3, type: 3}
   dashVelocity: 0

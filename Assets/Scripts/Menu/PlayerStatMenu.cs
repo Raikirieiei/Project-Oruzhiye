@@ -46,6 +46,9 @@ public class PlayerStatMenu : MonoBehaviour
                 case "Defend":
                     item.text = characterStats.baseDefend.getValue().ToString();
                     break; 
+                case "MoveSpeed":
+                    item.text = characterStats.baseMoveSpeed.getValue().ToString();
+                    break;
                 default:
                     Debug.Log("noth found stat amount");
                     break;

@@ -5,57 +5,64 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Transform attackPoint;
+    // public Transform spinningPoint;
 
     public LayerMask enemyLayers;
 
     public Animator animator;
-    private CharacterStats characterStats;
+    public CharacterStats characterStats;
 
-    public float attackRange = 1f;
+    public Vector2 attackRange;
     public float attackRate = 2f;
-    float nextAttackTime = 0f;
+    protected float nextAttackTime = 0f;
 
-    private int attackDamage;
+    public int attackDamage;
 
-    void Awake(){
+    protected void Awake(){
         characterStats = GetComponent<CharacterStats>();
     }
 
-    void Start(){
+    protected void Start(){
+        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
         attackDamage = characterStats.baseAttack.getValue();
     }
 
-    void Update() {
+    protected void Update() {
         if (Time.time >= nextAttackTime){
+            animator.SetBool("Attack", false);
             if(Input.GetKeyDown(KeyCode.Z)){
-                Debug.Log("Attack");
-                Attack();
+                animator.SetBool("Attack", true);
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
     }
 
-    void Attack(){
-        animator.SetTrigger("Attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+    public void ChangeStatOnGameStageChanged(GameState state) {
+        Debug.Log("changeStat");
+        if(state == GameState.AdjustStat){
+            attackDamage = characterStats.baseAttack.getValue();
+            GameManager.instance.UpdateGameState(GameState.Normal);
+        }
+    }
+
+        private void OnDestroy() {
+        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
+    }
+
+    public void Attack(){
+        Debug.Log("Attack");
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackRange,0, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   
             Debug.Log("Hit"+ enemy.name + "Atk =" + attackDamage);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
-   
-   void OnDrawGizmosSelected() {
 
-        if (attackPoint == null)
-            return;    
-
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
-   }
-
-   void OnLevelWasLoaded(){
-        attackDamage = characterStats.baseAttack.getValue();
-   }
-
-   
+    public virtual void OnDrawGizmosSelected() 
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireCube(attackPoint.position, attackRange);
+        // Gizmos.DrawWireCube(spinningPoint.position, spinningRange);
+    }
 }

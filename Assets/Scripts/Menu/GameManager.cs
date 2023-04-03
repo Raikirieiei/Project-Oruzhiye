@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
             case GameState.RewardSelect:
                 HandleRewardSelect();
                 break;
+            case GameState.AdjustStat:
+                break;
             case GameState.Dead:
                 break;
             default:
@@ -60,5 +62,6 @@ public enum GameState
 {
     Normal,
     RewardSelect,
+    AdjustStat,
     Dead,
 }
