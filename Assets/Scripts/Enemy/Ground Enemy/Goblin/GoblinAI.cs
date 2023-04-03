@@ -132,7 +132,7 @@ public class GoblinAI : MonoBehaviour
         enemyRB.velocity = Vector3.zero;
 
         // move toward player
-        enemyRB.AddForce(new Vector2(5 * playerDir, 0), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(5 * moveDirection, 0), ForceMode2D.Impulse);
 
         // enable attack 1 hitbox
         bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
