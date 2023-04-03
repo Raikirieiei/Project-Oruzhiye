@@ -125,13 +125,16 @@ public class FrogAI : MonoBehaviour
 
     private void OnDrawGizmosSelected() 
     {
+        //groundCheckPoint & wallCheckPoint marker
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
 
+        // isGrounded marker
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(groundCheck.position, boxSize);
 
+        // LineOfSight marker
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, lineOfSight);  
     }

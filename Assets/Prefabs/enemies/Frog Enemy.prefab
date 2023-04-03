@@ -161,8 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacb39e6ae2439e4cb76411965f4dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 140
   currentHealth: 0
+  dropAmount: 3
+  itemDropsList:
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
+  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
 --- !u!61 &3790142567528915839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,6 +253,8 @@ MonoBehaviour:
   attackAudio: {fileID: 0}
   dashAudio: {fileID: 0}
   jumpAudio: {fileID: 4917232597046025627}
+  walkAudio: {fileID: 0}
+  slamAudio: {fileID: 0}
 --- !u!82 &4917232597046025627
 AudioSource:
   m_ObjectHideFlags: 0

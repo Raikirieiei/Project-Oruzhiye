@@ -102,7 +102,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.05
+  - time: 0
     functionName: attackOnCooldown
     data: 
     objectReferenceParameter: {fileID: 0}

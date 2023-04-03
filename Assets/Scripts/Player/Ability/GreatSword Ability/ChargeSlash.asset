@@ -15,4 +15,4 @@ MonoBehaviour:
   name: ChargeSlash
   cooldownTime: 8
   activeTime: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7272e8123b2c4481d805fe4fad2b07aa, type: 3}

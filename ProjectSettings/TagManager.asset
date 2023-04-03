@@ -11,6 +11,9 @@ TagManager:
   - Wall
   - HealthBar
   - PlayerSet
+  - Coin
+  - Heart
+  - Potion
   layers:
   - Default
   - TransparentFX
