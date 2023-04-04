@@ -86,14 +86,6 @@ public class AbilityHolder : MonoBehaviour
         ability.Activate(gameObject);
     }
 
-    void Slow(){
-        charChoose.runSpeed = 0;
-    }
-
-    void ReturnToNormal(){
-        charChoose.runSpeed = charChoose.GetComponent<CharacterStats>().baseMoveSpeed.getValue();
-    }
-
     public float getCooldownTime(){
         return this.cooldownTime;
     }

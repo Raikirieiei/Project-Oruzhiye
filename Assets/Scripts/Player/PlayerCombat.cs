@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     protected void Start(){
-        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
+        GameManager.OnGameStateChanged += ChangeStatOnGameStageChanged;
         attackDamage = characterStats.baseAttack.getValue();
     }
 
