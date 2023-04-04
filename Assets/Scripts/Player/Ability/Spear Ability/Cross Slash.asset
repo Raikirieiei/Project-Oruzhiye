@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cross Slash
   m_EditorClassIdentifier: 
   name: CrossSlash
-  cooldownTime: 3
+  cooldownTime: 6
   activeTime: 0
   icon: {fileID: 21300000, guid: 22efc2e6a619d4e65863544aeaadf605, type: 3}
