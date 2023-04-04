@@ -13,8 +13,8 @@ public class PlayerCombat : MonoBehaviour
     public CharacterStats characterStats;
 
     public Vector2 attackRange;
-    public float attackRate = 2f;
-    protected float nextAttackTime = 0f;
+    // public float attackRate = 2f;
+    // protected float nextAttackTime = 0f;
 
     public int attackDamage;
 
@@ -27,14 +27,14 @@ public class PlayerCombat : MonoBehaviour
         attackDamage = characterStats.baseAttack.getValue();
     }
 
-    protected void Update() {
-        if (Time.time >= nextAttackTime){
-            animator.SetBool("Attack", false);
-            if(Input.GetKeyDown(KeyCode.Z)){
-                animator.SetBool("Attack", true);
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
+    protected void Update() { 
+        if(Input.GetKeyDown(KeyCode.Z)){
+            animator.SetBool("Attack", true);
         }
+    }
+
+    protected void SetAttackFalse(){
+        animator.SetBool("Attack", false);
     }
 
     public void ChangeStatOnGameStageChanged(GameState state) {
