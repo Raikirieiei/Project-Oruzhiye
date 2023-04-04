@@ -1326,10 +1326,11 @@ MonoBehaviour:
   animator: {fileID: 380869002510497885}
   characterStats: {fileID: 3526438813718270855}
   attackRange: {x: 3.31, y: 2.12}
-  attackRate: 2
   attackDamage: 0
   chargeSlashPoint: {fileID: 1046254952944605297}
   chargeSlashRange: {x: 4.41, y: 2.98}
+  stats: {fileID: 3526438813718270855}
+  player: {fileID: 8710594732369028083}
 --- !u!114 &6867233966306962849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,6 +1682,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fa876c516ec26a4cb69cb85a8c43604, type: 3}
+--- !u!224 &1420827334872983054 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3543616720354791028, guid: 0fa876c516ec26a4cb69cb85a8c43604,
+    type: 3}
+  m_PrefabInstance: {fileID: 2493514591198587002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1420827334872983049 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3543616720354791027, guid: 0fa876c516ec26a4cb69cb85a8c43604,
@@ -1693,12 +1700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfd8ca1a64abc646bcc72b32fbf8ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1420827334872983054 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3543616720354791028, guid: 0fa876c516ec26a4cb69cb85a8c43604,
-    type: 3}
-  m_PrefabInstance: {fileID: 2493514591198587002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5922034753724396699
 PrefabInstance:
   m_ObjectHideFlags: 0

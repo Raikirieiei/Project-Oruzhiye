@@ -17,16 +17,5 @@ public class ChargeSlash : Ability
             enemy.GetComponent<Enemy>().TakeDamage((int)damage);
         }
     }
-
-    public void Slow(GameObject parent){
-        Player player = parent.GetComponent<Player>();
-        player.runSpeed = 0;
-    }
-
-    public void ReturnToNormal(GameObject parent){
-        CharacterStats stats = parent.GetComponent<CharacterStats>();
-        Player player = parent.GetComponent<Player>();
-        player.runSpeed = stats.baseMoveSpeed.getValue();
-    }
 }
 
