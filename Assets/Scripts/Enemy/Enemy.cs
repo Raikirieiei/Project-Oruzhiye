@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         float knockbackDir = -playerPosition/Math.Abs(playerPosition);
         currentHealth -= damage;
 
-        // Instanciate Damagepopup
+        // Instantiate Damagepopup
         GameObject dmgPopUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
         dmgPopUp.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
 
