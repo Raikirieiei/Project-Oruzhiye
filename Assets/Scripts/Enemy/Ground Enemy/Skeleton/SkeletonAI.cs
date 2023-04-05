@@ -146,7 +146,7 @@ public class SkeletonAI : MonoBehaviour
         if (checkingGround)
         {
             FlipTowardsPlayer();
-            enemyRB.AddForce(new Vector2(moveSpeed * -playerDir, 0));
+            enemyRB.AddForce(new Vector2(moveSpeed * 0.75f * -playerDir, 0));
         }
     }
 
@@ -154,7 +154,7 @@ public class SkeletonAI : MonoBehaviour
     {
         canAttack = false;
         attackTime = Time.time;
-        if (atkPatternValue <= 3)
+        if (atkPatternValue < 3)
         {
             atkPatternValue += 2;
         } else
@@ -163,12 +163,15 @@ public class SkeletonAI : MonoBehaviour
         }
     }
 
+    void Step()
+    {
+        enemyRB.AddForce(new Vector2(stepDistance * moveDirection, 0), ForceMode2D.Impulse);
+    }
+
     void Attack1()
     {
         float playerDir = playerDirection();
         enemyRB.velocity = Vector3.zero;
-
-        enemyRB.AddForce(new Vector2(stepDistance * moveDirection, 0), ForceMode2D.Impulse);
 
         // enable attack hitbox 1
         bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
@@ -184,8 +187,6 @@ public class SkeletonAI : MonoBehaviour
     {
         float playerDir = playerDirection();
         enemyRB.velocity = Vector3.zero;
-
-        enemyRB.AddForce(new Vector2(stepDistance * 1.2f * moveDirection, 0), ForceMode2D.Impulse);
 
         // enable attack hitbox 2
         bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);

@@ -137,6 +137,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.33333334
+    functionName: Step
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5
     functionName: Attack1
     data: 
@@ -153,6 +160,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6666667
     functionName: Stop
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9166667
+    functionName: Step
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

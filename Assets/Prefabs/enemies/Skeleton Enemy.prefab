@@ -235,8 +235,8 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 640
-  stepDistance: 20
-  attackDamage: 30
+  stepDistance: 12
+  attackDamage: 15
   attackCooldown: 2.5
   attackHitbox1: {fileID: 380738811013275732}
   attackRange1: {x: 8.5, y: 7.5}
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1250
   currentHealth: 0
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
   dropAmount: 9
   itemDropsList:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
@@ -275,8 +277,6 @@ MonoBehaviour:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 5340190160072166107, guid: ab60fca5f2397394eb2e4ebd1fc30ade, type: 3}
-  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
-    type: 3}
   guardingRange: {x: 9.5, y: 9.5}
   guardCooldown: 5
   protectRange: {x: 19.5, y: 9.5}
@@ -296,7 +296,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07882869, y: 0.0015200377}
+  m_Offset: {x: 0.062125035, y: 0.0015200377}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -307,7 +307,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5042168, y: 0.79967594}
+  m_Size: {x: 0.4318365, y: 0.79967594}
   m_EdgeRadius: 0
 --- !u!50 &8874386304295254824
 Rigidbody2D:
@@ -578,7 +578,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.9916458
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
