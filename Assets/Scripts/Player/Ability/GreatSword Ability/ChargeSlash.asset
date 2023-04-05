@@ -16,3 +16,5 @@ MonoBehaviour:
   cooldownTime: 8
   activeTime: 0
   icon: {fileID: 21300000, guid: 7272e8123b2c4481d805fe4fad2b07aa, type: 3}
+  chargeEffect: {fileID: 3087553431075289472, guid: 231a5ab26fffc4c9691f5ab731799ea1,
+    type: 3}

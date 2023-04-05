@@ -5,10 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/SpinningSlash")]
 public class SpinningSlash : Ability
 {
+    public GameObject slashEffect;
     public override void Activate(GameObject parent){
         Debug.Log("Spin");
         SwordmanCombat swordmanCombat = parent.GetComponent<SwordmanCombat>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
+        GameObject projectile = Instantiate(slashEffect, swordmanCombat.spinningSlashEffect.transform.position, Quaternion.Euler(0, 0, -46));
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(swordmanCombat.spinningPoint.position, swordmanCombat.spinningRange , 0, swordmanCombat.enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   
