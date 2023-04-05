@@ -167,7 +167,7 @@ MonoBehaviour:
   circleRadius: 0.2
   obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
 --- !u!114 &55420357230579413
 MonoBehaviour:
   m_ObjectHideFlags: 0

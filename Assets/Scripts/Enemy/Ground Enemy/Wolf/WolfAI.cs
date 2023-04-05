@@ -85,7 +85,7 @@ public class WolfAI : MonoBehaviour
 
     void Petrolling()
     {
-        if (!checkingGround & checkingWall)
+        if (!checkingGround || checkingWall)
         {
             if (facingRight)
             {
@@ -95,7 +95,7 @@ public class WolfAI : MonoBehaviour
                 Flip();
             }
         }
-        enemyRB.AddForce(new Vector2(moveSpeed * 0.5f * moveDirection, 0));
+        enemyRB.AddForce(new Vector2(moveSpeed * moveDirection, 0));
     }
 
     void MoveTowardPlayer()
@@ -105,7 +105,7 @@ public class WolfAI : MonoBehaviour
         if (checkingGround)
         {
             FlipTowardsPlayer();
-            enemyRB.AddForce(new Vector2(moveSpeed * playerDir, 0));
+            enemyRB.AddForce(new Vector2(moveSpeed * 1.2f * playerDir, 0));
         }
     }
 
@@ -115,9 +115,14 @@ public class WolfAI : MonoBehaviour
         attackTime = Time.time;
     }
 
+    void Stop()
+    {
+        enemyRB.velocity = Vector3.zero;
+    }
+
     void Attack()
     { 
-        enemyRB.AddForce(new Vector2(moveDirection + jumpDistance, jumpHeight), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(moveDirection * jumpDistance, jumpHeight), ForceMode2D.Impulse);
     }
 
     void FlipTowardsPlayer()

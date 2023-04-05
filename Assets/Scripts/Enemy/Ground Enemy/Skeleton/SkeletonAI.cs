@@ -1,9 +1,7 @@
-using System.Threading;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class SkeletonAI : MonoBehaviour
 {
@@ -17,6 +15,7 @@ public class SkeletonAI : MonoBehaviour
     private bool checkingWall;
     private float moveDirection = 1;
     private bool facingRight = true;
+    private bool isRetreating = false;
 
     [Header("For Attacking")]
     [SerializeField] private float stepDistance;
@@ -38,22 +37,11 @@ public class SkeletonAI : MonoBehaviour
     [SerializeField] Vector2 hitboxSize2;
     private bool inRangeAttack2;
 
-    [Header("For Shielding")]
-    [SerializeField] Vector2 guardingRange;
-    [SerializeField] float guardCooldown;
-    private float guardTime;
-    private bool canGuard = true;
-    private bool inGuardingRange;
-
-    [Header("For Passive")]
-    [SerializeField] Vector2 protectRange;
-    private bool inProtectRange;
-
-    [Header("For Zoning")]
+    [Header("For Zoning - yellow")]
     [SerializeField] Vector2 retreatRange;
     private bool inRetreatRange;
 
-    [Header("For Seeing Player")]
+    [Header("For Seeing Player - red")]
     [SerializeField] Transform player;
     [SerializeField] Vector2 lineOfSight;
     [SerializeField] LayerMask playerLayer;
@@ -62,12 +50,15 @@ public class SkeletonAI : MonoBehaviour
     [Header("Other")]
     private Animator enemyAnim;
     private Rigidbody2D enemyRB;
+    private SkeletonEnemy enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRB = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
+        enemy = GetComponent<SkeletonEnemy>();
+
         Invoke(nameof(Find_player), 1);
         if (player == null) return;
     }
@@ -81,8 +72,6 @@ public class SkeletonAI : MonoBehaviour
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
         inRangeAttack1 = Physics2D.OverlapBox(transform.position, attackRange1, 0, playerLayer);
         inRangeAttack2 = Physics2D.OverlapBox(transform.position, attackRange2, 0, playerLayer);
-        inGuardingRange = Physics2D.OverlapBox(transform.position, guardingRange, 0, playerLayer);
-        inProtectRange = Physics2D.OverlapBox(transform.position, protectRange, 0, playerLayer);
         inRetreatRange = Physics2D.OverlapBox(transform.position, retreatRange, 0, playerLayer);
 
         if (Time.time >= attackTime + attackCooldown)
@@ -118,7 +107,8 @@ public class SkeletonAI : MonoBehaviour
 
     void Petrolling()
     {
-        if (checkingWall && !checkingGround)
+        isRetreating = false;
+        if (checkingWall || !checkingGround)
         {
             if (facingRight)
             {
@@ -131,9 +121,15 @@ public class SkeletonAI : MonoBehaviour
         enemyRB.AddForce(new Vector2(moveSpeed * 0.75f * moveDirection, 0));
     }
 
+    void Stop()
+    {
+        enemyRB.velocity = Vector3.zero;
+    }
+
     void MoveTowardPlayer()
     {
         float playerDir = playerDirection();
+        isRetreating = false;
 
         if (checkingGround)
         {
@@ -145,11 +141,12 @@ public class SkeletonAI : MonoBehaviour
     void MoveAwayFromPlayer()
     {
         float playerDir = playerDirection();
+        isRetreating = true;
 
         if (checkingGround)
         {
             FlipTowardsPlayer();
-            enemyRB.AddForce(new Vector2(moveSpeed * -playerDir * 0.25f, 0));
+            enemyRB.AddForce(new Vector2(moveSpeed * -playerDir, 0));
         }
     }
 
@@ -164,12 +161,6 @@ public class SkeletonAI : MonoBehaviour
         {
             atkPatternValue -=3;
         }
-    }
-
-    void guardOnCooldown()
-    {
-        canGuard = false;
-        guardTime = Time.time;
     }
 
     void Attack1()
@@ -194,7 +185,7 @@ public class SkeletonAI : MonoBehaviour
         float playerDir = playerDirection();
         enemyRB.velocity = Vector3.zero;
 
-        enemyRB.AddForce(new Vector2(stepDistance * moveDirection, 0), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(stepDistance * 1.2f * moveDirection, 0), ForceMode2D.Impulse);
 
         // enable attack hitbox 2
         bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
@@ -238,10 +229,9 @@ public class SkeletonAI : MonoBehaviour
         enemyAnim.SetFloat("speed", Math.Abs(enemyRB.velocity.x));
         enemyAnim.SetBool("canSeePlayer", canSeePlayer);
         enemyAnim.SetBool("canAttack", canAttack);
-        enemyAnim.SetBool("canGuard", canGuard);
         enemyAnim.SetBool("inRangeAttack1", inRangeAttack1);
         enemyAnim.SetBool("inRangeAttack2", inRangeAttack2);
-        enemyAnim.SetBool("inGuardingRange", inGuardingRange);
+        enemyAnim.SetBool("isRetreating", isRetreating);
         enemyAnim.SetInteger("atkPatternValue", atkPatternValue);
     }
 
@@ -254,7 +244,6 @@ public class SkeletonAI : MonoBehaviour
 
         // Protect & Retreat Range marker
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, protectRange);
         Gizmos.DrawWireCube(transform.position, retreatRange); 
 
         // LineOfSight marker
@@ -270,9 +259,5 @@ public class SkeletonAI : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(transform.position, attackRange1);
         Gizmos.DrawWireCube(transform.position, attackRange2); 
-
-        // Guard Range marker
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, guardingRange); 
     }
 }
