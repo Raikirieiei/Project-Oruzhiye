@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 8874386304295254806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.98, y: 5.28, z: 50}
-  m_LocalScale: {x: 3, y: 3, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2}
   m_Children:
   - {fileID: 8874386303636861746}
   - {fileID: 8874386303586683318}
@@ -228,22 +228,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac07b0e7330658448c2c9fac0d1982c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 14
   groundCheckPoint: {fileID: 8874386303636861746}
   wallCheckPoint: {fileID: 8874386303586683318}
   circleRadius: 0.2
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 640
-  stepDistance: 12
+  stepDistance: 15
   attackDamage: 15
   attackCooldown: 2.5
   attackHitbox1: {fileID: 380738811013275732}
-  attackRange1: {x: 8.5, y: 7.5}
-  hitboxSize1: {x: 3.75, y: 3}
+  attackRange1: {x: 6.5, y: 5.5}
+  hitboxSize1: {x: 3.25, y: 2.5}
   attackHitbox2: {fileID: 380738810145240346}
-  attackRange2: {x: 10, y: 9}
-  hitboxSize2: {x: 4.25, y: 4}
+  attackRange2: {x: 8, y: 7}
+  hitboxSize2: {x: 3.75, y: 3.5}
   retreatRange: {x: 7.5, y: 4.5}
   player: {fileID: 0}
   lineOfSight: {x: 20, y: 10}
@@ -262,11 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47b531d568e05f42a620cf978798392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1250
+  maxHealth: 250
   currentHealth: 0
   damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
     type: 3}
-  dropAmount: 9
+  dropAmount: 3
   itemDropsList:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
@@ -276,9 +276,9 @@ MonoBehaviour:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
-  - {fileID: 5340190160072166107, guid: ab60fca5f2397394eb2e4ebd1fc30ade, type: 3}
+  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
   guardingRange: {x: 9.5, y: 9.5}
-  guardCooldown: 5
+  guardCooldown: 6.5
   protectRange: {x: 19.5, y: 9.5}
   playerLayer:
     serializedVersion: 2
