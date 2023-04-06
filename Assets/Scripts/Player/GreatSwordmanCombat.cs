@@ -6,6 +6,7 @@ public class GreatSwordmanCombat : PlayerCombat
 {
     public Transform chargeSlashPoint;
     public Vector2 chargeSlashRange;
+    public GameObject chargeEffect;
     public CharacterStats stats;
     public Player player;
 
