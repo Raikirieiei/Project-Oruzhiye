@@ -7,6 +7,7 @@ public class PlayerStatMenu : MonoBehaviour
 {
     public GameObject characterStatUI;
     public static bool isOpen = false;
+    private bool canOpen = true;
 
     private CharacterStats characterStats;
     private GameObject statText;
@@ -20,6 +21,7 @@ public class PlayerStatMenu : MonoBehaviour
         else if (instance != this){
             Destroy (gameObject);
         }
+        GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
         characterStats = GameObject.FindWithTag("Player").GetComponent<CharacterStats>();
         statText = characterStatUI.transform.Find("StatAmount").gameObject;
         
@@ -29,6 +31,26 @@ public class PlayerStatMenu : MonoBehaviour
     void Start()
     {
         UpdateStat();
+    }
+        // Update is called once per frame
+    void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.J)) && canOpen){
+            if (isOpen){
+                CloseMenu();
+            }else{
+                OpenMenu();
+            }
+        }
+        
+    }
+
+    private void GameManagerOnGameStageChanged(GameState state) {
+        if(state == GameState.RewardSelect || state == GameState.Pause ){
+            canOpen = false;
+        }else{
+            canOpen = true;
+        }
     }
 
     private void UpdateStat(){
@@ -56,29 +78,18 @@ public class PlayerStatMenu : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if ((Input.GetKeyDown(KeyCode.J))){
-            if (isOpen){
-                CloseMenu();
-            }else{
-                OpenMenu();
-            }
-        }
-        
-    }
-
-    private void OpenMenu(){
+    public void OpenMenu(){
         characterStatUI.SetActive(true);
         UpdateStat();
         Time.timeScale = 0;
         isOpen = true;
+        GameManager.instance.UpdateGameState(GameState.StatMenu);
     }
 
-    private void CloseMenu(){
+    public void CloseMenu(){
         characterStatUI.SetActive(false);
         Time.timeScale = 1;
         isOpen = false;
+        GameManager.instance.UpdateGameState(GameState.Normal);
     }
 }

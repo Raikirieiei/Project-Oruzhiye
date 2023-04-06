@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
     }
 
     private void ChangeStatOnGameStageChanged(GameState state) {
-        Debug.Log("changeStat");
         if(state == GameState.AdjustStat){
             runSpeed = (float)characterStats.baseMoveSpeed.getValue();
             currentHealth = characterStats.currentHealth;

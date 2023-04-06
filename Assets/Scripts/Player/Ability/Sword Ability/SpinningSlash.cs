@@ -9,8 +9,9 @@ public class SpinningSlash : Ability
     public override void Activate(GameObject parent){
         Debug.Log("Spin");
         SwordmanCombat swordmanCombat = parent.GetComponent<SwordmanCombat>();
+        Player player = parent.GetComponent<Player>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
-        GameObject projectile = Instantiate(slashEffect, swordmanCombat.spinningSlashEffect.transform.position, Quaternion.Euler(0, 0, -46));
+        GameObject projectile = Instantiate(slashEffect, swordmanCombat.spinningSlashEffect.transform.position, Quaternion.Euler(0, 0, -46*player.facingDir));
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(swordmanCombat.spinningPoint.position, swordmanCombat.spinningRange , 0, swordmanCombat.enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {   

@@ -9,27 +9,33 @@ public class CharacterSelection : MonoBehaviour
     public CharacterDatabase characterDB;
 
     // public SpriteRenderer artworkSprite;
+    public Button selectButton;
 
     public Image imgSprite;
+    public GameObject pleaseSelectTitle;
 
     private int selectedOption = 0;
 
     private string mainMenuScene = "MainMenu";
+    private bool isSelected = false;
 
     public void SwordOption(){
         selectedOption = 0;
+        isSelected = true;
         UpdateCharacter(selectedOption);
         Save();
     }
 
     public void SpearOption(){
         selectedOption = 1;
+        isSelected = true;
         UpdateCharacter(selectedOption);
         Save();
     }
 
     public void GreatSwordOption(){
         selectedOption = 2;
+        isSelected = true;
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -37,6 +43,11 @@ public class CharacterSelection : MonoBehaviour
     private void UpdateCharacter(int selectedOption){
         Character character = characterDB.getCharacter(selectedOption);
         imgSprite.sprite = character.characterSprite;
+        if(isSelected){
+            imgSprite.enabled = true;
+            pleaseSelectTitle.SetActive(false);
+            selectButton.interactable = true; 
+        }
     }
 
     private void Load(){
