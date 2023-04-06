@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e70d69d07e48454884689e261cae055, type: 3}
-  m_Name: AtkUp1
-  m_EditorClassIdentifier: Assembly-CSharp::AtkUp1
-  name: Attack Up 1
-  desc: 'Slightly Increase Player Attack '
-  baseValue: 5
-  img: {fileID: 21300000, guid: 093978648cffe4479830f024dae1a233, type: 3}
+  m_Name: AtkUp3
+  m_EditorClassIdentifier: 
+  name: Attack Up 3
+  desc: 'Extremely Increase Player Attack '
+  baseValue: 15
+  img: {fileID: 0}

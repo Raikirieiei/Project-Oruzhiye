@@ -666,7 +666,8 @@ MonoBehaviour:
     baseValue: 6
   baseDefend:
     baseValue: 0
-  baseMaxHealth: 120
+  baseHealth:
+    baseValue: 120
   currentHealth: 0
 --- !u!95 &380869002510497885
 Animator:
@@ -1152,22 +1153,22 @@ PrefabInstance:
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
@@ -1207,12 +1208,12 @@ PrefabInstance:
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -960
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -540
       objectReference: {fileID: 0}
     - target: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
         type: 3}

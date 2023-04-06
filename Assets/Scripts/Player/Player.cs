@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
     {   
         GameManager.OnGameStateChanged += ChangeStatOnGameStageChanged;
         runSpeed = (float)characterStats.baseMoveSpeed.getValue();
-        currentHealth = characterStats.currentHealth;
+        currentHealth = characterStats.baseHealth.getValue();
         defend = characterStats.baseDefend.getValue();
         healthBar.SetMaxHealth(currentHealth);
         DontDestroyOnLoad(gameObject);
@@ -107,8 +107,9 @@ public class Player : MonoBehaviour
     private void ChangeStatOnGameStageChanged(GameState state) {
         if(state == GameState.AdjustStat){
             runSpeed = (float)characterStats.baseMoveSpeed.getValue();
-            currentHealth = characterStats.currentHealth;
             defend = characterStats.baseDefend.getValue();
+            healthBar.SetMaxHealth(characterStats.baseHealth.getValue());
+            currentHealth = characterStats.currentHealth;
             GameManager.instance.UpdateGameState(GameState.Normal);
         }
     }

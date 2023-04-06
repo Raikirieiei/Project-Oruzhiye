@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerStatMenu : MonoBehaviour
 {
     public GameObject characterStatUI;
+    public Text[] StatAmount;
     public static bool isOpen = false;
     private bool canOpen = true;
 
@@ -23,8 +24,6 @@ public class PlayerStatMenu : MonoBehaviour
         }
         GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
         characterStats = GameObject.FindWithTag("Player").GetComponent<CharacterStats>();
-        statText = characterStatUI.transform.Find("StatAmount").gameObject;
-        
     }
 
     // Start is called before the first frame update
@@ -54,8 +53,7 @@ public class PlayerStatMenu : MonoBehaviour
     }
 
     private void UpdateStat(){
-        Text[] textList = statText.GetComponentsInChildren<Text>(true);
-        foreach (var item in textList)
+        foreach (var item in StatAmount)
         {
             switch (item.name)
             {
@@ -70,6 +68,9 @@ public class PlayerStatMenu : MonoBehaviour
                     break; 
                 case "MoveSpeed":
                     item.text = characterStats.baseMoveSpeed.getValue().ToString();
+                    break;
+                case "MaxHp":
+                    item.text = characterStats.baseHealth.getValue().ToString();
                     break;
                 default:
                     Debug.Log("noth found stat amount");

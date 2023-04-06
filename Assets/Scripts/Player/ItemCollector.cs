@@ -39,11 +39,11 @@ public class ItemCollector : MonoBehaviour
             return;
         }
 
-        float amount = (percent/100) * characterStats.baseMaxHealth;
+        float amount = (percent/100) * characterStats.baseHealth.getValue();
         player.currentHealth += (int)amount;
-        if (player.currentHealth > characterStats.baseMaxHealth)
+        if (player.currentHealth > characterStats.baseHealth.getValue())
         {
-            player.currentHealth = characterStats.baseMaxHealth;
+            player.currentHealth = characterStats.baseHealth.getValue();
         }
         Debug.Log("player hp+: " + amount);
     }

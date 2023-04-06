@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e70d69d07e48454884689e261cae055, type: 3}
-  m_Name: AtkUp2
-  m_EditorClassIdentifier: Assembly-CSharp::AtkUp1
-  name: Attack Up 2
-  desc: Moderately Increase Player Attack
+  m_Script: {fileID: 11500000, guid: dcbcc2aeaadcc4dde96bb31270e19a7b, type: 3}
+  m_Name: HPUp1
+  m_EditorClassIdentifier: 
+  name: Max HP Up 1
+  desc: Slightly Increase Player Max HP
   baseValue: 10
-  img: {fileID: 21300000, guid: 8d4b9df0225424bd3a64e6dc2b0ce051, type: 3}
+  img: {fileID: 0}
