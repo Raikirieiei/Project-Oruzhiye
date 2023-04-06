@@ -49,7 +49,6 @@ public class RewardMenu : MonoBehaviour
     }
 
     private void GameManagerOnGameStageChanged(GameState state) {
-        Debug.Log("rewardmenu");
         rewardMenuUI.SetActive(state == GameState.RewardSelect);
     }
 

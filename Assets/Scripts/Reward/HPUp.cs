@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "RewardList/DefUp2")]
-public class DefUp2 : StatReward
+[CreateAssetMenu (menuName = "RewardList/HPUp")]
+public class HPUp : StatReward
 {
     public override void Selected(CharacterStats characterStat){
         Debug.Log("Reward Selected: " + this.name);
-        characterStat.baseDefend.addModifier(this.baseValue);
+        characterStat.baseHealth.addModifier(this.baseValue);
+        characterStat.currentHealth += this.baseValue;
     }
 }

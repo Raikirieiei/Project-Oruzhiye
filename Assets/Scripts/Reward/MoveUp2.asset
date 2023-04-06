@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd08a05f9c2044cf8ffd5c5d69a8ccb, type: 3}
+  m_Script: {fileID: 11500000, guid: fd0f8d828674444b2ac230d10c3a9d5c, type: 3}
   m_Name: MoveUp2
-  m_EditorClassIdentifier: 
-  name: MoveSpeed 2
-  desc: Moderately increase player move speed
-  baseValue: 3
+  m_EditorClassIdentifier: Assembly-CSharp::MoveUp1
+  name: Movement Speed Up 2
+  desc: Moderately Increase Player Move Speed
+  baseValue: 2
   img: {fileID: 21300000, guid: 2ee3ba3d24a9249db92e74509b6a5a92, type: 3}

@@ -11,8 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd0f8d828674444b2ac230d10c3a9d5c, type: 3}
   m_Name: MoveUp1
-  m_EditorClassIdentifier: 
-  name: MoveSpeed 1
-  desc: Slightly increase player move speed
-  baseValue: 2
+  m_EditorClassIdentifier: Assembly-CSharp::MoveUp1
+  name: Movement Speed Up 1
+  desc: Slightly Increase Player Move Speed
+  baseValue: 1
   img: {fileID: 21300000, guid: aaf1a2237630a4307b54f662ecd7e6b8, type: 3}
