@@ -13,6 +13,10 @@ public class CharacterSelection : MonoBehaviour
 
     public Image imgSprite;
     public GameObject pleaseSelectTitle;
+    public GameObject[] playerStats;
+    
+    public Text DifficultyText;
+    public GameObject DifficultyPanel;
 
     private int selectedOption = 0;
 
@@ -22,6 +26,10 @@ public class CharacterSelection : MonoBehaviour
     public void SwordOption(){
         selectedOption = 0;
         isSelected = true;
+        DifficultyText.text = "Intermediate";
+        playerStats[0].SetActive(true);
+        playerStats[1].SetActive(false);
+        playerStats[2].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -29,6 +37,10 @@ public class CharacterSelection : MonoBehaviour
     public void SpearOption(){
         selectedOption = 1;
         isSelected = true;
+        DifficultyText.text = "Beginner";
+        playerStats[1].SetActive(true);
+        playerStats[0].SetActive(false);
+        playerStats[2].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -36,6 +48,10 @@ public class CharacterSelection : MonoBehaviour
     public void GreatSwordOption(){
         selectedOption = 2;
         isSelected = true;
+        DifficultyText.text = "Expert";
+        playerStats[2].SetActive(true);
+        playerStats[1].SetActive(false);
+        playerStats[0].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -46,7 +62,9 @@ public class CharacterSelection : MonoBehaviour
         if(isSelected){
             imgSprite.enabled = true;
             pleaseSelectTitle.SetActive(false);
+            DifficultyPanel.SetActive(true);
             selectButton.interactable = true; 
+            DifficultyText.enabled = true;
         }
     }
 
