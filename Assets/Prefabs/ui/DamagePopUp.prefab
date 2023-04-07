@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 8175107186280082990}
   - component: {fileID: 8225257612932988229}
   - component: {fileID: 6011176063316438618}
-  - component: {fileID: 3267159595409653805}
+  - component: {fileID: 7292150200365174488}
   m_Layer: 0
   m_Name: DmgPopUp
   m_TagString: Untagged
@@ -131,7 +131,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 24
@@ -141,7 +141,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4281085118
---- !u!95 &3267159595409653805
+--- !u!95 &7292150200365174488
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ Animator:
   m_GameObject: {fileID: 8539765695811599999}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ca70ee8f9fa5b34aa01cf507d79bac3, type: 2}
+  m_Controller: {fileID: 9100000, guid: dc9a60c28ac68fa4fb35daccb1d693af, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
