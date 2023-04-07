@@ -13,6 +13,7 @@ public class Shopkeeper : MonoBehaviour
     [SerializeField] GameObject items;
     [SerializeField] StatReward stats;
     [SerializeField] List<StatReward> statusPools;
+    private bool canBuy;
 
     [Header("Detecting Player")]
     [SerializeField] Transform player;
@@ -41,6 +42,7 @@ public class Shopkeeper : MonoBehaviour
 
     void Start() 
     {
+        canBuy = true;
         if (itemType == ItemType.stats)
         {
             List<StatReward> statsPool = new List<StatReward>(statusPools);
@@ -62,7 +64,12 @@ public class Shopkeeper : MonoBehaviour
     {
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
 
-        ShopUIUpdate();
+        if (canBuy)
+        {
+            ShopUIUpdate();
+        } else {
+            ShopUIEmpty();
+        }
 
         if (canSeePlayer)
         {
@@ -85,6 +92,15 @@ public class Shopkeeper : MonoBehaviour
             return;
         }
 
+        if (canBuy == false)
+        {
+            GameObject warningText = Instantiate(textPopUp, transform.position, Quaternion.identity);
+            warningText.transform.GetChild(0).GetComponent<TextMesh>().text = "Come Again Later!";
+            warningText.transform.GetChild(0).GetComponent<TextMesh>().color = Color.white;
+            buyFailAudio.Play();
+            return;
+        }
+
         if (itemType == ItemType.health)
         {
             Instantiate(items, player.position, Quaternion.identity);
@@ -99,6 +115,7 @@ public class Shopkeeper : MonoBehaviour
         purchaseText.transform.GetChild(0).GetComponent<TextMesh>().text = "Thank you for the business!";
         purchaseText.transform.GetChild(0).GetComponent<TextMesh>().color = Color.green;
         itemCollector.coins -= cost;
+        canBuy = false;
     }
 
     void ShopUIUpdate()
@@ -115,6 +132,12 @@ public class Shopkeeper : MonoBehaviour
             description.GetComponent<TextMesh>().text = stats.desc;
             itemImage.GetComponent<SpriteRenderer>().sprite = stats.img;
         }
+    }
+
+    void ShopUIEmpty()
+    {
+        name.GetComponent<TextMesh>().text = "SOLD !";
+        description.GetComponent<TextMesh>().text = "COME AGAIN LATER!";
     }
 
     private void Find_player()
