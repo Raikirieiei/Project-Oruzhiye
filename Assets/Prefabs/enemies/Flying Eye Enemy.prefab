@@ -216,7 +216,7 @@ MonoBehaviour:
   hitboxRadius: 1
   attackRange2: {x: 5, y: 2}
   player: {fileID: 0}
-  lineOfSight: {x: 7.5, y: 7.5}
+  lineOfSight: {x: 10, y: 10}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -234,6 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 140
   currentHealth: 0
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
   dropAmount: 4
   itemDropsList:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
@@ -246,8 +248,6 @@ MonoBehaviour:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
-  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
-    type: 3}
 --- !u!70 &3954078518319824914
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ MonoBehaviour:
   circleRadius: 0.2
   obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
   attackDamage: 15
   attackCooldown: 2.5
   attackHitbox1: {fileID: 7745100977901914306}

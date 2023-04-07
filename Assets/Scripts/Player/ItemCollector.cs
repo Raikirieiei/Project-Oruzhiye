@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] Text coinsText;
-    private int coins = 0;
+    public int coins = 0;
 
     private string COIN_TAG = "Coin";
     private string HEART_TAG = "Heart";

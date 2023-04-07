@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Basic Attributes")]
     public int maxHealth = 100;
     public int currentHealth;
 
-    private Transform player;
-    private Rigidbody2D enemyRB;
-    private Animator enemyAnim;
+    protected Transform player;
+    protected Rigidbody2D enemyRB;
+    protected Animator enemyAnim;
+    public GameObject damagePopUp;
 
     [Header("Lootdrop Settings")]
     [SerializeField] int dropAmount;
     [SerializeField] GameObject[] itemDropsList;
-    public GameObject damagePopUp;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
         if (player == null) return;
     }
 
-    private void Find_player()
+    protected void Find_player()
     {
         try
         {
@@ -40,39 +42,44 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage){
+    public virtual void TakeDamage(int damage){
         float playerPosition = player.position.x - transform.position.x;
         float knockbackDir = -playerPosition/Math.Abs(playerPosition);
         currentHealth -= damage;
 
-        // Instanciate Damagepopup
+        // Instantiate Damagepopup
         GameObject dmgPopUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
         dmgPopUp.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
 
         enemyRB.velocity = Vector3.zero;
-        enemyRB.AddForce(new Vector2(5 * knockbackDir, 1), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(2 * knockbackDir, 1), ForceMode2D.Impulse);
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    void Die(){
+    protected void Die(){
         Debug.Log("Enemy Die");
 
         GetComponent<Collider2D>().enabled = false;
         enemyAnim.SetBool("isDeath", true);
+        enemyRB.simulated = false;
         this.enabled = false;
         RandomDrop();
         Destroy(gameObject, 0.5f);
     }
 
-    private void RandomDrop()
+    protected void RandomDrop()
     {
+        if (dropAmount == 0) return;
+
         int[] numsArr = getUniqueRandomArray(0, itemDropsList.Length, dropAmount);
         // instantiate items from the list
         foreach (int i in numsArr)
         {
+            if (itemDropsList[i] == null) continue;
+
             GameObject gameObject = Instantiate(itemDropsList[i], transform.position, Quaternion.identity);
             Rigidbody2D dropRB = gameObject.GetComponent<Rigidbody2D>();
             dropRB.AddForce(new Vector2(UnityEngine.Random.Range(-2, 2), 2), ForceMode2D.Impulse);
