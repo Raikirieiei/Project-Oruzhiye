@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.AdjustStat:
                 break;
+            case GameState.StatMenu:
+                break;
+            case GameState.Pause:
+                break;
             case GameState.Dead:
                 break;
             default:
@@ -63,5 +67,7 @@ public enum GameState
     Normal,
     RewardSelect,
     AdjustStat,
+    StatMenu,
+    Pause,
     Dead,
 }

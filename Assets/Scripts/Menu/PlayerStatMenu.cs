@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PlayerStatMenu : MonoBehaviour
 {
     public GameObject characterStatUI;
+    public Text[] StatAmount;
     public static bool isOpen = false;
+    private bool canOpen = true;
 
     private CharacterStats characterStats;
     private GameObject statText;
@@ -20,9 +22,8 @@ public class PlayerStatMenu : MonoBehaviour
         else if (instance != this){
             Destroy (gameObject);
         }
+        GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
         characterStats = GameObject.FindWithTag("Player").GetComponent<CharacterStats>();
-        statText = characterStatUI.transform.Find("StatAmount").gameObject;
-        
     }
 
     // Start is called before the first frame update
@@ -30,10 +31,29 @@ public class PlayerStatMenu : MonoBehaviour
     {
         UpdateStat();
     }
+        // Update is called once per frame
+    void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.J)) && canOpen){
+            if (isOpen){
+                CloseMenu();
+            }else{
+                OpenMenu();
+            }
+        }
+        
+    }
+
+    private void GameManagerOnGameStageChanged(GameState state) {
+        if(state == GameState.RewardSelect || state == GameState.Pause ){
+            canOpen = false;
+        }else{
+            canOpen = true;
+        }
+    }
 
     private void UpdateStat(){
-        Text[] textList = statText.GetComponentsInChildren<Text>(true);
-        foreach (var item in textList)
+        foreach (var item in StatAmount)
         {
             switch (item.name)
             {
@@ -49,6 +69,9 @@ public class PlayerStatMenu : MonoBehaviour
                 case "MoveSpeed":
                     item.text = characterStats.baseMoveSpeed.getValue().ToString();
                     break;
+                case "MaxHp":
+                    item.text = characterStats.baseHealth.getValue().ToString();
+                    break;
                 default:
                     Debug.Log("noth found stat amount");
                     break;
@@ -56,29 +79,18 @@ public class PlayerStatMenu : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if ((Input.GetKeyDown(KeyCode.J))){
-            if (isOpen){
-                CloseMenu();
-            }else{
-                OpenMenu();
-            }
-        }
-        
-    }
-
-    private void OpenMenu(){
+    public void OpenMenu(){
         characterStatUI.SetActive(true);
         UpdateStat();
         Time.timeScale = 0;
         isOpen = true;
+        GameManager.instance.UpdateGameState(GameState.StatMenu);
     }
 
-    private void CloseMenu(){
+    public void CloseMenu(){
         characterStatUI.SetActive(false);
         Time.timeScale = 1;
         isOpen = false;
+        GameManager.instance.UpdateGameState(GameState.Normal);
     }
 }

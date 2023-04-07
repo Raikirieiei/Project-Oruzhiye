@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c193922dd3d740419a5b9b64068a4c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e7c8b0b7c8384e2bb8548f0fb90bc09, type: 3}
   m_Name: DefUp2
-  m_EditorClassIdentifier: 
-  name: Defend up 2
-  desc: Moderately increase player defend
+  m_EditorClassIdentifier: Assembly-CSharp::DefUp1
+  name: Defend Up 2
+  desc: 'Moderately Increase Player Defend '
   baseValue: 10
   img: {fileID: 21300000, guid: 4824b67df5a204097ada068e7002aecb, type: 3}

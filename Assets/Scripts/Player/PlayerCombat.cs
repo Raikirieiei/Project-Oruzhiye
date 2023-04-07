@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     protected void Start(){
-        GameManager.OnGameStateChanged -= ChangeStatOnGameStageChanged;
+        GameManager.OnGameStateChanged += ChangeStatOnGameStageChanged;
         attackDamage = characterStats.baseAttack.getValue();
     }
 
@@ -38,7 +38,6 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void ChangeStatOnGameStageChanged(GameState state) {
-        Debug.Log("changeStat");
         if(state == GameState.AdjustStat){
             attackDamage = characterStats.baseAttack.getValue();
             GameManager.instance.UpdateGameState(GameState.Normal);

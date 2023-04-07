@@ -6,6 +6,7 @@ public class SwordmanCombat : PlayerCombat
 {
     public Transform spinningPoint;
     public Vector2 spinningRange;
+    public GameObject spinningSlashEffect;
 
     public override void OnDrawGizmosSelected() 
     {

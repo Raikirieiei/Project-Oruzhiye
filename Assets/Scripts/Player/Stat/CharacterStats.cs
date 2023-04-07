@@ -5,13 +5,11 @@ public class CharacterStats : MonoBehaviour
     public Stat baseAttack;
     public Stat baseMoveSpeed;
     public Stat baseDefend;
-    public int baseMaxHealth = 100;
+    public Stat baseHealth;
     public int currentHealth;
 
-    // public static event Action<GameState> OnStatChanged;
-
     private void Awake() {
-        currentHealth = baseMaxHealth;
+        currentHealth = baseHealth.getValue();
     }
 
 }

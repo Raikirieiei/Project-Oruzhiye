@@ -87,5 +87,9 @@ public class AbilityHolder2 : MonoBehaviour
     public float getCooldownTime(){
         return this.cooldownTime;
     }
+
+    public float getActiveTime(){
+        return this.activeTime;
+    }
 }
 

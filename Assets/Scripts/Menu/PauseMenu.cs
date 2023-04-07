@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPause = false;
+    private bool canPause = true;
 
     public GameObject pauseMenuUI;
     
@@ -22,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         else if (instance != this){
             Destroy (gameObject);
         }
+        GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -37,7 +39,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             if (isPause) {
                 Resume();
@@ -51,16 +53,27 @@ public class PauseMenu : MonoBehaviour
         
     }
 
+
+    private void GameManagerOnGameStageChanged(GameState state) {
+        if(state == GameState.RewardSelect || state == GameState.StatMenu ){
+            canPause = false;
+        }else{
+            canPause = true;
+        }
+    }
+
     public void Pause() {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         isPause = true;
+        GameManager.instance.UpdateGameState(GameState.Pause);
     }
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         isPause = false;
+        GameManager.instance.UpdateGameState(GameState.Normal);
     }
 
     // need to fix player not include in scene *****

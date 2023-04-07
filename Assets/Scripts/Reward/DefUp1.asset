@@ -11,8 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7c8b0b7c8384e2bb8548f0fb90bc09, type: 3}
   m_Name: DefUp1
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefUp1
   name: Defend Up 1
-  desc: Slightly increase player defend
+  desc: 'Slightly Increase Player Defend '
   baseValue: 5
   img: {fileID: 21300000, guid: ce26bf808710b48319cd5707e6356004, type: 3}
