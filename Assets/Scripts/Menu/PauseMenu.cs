@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     
     private void OnDestroy() {
-
+        GameManager.OnGameStateChanged -= GameManagerOnGameStageChanged;
     }
 
     void Start() {
