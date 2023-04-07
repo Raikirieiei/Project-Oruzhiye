@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3559506177165817862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.045, y: -0.473, z: 0}
+  m_LocalPosition: {x: -0.015, y: -0.47, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
   m_Father: {fileID: 5282265951052719104}
@@ -241,7 +241,7 @@ MonoBehaviour:
   attackRange1: {x: 8, y: 6}
   hitboxSize1: {x: 5, y: 3.85}
   groundCheck: {fileID: 3559506177165817865}
-  boxSize: {x: 2, y: 0.15}
+  boxSize: {x: 1, y: 0.15}
   jumpHeight: 25
   dropSpeed: 20
   attackRange2: {x: 3.5, y: 30}
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
   dropAmount: 9
   itemDropsList:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
@@ -275,8 +277,6 @@ MonoBehaviour:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 5340190160072166107, guid: ab60fca5f2397394eb2e4ebd1fc30ade, type: 3}
-  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
-    type: 3}
 --- !u!61 &5282265951052719164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.046613693, y: -0.13247949}
+  m_Offset: {x: -0.019103765, y: -0.13247949}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4, y: 0.35}
@@ -301,7 +301,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4807663, y: 0.6164741}
+  m_Size: {x: 0.3768401, y: 0.6164741}
   m_EdgeRadius: 0
 --- !u!50 &5282265951052719107
 Rigidbody2D:

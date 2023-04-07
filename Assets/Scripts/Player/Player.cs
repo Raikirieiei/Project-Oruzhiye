@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
 
+    public GameObject damagePopUp;
+
     
     private void Awake(){
 
@@ -178,8 +180,15 @@ public class Player : MonoBehaviour
         finalDamage = damage - (int)damageReduction;
         Debug.Log("Damage Receive" + finalDamage);
 
+        
+
         if (!isInvincible)
         {
+            // Instantiate Damagepopup
+            GameObject dmgPopUp = Instantiate(damagePopUp, transform.position, Quaternion.identity);
+            dmgPopUp.transform.GetChild(0).GetComponent<TextMesh>().text = (-1* finalDamage).ToString();
+            dmgPopUp.transform.GetChild(0).GetComponent<TextMesh>().color = Color.red;
+
             currentHealth -= finalDamage;
             if (currentHealth <= 0)
             {

@@ -593,6 +593,8 @@ MonoBehaviour:
   StartDashTimer: 0.15
   DashCoolDown: 1.5
   m_MovementSmoothing: 0.05
+  damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
+    type: 3}
 --- !u!114 &1950419183018527419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 4066351729517819812}
+  coins: 0
 --- !u!1 &8710594733876065060
 GameObject:
   m_ObjectHideFlags: 0

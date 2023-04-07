@@ -44,6 +44,10 @@ public class PlayerStatMenu : MonoBehaviour
         
     }
 
+    void OnDestroy(){
+        GameManager.OnGameStateChanged -= GameManagerOnGameStageChanged;
+    }
+
     private void GameManagerOnGameStageChanged(GameState state) {
         if(state == GameState.RewardSelect || state == GameState.Pause ){
             canOpen = false;
@@ -73,7 +77,7 @@ public class PlayerStatMenu : MonoBehaviour
                     item.text = characterStats.baseHealth.getValue().ToString();
                     break;
                 default:
-                    Debug.Log("noth found stat amount");
+                    Debug.Log("not found stat amount");
                     break;
             }
         }

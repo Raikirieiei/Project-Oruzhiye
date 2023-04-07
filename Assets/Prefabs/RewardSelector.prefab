@@ -858,7 +858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.27533, y: -6.956421}
+  m_AnchoredPosition: {x: -9.275391, y: -6.956421}
   m_SizeDelta: {x: 1168.7039, y: 936.2335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5890571078938861734
@@ -1014,10 +1014,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardMenuUI: {fileID: 5890571078938861731}
   rewardPools:
-  - {fileID: 11400000, guid: 5e4bcc7d6324d4bcc9f65a07a148508b, type: 2}
-  - {fileID: 11400000, guid: b240a54a827644177b0e45768fa37380, type: 2}
+  - {fileID: 11400000, guid: b0f5841dbedc14842a52f4dcb66da8c4, type: 2}
+  - {fileID: 11400000, guid: 0a415b019aaf8454d9ab9c4400419cff, type: 2}
+  - {fileID: 11400000, guid: 63b5c8458a81541acb16414d150c7f5c, type: 2}
+  - {fileID: 11400000, guid: d4ea7b601055d4bfb983b13b770da052, type: 2}
   - {fileID: 11400000, guid: e635318025fea4703a056caeda44a87b, type: 2}
-  - {fileID: 11400000, guid: 96b8b9ceae82244c28c5649c8f33bb56, type: 2}
+  - {fileID: 11400000, guid: fbee9d8adf1944ef1a3f70b6cb1ab1e1, type: 2}
+  - {fileID: 11400000, guid: 35e232ed2e2d841fd897ec885ebd10b4, type: 2}
+  - {fileID: 11400000, guid: 4c63acf3cbfa0499da26565aaed80f33, type: 2}
+  - {fileID: 11400000, guid: f7aea4ff18a0e4f978d5476a986bf3d8, type: 2}
+  - {fileID: 11400000, guid: 50ba56bb3a4dd48a4a866807474d5ad4, type: 2}
+  - {fileID: 11400000, guid: 217b2d2015671483db87005f542c8c0b, type: 2}
+  - {fileID: 11400000, guid: 856eb4e32e8cc45f8bb80fb43875c4b2, type: 2}
   reward: {fileID: 0}
   reward2: {fileID: 0}
   reward3: {fileID: 0}
