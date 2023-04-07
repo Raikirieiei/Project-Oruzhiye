@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class DmgPopUpUI : MonoBehaviour
 {
+
+    public float delayDestroyTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, delayDestroyTime);
     }
 }

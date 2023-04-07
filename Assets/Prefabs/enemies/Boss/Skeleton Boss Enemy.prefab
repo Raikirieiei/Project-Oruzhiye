@@ -279,7 +279,7 @@ MonoBehaviour:
   - {fileID: 5340190160072166107, guid: ab60fca5f2397394eb2e4ebd1fc30ade, type: 3}
   guardingRange: {x: 9.5, y: 9.5}
   guardCooldown: 5
-  protectRange: {x: 19.5, y: 9.5}
+  protectRange: {x: 14, y: 9.5}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
