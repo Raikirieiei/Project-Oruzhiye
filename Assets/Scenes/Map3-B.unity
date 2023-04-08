@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 1694293318}
   - component: {fileID: 1694293317}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694293316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8ba4b6717284e848d3a91c29d5910d, type: 3}
+  m_Script: {fileID: 11500000, guid: c502ec7af02ea46e595b805e98e7801b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1694293318
@@ -16648,7 +16648,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 58
-      m_TileSpriteIndex: 58
+      m_TileSpriteIndex: 59
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16758,7 +16758,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 57
-      m_TileSpriteIndex: 57
+      m_TileSpriteIndex: 58
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16788,7 +16788,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 55
-      m_TileSpriteIndex: 55
+      m_TileSpriteIndex: 57
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -17191,11 +17191,13 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: 6201235147024999880, guid: 894640e3f9d838a4499398609b715c7f,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 5066135162595758457, guid: 894640e3f9d838a4499398609b715c7f,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -5496118703256259671, guid: 894640e3f9d838a4499398609b715c7f,
+      type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 5066135162595758457, guid: 894640e3f9d838a4499398609b715c7f,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6312211382056438666, guid: 894640e3f9d838a4499398609b715c7f,
@@ -17203,8 +17205,6 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1571476522323885211, guid: 894640e3f9d838a4499398609b715c7f,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -8077325402080291620, guid: 894640e3f9d838a4499398609b715c7f,
       type: 3}

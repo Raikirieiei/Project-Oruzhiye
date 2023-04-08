@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour
             case GameState.RewardSelect:
                 HandleRewardSelect();
                 break;
+            case GameState.SkillSelect:
+                HandleSkillSelect();
+                break;
             case GameState.AdjustStat:
+                break;
+            case GameState.AdjustSkill:
                 break;
             case GameState.StatMenu:
                 break;
@@ -60,6 +65,10 @@ public class GameManager : MonoBehaviour
     private void HandleRewardSelect() {
         Time.timeScale = 0;
     }
+
+    private void HandleSkillSelect() {
+        Time.timeScale = 0;
+    }
 }
 
 public enum GameState
@@ -67,6 +76,8 @@ public enum GameState
     Normal,
     RewardSelect,
     AdjustStat,
+    SkillSelect,
+    AdjustSkill,
     StatMenu,
     Pause,
     Dead,

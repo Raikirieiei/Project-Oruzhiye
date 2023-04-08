@@ -31,13 +31,31 @@ public class AbilityHolder2 : MonoBehaviour
         {
             case AbilityState.ready:
                 if(Input.GetKeyDown(key) && charChoose.name == "Player 1"){
-                    animator.SetBool("Projectile Slash", true);
+                    if(ability.name == "Sword Wave"){
+                        animator.SetBool("Projectile Slash", true);
+                    }
+                    else{
+                        animator.SetBool("Projectile Slash 2", true);
+                    }
                 } 
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 2"){
-                    animator.SetBool("TripleStab", true);
+                    
+                    if(ability.name == "Triple Stab"){
+                        animator.SetBool("TripleStab", true);
+                    }
+                    else{
+                        animator.SetBool("TripleStab 2", true);
+                    }
                 }
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 3"){
-                    animator.SetTrigger("ShieldBarrier");
+
+                    if(ability.name == "Shield Barrier"){
+                        animator.SetBool("ShieldBarrier", true);
+                    }
+                    else{
+                        animator.SetBool("ShieldBarrier 2", true);
+                    }
+                    
                 }
             break;
             case AbilityState.active:
@@ -46,10 +64,20 @@ public class AbilityHolder2 : MonoBehaviour
                 }
                 else{
                     if(charChoose.name == "Player 1"){
-                        animator.SetBool("Projectile Slash", false);
+                        if(ability.name == "Sword Wave"){
+                            animator.SetBool("Projectile Slash", false);
+                        }
+                        else{
+                            animator.SetBool("Projectile Slash 2", false);
+                        }
                     }
                     else if(charChoose.name == "Player 2"){
-                        animator.SetBool("TripleStab", false);
+                        if(ability.name == "Triple Stab"){
+                            animator.SetBool("TripleStab", false);
+                        }
+                        else{
+                            animator.SetBool("TripleStab 2", false);
+                        }
                     }
                     else if(charChoose.name == "Player 3"){
                         DefReturnToNormal();

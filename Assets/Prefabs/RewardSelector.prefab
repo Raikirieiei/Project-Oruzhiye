@@ -1026,6 +1026,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50ba56bb3a4dd48a4a866807474d5ad4, type: 2}
   - {fileID: 11400000, guid: 217b2d2015671483db87005f542c8c0b, type: 2}
   - {fileID: 11400000, guid: 856eb4e32e8cc45f8bb80fb43875c4b2, type: 2}
+  button1: {fileID: 4826903613952770131}
+  button2: {fileID: 8500496121267200235}
+  button3: {fileID: 7782024308374411912}
   reward: {fileID: 0}
   reward2: {fileID: 0}
   reward3: {fileID: 0}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3982e9147d04863aacf44dccaaacdb, type: 3}
   m_Name: ChargeSlash
   m_EditorClassIdentifier: 
-  name: ChargeSlash
+  name: Charge Slash
+  desc: Charge for a sec and slam down the sword.
   cooldownTime: 8
   activeTime: 0
   icon: {fileID: 21300000, guid: 7272e8123b2c4481d805fe4fad2b07aa, type: 3}
