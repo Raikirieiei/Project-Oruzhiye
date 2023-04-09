@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79eb6109eb26f471980241f2b7c01355, type: 3}
+  m_Name: Upgraded CrossSlash
+  m_EditorClassIdentifier: 
+  name: Asterisk Slash
+  desc: Swing Spear infront 3 times
+  cooldownTime: 6
+  activeTime: 0
+  icon: {fileID: 21300000, guid: 26901c99e58d1409ea1ac84c5647e581, type: 3}

@@ -7,7 +7,6 @@ public class SpinningSlash2 : Ability
 {
     public GameObject slashEffect;
     public override void Activate(GameObject parent){
-        Debug.Log("Spin");
         SwordmanCombat swordmanCombat = parent.GetComponent<SwordmanCombat>();
         Player player = parent.GetComponent<Player>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();

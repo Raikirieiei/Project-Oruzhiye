@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df85d7797af6841ce8c30aa0efa40aa2, type: 3}
+  m_Name: Shield Barrier 2
+  m_EditorClassIdentifier: 
+  name: Shield Forte
+  desc: Activate the barrier that extremely increase player defend
+  cooldownTime: 10
+  activeTime: 5
+  icon: {fileID: -2016021395320743334, guid: 7dc70740df9754a08b0b718a65d2ec5f, type: 3}
+  shieldBarrierEffect: {fileID: 7959347209357697121, guid: 468b6fbec60014a809a00f1cd22ceaac,
+    type: 3}

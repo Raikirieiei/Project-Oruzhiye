@@ -73,7 +73,7 @@ public class SkillSelectorMenu : MonoBehaviour
     // this function assign new reward from reward pools when scene changed.
     public void SkillAssign(){
         if(character.name == "Player 1"){
- 
+            Debug.Log("sword");
             List<Ability> instancePool = new List<Ability>(swordPools);
             reward = instancePool[0];
             ChangeRewardText(0, reward);
@@ -82,6 +82,7 @@ public class SkillSelectorMenu : MonoBehaviour
             ChangeRewardText(1, reward2);
         }
         else if (character.name == "Player 2"){
+            Debug.Log("spear");
             List<Ability> instancePool = new List<Ability>(spearPools);
             reward = instancePool[0];
             ChangeRewardText(0, reward);
@@ -90,6 +91,7 @@ public class SkillSelectorMenu : MonoBehaviour
             ChangeRewardText(1, reward2);
         }
         else if (character.name == "Player 3"){
+            Debug.Log("GS");
             List<Ability> instancePool = new List<Ability>(greatSwordPools);
             reward = instancePool[0];
             ChangeRewardText(0, reward);

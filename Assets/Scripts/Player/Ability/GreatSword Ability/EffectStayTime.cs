@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeSlashEffect : MonoBehaviour
+public class EffectStayTime : MonoBehaviour
 {
+    public float stayTime;
   // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(StayTime(0.3f));
+        StartCoroutine(StayTime(stayTime));
     }
 
     // Update is called once per frame
