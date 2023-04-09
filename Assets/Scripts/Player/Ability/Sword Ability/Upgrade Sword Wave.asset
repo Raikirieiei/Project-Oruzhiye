@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9ce079f684bd4c358948d53df9fef6e, type: 3}
-  m_Name: New Sword Wave
+  m_Name: Upgrade Sword Wave
   m_EditorClassIdentifier: 
-  name: SwordWave
+  name: Double Sword Wave
+  desc: Release the projectile wave 2 times
   cooldownTime: 2
   activeTime: 0
-  icon: {fileID: 21300000, guid: f5e6076339f8547079296531f38eeace, type: 3}
+  icon: {fileID: 21300000, guid: 3803b491539f2447baf72fc9b881f6eb, type: 3}
   swordWaveProjectile: {fileID: 4227213497373665052, guid: 07aacb2cd08c6431dbdab170d49c4a15,
     type: 3}

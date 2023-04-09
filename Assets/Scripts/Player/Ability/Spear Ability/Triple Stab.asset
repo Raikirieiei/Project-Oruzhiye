@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Triple Stab
   m_EditorClassIdentifier: 
   name: Triple Stab
-  cooldownTime: 3
+  desc: Rapidly stab infront 3 times.
+  cooldownTime: 4
   activeTime: 0
   icon: {fileID: 21300000, guid: 7d6fe538e12aa4e12bffec6231913091, type: 3}

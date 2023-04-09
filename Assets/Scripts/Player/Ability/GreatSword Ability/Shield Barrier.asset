@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b440587ca38a4c7b965203e2990a1ca, type: 3}
-  m_Name: New Shield Barrier
+  m_Name: Shield Barrier
   m_EditorClassIdentifier: 
-  name: ShieldBarrier
+  name: Shield Barrier
+  desc: Activate the barrier that increase player defend
   cooldownTime: 10
   activeTime: 5
   icon: {fileID: 21300000, guid: 65981fb74a99a4dcb9db9c26a09d9f72, type: 3}

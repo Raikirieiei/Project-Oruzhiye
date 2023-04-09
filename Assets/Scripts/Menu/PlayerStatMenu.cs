@@ -49,7 +49,7 @@ public class PlayerStatMenu : MonoBehaviour
     }
 
     private void GameManagerOnGameStageChanged(GameState state) {
-        if(state == GameState.RewardSelect || state == GameState.Pause ){
+        if(state == GameState.RewardSelect || state == GameState.Pause || state == GameState.SkillSelect ){
             canOpen = false;
         }else{
             canOpen = true;

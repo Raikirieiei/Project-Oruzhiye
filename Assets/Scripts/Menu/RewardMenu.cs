@@ -12,9 +12,9 @@ public class RewardMenu : MonoBehaviour
 
     public static RewardMenu instance;
     private CharacterStats characterStats;
-    private GameObject button1;
-    private GameObject button2;
-    private GameObject button3;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
 
     public StatReward reward;
     public StatReward reward2;
@@ -31,9 +31,6 @@ public class RewardMenu : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
-        button1 = GameObject.Find("Reward1");
-        button2 = GameObject.Find("Reward2");
-        button3 = GameObject.Find("Reward3");
     }
 
     void Start(){

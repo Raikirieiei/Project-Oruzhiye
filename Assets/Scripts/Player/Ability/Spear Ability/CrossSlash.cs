@@ -6,7 +6,6 @@ using UnityEngine;
 public class CrossSlash : Ability
 {
     public override void Activate(GameObject parent){
-        Debug.Log("CrossSlash");
         SpearmanCombat spearmanCombat = parent.GetComponent<SpearmanCombat>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(spearmanCombat.slashPoint.position, spearmanCombat.slashRange , 0, spearmanCombat.enemyLayers);
