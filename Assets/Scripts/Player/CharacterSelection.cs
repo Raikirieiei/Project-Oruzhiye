@@ -14,6 +14,7 @@ public class CharacterSelection : MonoBehaviour
     public Image imgSprite;
     public GameObject pleaseSelectTitle;
     public GameObject[] playerStats;
+    public GameObject[] playerSkills;
     
     public Text DifficultyText;
     public GameObject DifficultyPanel;
@@ -30,6 +31,9 @@ public class CharacterSelection : MonoBehaviour
         playerStats[0].SetActive(true);
         playerStats[1].SetActive(false);
         playerStats[2].SetActive(false);
+        playerSkills[0].SetActive(true);
+        playerSkills[1].SetActive(false);
+        playerSkills[2].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -41,6 +45,9 @@ public class CharacterSelection : MonoBehaviour
         playerStats[1].SetActive(true);
         playerStats[0].SetActive(false);
         playerStats[2].SetActive(false);
+        playerSkills[1].SetActive(true);
+        playerSkills[0].SetActive(false);
+        playerSkills[2].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
@@ -52,6 +59,9 @@ public class CharacterSelection : MonoBehaviour
         playerStats[2].SetActive(true);
         playerStats[1].SetActive(false);
         playerStats[0].SetActive(false);
+        playerSkills[2].SetActive(true);
+        playerSkills[1].SetActive(false);
+        playerSkills[0].SetActive(false);
         UpdateCharacter(selectedOption);
         Save();
     }
