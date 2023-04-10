@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BringerEnemy : MonoBehaviour
+public class ShadowHand : MonoBehaviour
 {
     
 }
