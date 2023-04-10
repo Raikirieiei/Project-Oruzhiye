@@ -5470,7 +5470,7 @@ PrefabInstance:
     - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: sLevelToLoad
-      value: Map1-B
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}

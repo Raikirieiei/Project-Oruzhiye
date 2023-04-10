@@ -135,6 +135,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom Enemy 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650050, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: maxHealth
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650078, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: attackDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1521267730905650109, guid: d3aad0fe70313674b90df18fc652ca7f,
         type: 3}
       propertyPath: m_RootOrder
@@ -4573,7 +4583,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_Origin: {x: -49, y: -32, z: 0}
   m_Size: {x: 312, y: 81, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -4661,6 +4671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790142567528915838, guid: c20cc44c07185864f9b27f9f17b10f3c,
+        type: 3}
+      propertyPath: maxHealth
+      value: 190
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20cc44c07185864f9b27f9f17b10f3c, type: 3}
@@ -4948,6 +4963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790142567528915838, guid: c20cc44c07185864f9b27f9f17b10f3c,
+        type: 3}
+      propertyPath: maxHealth
+      value: 190
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20cc44c07185864f9b27f9f17b10f3c, type: 3}
@@ -5625,6 +5645,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom Enemy 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650050, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: maxHealth
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650078, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: attackDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1521267730905650109, guid: d3aad0fe70313674b90df18fc652ca7f,
         type: 3}
@@ -32884,6 +32914,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9106419995805146871, guid: c535f91aa8d1fe0468b78373266be7dd,
+        type: 3}
+      propertyPath: maxHealth
+      value: 240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c535f91aa8d1fe0468b78373266be7dd, type: 3}
 --- !u!4 &1697788398 stripped
@@ -37156,6 +37191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5647118593541730647, guid: 91427dc3d33f627459e9dd5abdbcd68c,
+        type: 3}
+      propertyPath: maxHealth
+      value: 190
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91427dc3d33f627459e9dd5abdbcd68c, type: 3}
 --- !u!4 &1942367639 stripped
@@ -37311,6 +37351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4006429618675376527, guid: f8eda4c5dc7fde841a77431e09faedb3,
+        type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4006429618675376560, guid: f8eda4c5dc7fde841a77431e09faedb3,
         type: 3}
       propertyPath: m_RootOrder
@@ -37385,6 +37430,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom Enemy 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650050, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: maxHealth
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521267730905650078, guid: d3aad0fe70313674b90df18fc652ca7f,
+        type: 3}
+      propertyPath: attackDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1521267730905650109, guid: d3aad0fe70313674b90df18fc652ca7f,
         type: 3}

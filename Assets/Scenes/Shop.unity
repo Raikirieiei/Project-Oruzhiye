@@ -15796,6 +15796,16 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
+        type: 3}
+      propertyPath: sLevelToLoad
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
+        type: 3}
+      propertyPath: useIntegerToLoadLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1271886180919539061, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: m_Name
@@ -15938,6 +15948,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   lineOfSight: {x: 3.5, y: 8}
+  coinsText: {fileID: 0}
   buyAudio: {fileID: 1713924858}
   buyFailAudio: {fileID: 5274081512032891303}
   shopDialogBox: {fileID: 1333962945}
@@ -16438,6 +16449,16 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 68
       m_TileSpriteIndex: 68
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 48, y: 5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 49
+      m_TileSpriteIndex: 27
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -17253,8 +17274,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b1d11c02818c7ac4d8baaea0a820c2df, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7840c0f2aeb49e944abb5fe1ae245cce, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 0e0c9c7a5b475d04a999ea84aee843d1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4f985854c63f63246b21f3c88588e838, type: 2}
   - m_RefCount: 1
@@ -17384,8 +17405,9 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 1932110713373717926, guid: bf9aeca155b32e549a76eab565b61a66,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 3856836986708463083, guid: ae9601efa341c8e46881ed773ca69bb3,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1358897544574087258, guid: ae9601efa341c8e46881ed773ca69bb3,
       type: 3}
@@ -17554,7 +17576,7 @@ Tilemap:
     m_Data: {fileID: 1305325401018397461, guid: 020a14f5296ce884aa7d029304ceff5f,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 102
+  - m_RefCount: 103
     m_Data:
       e00: 1
       e01: 0
@@ -17573,7 +17595,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 102
+  - m_RefCount: 103
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -18575,20 +18597,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102794250a06f014394c7a95a50286f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 35
+  cost: 40
   itemDescription: 
   itemType: 0
   items: {fileID: 0}
   stats: {fileID: 0}
   statusPools:
-  - {fileID: 11400000, guid: b0f5841dbedc14842a52f4dcb66da8c4, type: 2}
+  - {fileID: 11400000, guid: 0a415b019aaf8454d9ab9c4400419cff, type: 2}
   - {fileID: 11400000, guid: d4ea7b601055d4bfb983b13b770da052, type: 2}
-  - {fileID: 11400000, guid: e635318025fea4703a056caeda44a87b, type: 2}
+  - {fileID: 11400000, guid: fbee9d8adf1944ef1a3f70b6cb1ab1e1, type: 2}
+  - {fileID: 11400000, guid: 217b2d2015671483db87005f542c8c0b, type: 2}
   player: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
   lineOfSight: {x: 3.5, y: 8}
+  coinsText: {fileID: 0}
   buyAudio: {fileID: 4510520073488890823}
   buyFailAudio: {fileID: 8622663937891393690}
   shopDialogBox: {fileID: 4510520072828631548}
@@ -19343,7 +19367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102794250a06f014394c7a95a50286f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 25
+  cost: 30
   itemDescription: 
   itemType: 0
   items: {fileID: 0}
@@ -19352,11 +19376,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0f5841dbedc14842a52f4dcb66da8c4, type: 2}
   - {fileID: 11400000, guid: 63b5c8458a81541acb16414d150c7f5c, type: 2}
   - {fileID: 11400000, guid: e635318025fea4703a056caeda44a87b, type: 2}
+  - {fileID: 11400000, guid: 50ba56bb3a4dd48a4a866807474d5ad4, type: 2}
   player: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
   lineOfSight: {x: 3.5, y: 8}
+  coinsText: {fileID: 0}
   buyAudio: {fileID: 6910250991236250299}
   buyFailAudio: {fileID: 1645900304852050406}
   shopDialogBox: {fileID: 6910250991628040320}

@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 3526438813718270855}
   - component: {fileID: 380869002510497885}
   - component: {fileID: 8248677683544202932}
+  - component: {fileID: 1732359059360594682}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -669,6 +670,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsText: {fileID: 3340706340218787732}
   coins: 0
+--- !u!114 &1732359059360594682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710594732369028080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a4ecefaadfb56428fcc6dda984aa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopVisited: 0
+  levelLoader: {fileID: 0}
+  mapName:
+  - Map1-B
+  - Map2-B
+  - Map3-B
 --- !u!1 &8710594733876065060
 GameObject:
   m_ObjectHideFlags: 0

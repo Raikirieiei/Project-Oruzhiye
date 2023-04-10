@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 3526438813718270855}
   - component: {fileID: 380869002510497885}
   - component: {fileID: 569875202308887396}
+  - component: {fileID: 109747032520306838}
   m_Layer: 3
   m_Name: Player 3
   m_TagString: Player
@@ -704,6 +705,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsText: {fileID: 4066351729517819812}
   coins: 0
+--- !u!114 &109747032520306838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710594732369028080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a4ecefaadfb56428fcc6dda984aa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopVisited: 0
+  levelLoader: {fileID: 0}
+  mapName:
+  - Map1-B
+  - Map2-B
+  - Map3-B
 --- !u!1 &8710594733876065060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,12 +1254,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dece70b94d27834da98a851a9c0aec4, type: 3}
---- !u!224 &4122667042095693679 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5922034753724396699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4066351729517819812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7656645353776005951, guid: 5dece70b94d27834da98a851a9c0aec4,
@@ -1253,6 +1266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &4122667042095693679 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7717459950000163828, guid: 5dece70b94d27834da98a851a9c0aec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922034753724396699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6778225114895698414
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class Shopkeeper : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Vector2 lineOfSight;
+    [SerializeField] Text coinsText;
     private bool canSeePlayer;
     private bool facingRight = false;
 
@@ -115,6 +116,7 @@ public class Shopkeeper : MonoBehaviour
         purchaseText.transform.GetChild(0).GetComponent<TextMesh>().text = "Thank you for the business!";
         purchaseText.transform.GetChild(0).GetComponent<TextMesh>().color = Color.green;
         itemCollector.coins -= cost;
+        coinsText.text = itemCollector.coins.ToString("000");
         canBuy = false;
     }
 
@@ -145,6 +147,7 @@ public class Shopkeeper : MonoBehaviour
         try
         {
             player = GameObject.FindWithTag("Player").transform;
+            coinsText = GameObject.FindWithTag("Coin Text").GetComponent<Text>();
         }
         catch (NullReferenceException)
         {
