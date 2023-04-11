@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAudio : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource attackAudio;
     [SerializeField] AudioSource dashAudio;
     [SerializeField] AudioSource jumpAudio;
     [SerializeField] AudioSource walkAudio;
     [SerializeField] AudioSource slamAudio;
+    [SerializeField] AudioSource castAudio;
 
     private void playDashSound()
     {
@@ -33,5 +34,10 @@ public class EnemyAudio : MonoBehaviour
     private void playSlamSound()
     {
         slamAudio.Play();
+    }
+
+    private void playCastSound()
+    {
+        castAudio.Play();
     }
 }

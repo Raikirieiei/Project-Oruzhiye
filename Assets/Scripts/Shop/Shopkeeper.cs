@@ -27,7 +27,7 @@ public class Shopkeeper : MonoBehaviour
     [SerializeField] AudioSource buyAudio;
     [SerializeField] AudioSource buyFailAudio;
     [SerializeField] GameObject shopDialogBox;
-    [SerializeField] GameObject name;
+    [SerializeField] new GameObject name;
     [SerializeField] GameObject description;
     [SerializeField] GameObject priceTag;
     public GameObject textPopUp;

@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314001794587825217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.241146, y: 7.6, z: 50}
+  m_LocalPosition: {x: 50.25, y: 49.42, z: 50}
   m_LocalScale: {x: 5, y: 8, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,9 +104,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: 0}
+  m_Offset: {x: -0.07, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08657673
+  m_Radius: 0.05
 --- !u!61 &1314001794587825219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06329897, y: -0.20572263}
+  m_Offset: {x: -0.06984944, y: -0.20572263}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26061404, y: 0.5185548}
+  m_Size: {x: 0.1846283, y: 0.5185548}
   m_EdgeRadius: 0
 --- !u!95 &1314001794587825216
 Animator:
@@ -199,6 +199,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
+  castAudio: {fileID: 0}
 --- !u!82 &1314001794587825225
 AudioSource:
   m_ObjectHideFlags: 0

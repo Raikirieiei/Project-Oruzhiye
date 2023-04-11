@@ -137,7 +137,9 @@ public class Player : MonoBehaviour
     public void PlayerDash(){
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){  
             isDashing = true;
+            isInvincible = true;
             Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+            StartCoroutine(VulnerableAgain(0.25f)); 
             CurrentDashTimer = StartDashTimer;
             myBody.velocity = Vector2.zero;
             canDash = false;
