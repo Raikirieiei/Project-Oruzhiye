@@ -179,10 +179,20 @@ public class Player : MonoBehaviour
         int finalDamage;
         float damageReduction;
         damageReduction = damage * (float)defend/100;
-        finalDamage = damage - (int)damageReduction;
-        Debug.Log("Damage Receive" + finalDamage);
 
-        
+        if (damageReduction > damage)
+        {
+            damageReduction = damage;
+        }
+
+        finalDamage = damage - (int)damageReduction;
+
+        if (finalDamage <= 10)
+        {
+            finalDamage = 10;
+        }
+
+        Debug.Log("Damage Receive" + finalDamage);
 
         if (!isInvincible)
         {

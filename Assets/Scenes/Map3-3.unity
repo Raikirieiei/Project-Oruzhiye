@@ -47982,7 +47982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfd158628f28ab408fbd75e6a9baa94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
+  moveSpeed: 10
   groundCheckPoint: {fileID: 1521267730212732223}
   wallCheckPoint: {fileID: 1521267730163271611}
   circleRadius: 0.2
@@ -47997,7 +47997,7 @@ MonoBehaviour:
   attackHitbox2: {fileID: 7745100978192169751}
   attackRange2: {x: 10, y: 3}
   hitboxSize2: {x: 2, y: 2.5}
-  dashDistance: 10
+  dashDistance: 15
   player: {fileID: 0}
   lineOfSight: {x: 20, y: 10}
   playerLayer:
@@ -48672,6 +48672,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
+  castAudio: {fileID: 0}
 --- !u!114 &8253933407458480665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48689,3 +48690,4 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
+  castAudio: {fileID: 0}
