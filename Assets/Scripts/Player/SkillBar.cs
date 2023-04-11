@@ -19,6 +19,7 @@ public class SkillBar : MonoBehaviour
     {
         SkillIcon[0].sprite = player.GetComponent<AbilityHolder>().ability.icon;
         SkillIcon[1].sprite = player.GetComponent<AbilityHolder2>().ability.icon;
+        GameManager.OnGameStateChanged += GameManagerOnGameStageChanged;
     }
 
     // Update is called once per frame
@@ -27,6 +28,19 @@ public class SkillBar : MonoBehaviour
         SkillCooldown();
         SkillActive();
     }
+
+    private void OnDestroy() {
+        GameManager.OnGameStateChanged -= GameManagerOnGameStageChanged;
+    }
+
+    private void GameManagerOnGameStageChanged(GameState state) {
+        if(state == GameState.AdjustSkill){
+            SkillIcon[0].sprite = player.GetComponent<AbilityHolder>().ability.icon;
+            SkillIcon[1].sprite = player.GetComponent<AbilityHolder2>().ability.icon;
+            GameManager.instance.UpdateGameState(GameState.Normal);
+        }
+    }
+       
 
     public void SkillCooldown(){
         string CDx = player.GetComponent<AbilityHolder>().getCooldownTime().ToString("F1");

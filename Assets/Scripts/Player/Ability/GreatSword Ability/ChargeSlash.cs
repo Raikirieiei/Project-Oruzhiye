@@ -7,7 +7,6 @@ public class ChargeSlash : Ability
 {
     public GameObject chargeEffect;
     public override void Activate(GameObject parent){
-        Debug.Log("ChargeSlash");
         GreatSwordmanCombat greatSwordmanCombat = parent.GetComponent<GreatSwordmanCombat>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
         GameObject projectile = Instantiate(chargeEffect, greatSwordmanCombat.chargeEffect.transform.position, greatSwordmanCombat.transform.rotation);

@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     private GameObject playerSet;
     private GameObject gameManager;
     private GameObject rewardManager;
+    private GameObject skillSelector;
 
     public static PauseMenu instance;
 
@@ -55,7 +56,7 @@ public class PauseMenu : MonoBehaviour
 
 
     private void GameManagerOnGameStageChanged(GameState state) {
-        if(state == GameState.RewardSelect || state == GameState.StatMenu ){
+        if(state == GameState.RewardSelect || state == GameState.StatMenu || state == GameState.SkillSelect ){
             canPause = false;
         }else{
             canPause = true;
@@ -82,10 +83,12 @@ public class PauseMenu : MonoBehaviour
         playerSet = GameObject.FindWithTag("PlayerSet");
         gameManager = GameObject.Find("GameManager");
         rewardManager = GameObject.Find("RewardSelector");
+        skillSelector = GameObject.Find("SkillSelector");
         Destroy(playerSet);
         Destroy(gameObject);
         Destroy(gameManager);
         Destroy(rewardManager);
+        Destroy(skillSelector);
         SceneManager.LoadScene(0);
         
     }

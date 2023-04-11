@@ -6,7 +6,6 @@ using UnityEngine;
 public class TripleStab : Ability
 {
     public override void Activate(GameObject parent){
-        Debug.Log("DashStab");
         SpearmanCombat spearmanCombat = parent.GetComponent<SpearmanCombat>();
         CharacterStats stats = parent.GetComponent<CharacterStats>();
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(spearmanCombat.attackPoint.position, spearmanCombat.attackRange , 0, spearmanCombat.enemyLayers);

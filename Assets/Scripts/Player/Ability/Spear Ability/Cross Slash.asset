@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eb6109eb26f471980241f2b7c01355, type: 3}
   m_Name: Cross Slash
   m_EditorClassIdentifier: 
-  name: CrossSlash
+  name: Cross Slash
+  desc: Swing Spear infront 2 times
   cooldownTime: 6
   activeTime: 0
   icon: {fileID: 21300000, guid: 22efc2e6a619d4e65863544aeaadf605, type: 3}

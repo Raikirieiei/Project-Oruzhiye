@@ -24,7 +24,7 @@ public class AbilityHolder : MonoBehaviour
     // Update is called once per frame
 
     private void Start() {
-        Debug.Log(charChoose.name);
+  
     }
     void Update()
     {
@@ -37,13 +37,31 @@ public class AbilityHolder : MonoBehaviour
         {
             case AbilityState.ready:
                 if(Input.GetKeyDown(key) && charChoose.name == "Player 1"){
-                    animator.SetBool("Spinning Slash", true);
+                    
+                    if(ability.name == "Spinning Slash"){
+                        animator.SetBool("Spinning Slash", true);
+                    }
+                    else{
+                        animator.SetBool("Spinning Slash 2", true);
+                    }
                 } 
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 2"){
-                    animator.SetBool("CrossSlash", true);
+                    
+                    if(ability.name == "Cross Slash"){
+                        animator.SetBool("CrossSlash", true);
+                    }
+                    else{
+                        animator.SetBool("CrossSlash 2", true);
+                    }
                 }
                 else if (Input.GetKeyDown(key) && charChoose.name == "Player 3"){
-                    animator.SetBool("ChargeSlash", true);
+                   
+                    if(ability.name == "Charge Slash"){
+                        animator.SetBool("ChargeSlash", true);
+                    }
+                    else{
+                        animator.SetBool("ChargeSlash 2", true);
+                    }
                 }
             break;
             case AbilityState.active:
@@ -52,13 +70,28 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else{
                     if(charChoose.name == "Player 1"){
-                        animator.SetBool("Spinning Slash", false);
+                        if(ability.name == "Spinning Slash"){
+                            animator.SetBool("Spinning Slash", false);
+                        }
+                        else{
+                            animator.SetBool("Spinning Slash 2", false);
+                        }
                     }
                     else if(charChoose.name == "Player 2"){
-                        animator.SetBool("CrossSlash", false);
+                        if(ability.name == "Cross Slash"){
+                            animator.SetBool("CrossSlash", false);
+                        }
+                        else{
+                            animator.SetBool("CrossSlash 2", false);
+                        }
                     }
                     else if (charChoose.name == "Player 3"){
-                        animator.SetBool("ChargeSlash", false);
+                        if(ability.name == "Charge Slash"){
+                            animator.SetBool("ChargeSlash", false);
+                        }
+                        else{
+                            animator.SetBool("ChargeSlash 2", false);
+                        }
                     }
                     ability.BeginCooldown(gameObject);
                     state = AbilityState.cooldown;
