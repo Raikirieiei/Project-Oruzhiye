@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
 
     public GameObject damagePopUp;
-
+    public AudioSource dashAudio;
     
     private void Awake(){
 
@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
             myBody.velocity = Vector2.zero;
             canDash = false;
             DashTime = Time.time;
+            dashAudio.Play();
         } 
 
         if (isDashing){

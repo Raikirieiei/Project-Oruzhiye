@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource walkAudio;
     [SerializeField] AudioSource slamAudio;
     [SerializeField] AudioSource castAudio;
+    [SerializeField] AudioSource lightAttackAudio;
+    [SerializeField] AudioSource heavyAttackAudio;
 
     private void playDashSound()
     {
@@ -39,5 +41,15 @@ public class AudioManager : MonoBehaviour
     private void playCastSound()
     {
         castAudio.Play();
+    }
+
+    private void playHeavyAttackSound()
+    {
+        heavyAttackAudio.Play();
+    }
+
+    private void playLightAttackSound()
+    {
+        lightAttackAudio.Play();
     }
 }
