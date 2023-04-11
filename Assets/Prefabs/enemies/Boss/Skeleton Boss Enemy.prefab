@@ -236,7 +236,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 640
   stepDistance: 10
-  attackDamage: 20
+  attackDamage: 35
   attackCooldown: 2.5
   attackHitbox1: {fileID: 83040041661333087}
   attackRange1: {x: 8.5, y: 7.5}
@@ -366,6 +366,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   walkAudio: {fileID: 9171445158357624086}
   slamAudio: {fileID: 9171445158357624087}
+  castAudio: {fileID: 0}
 --- !u!82 &9171445158357624080
 AudioSource:
   m_ObjectHideFlags: 0
