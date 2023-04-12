@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManagerLB : MonoBehaviour
 {
 
     void Update()
     {
         if (transform.childCount == 0)
         {
-            Debug.Log("All enemy has been defeated. Stage Clear!!");
-            GameManager.instance.UpdateGameState(GameState.RewardSelect);
+            Debug.Log("Last Boss has been defeated !!");
             Destroy(gameObject);
         }
     }
-
 }
