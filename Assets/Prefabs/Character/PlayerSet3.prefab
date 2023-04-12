@@ -582,6 +582,7 @@ MonoBehaviour:
   damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
     type: 3}
   dashAudio: {fileID: 6414299557304721234}
+  jumpAudio: {fileID: 3674227316276591065}
 --- !u!114 &1950419183018527419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAudio: {fileID: 1754572092602059603}
   dashAudio: {fileID: 0}
-  jumpAudio: {fileID: 3674227316276591065}
+  jumpAudio: {fileID: 0}
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
   castAudio: {fileID: 6728847183232761240}
