@@ -216,7 +216,7 @@ MonoBehaviour:
   hitboxRadius: 1
   attackRange2: {x: 5, y: 2}
   player: {fileID: 0}
-  lineOfSight: {x: 10, y: 10}
+  lineOfSight: {x: 16, y: 12}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -244,7 +244,7 @@ MonoBehaviour:
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
-  - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
+  - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 6939180146240610676, guid: 45858a41193625240938108e0efdf390, type: 3}
   - {fileID: 5649124806608259984, guid: 20f6542e76b24fc449612c7135c9c561, type: 3}
@@ -321,6 +321,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
+  castAudio: {fileID: 0}
 --- !u!82 &6408987725800143244
 AudioSource:
   m_ObjectHideFlags: 0

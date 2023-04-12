@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mega Spinning Slash
   desc: Swing the sword really wide to attack around player.
-  cooldownTime: 4
+  cooldownTime: 5
   activeTime: 0
   icon: {fileID: 21300000, guid: d25cd560abb8946ea85885de5778697a, type: 3}
   slashEffect: {fileID: 3253921164002916216, guid: 84bdb508c2f8d4c389c6b4df91393fd3,

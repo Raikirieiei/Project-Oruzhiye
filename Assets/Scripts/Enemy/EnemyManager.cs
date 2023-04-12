@@ -5,10 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 
-    // private Component[] enemyArray;
-    // private bool isEnemyDead = false;
-
-    // Update is called once per frame
     void Update()
     {
         if (transform.childCount == 0)
@@ -17,7 +13,6 @@ public class EnemyManager : MonoBehaviour
             GameManager.instance.UpdateGameState(GameState.RewardSelect);
             Destroy(gameObject);
         }
-
     }
 
 }

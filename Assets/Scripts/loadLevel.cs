@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loadLevel : MonoBehaviour
+public class LoadLevel : MonoBehaviour
 {
     [Header("For Loading Destination")]
     // Start is called before the first frame update

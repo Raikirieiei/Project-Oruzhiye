@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
 
     public GameObject damagePopUp;
-
+    public AudioSource dashAudio;
+    public AudioSource jumpAudio;
     
     private void Awake(){
 
@@ -137,11 +138,14 @@ public class Player : MonoBehaviour
     public void PlayerDash(){
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){  
             isDashing = true;
+            isInvincible = true;
             Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
+            StartCoroutine(VulnerableAgain(0.25f)); 
             CurrentDashTimer = StartDashTimer;
             myBody.velocity = Vector2.zero;
             canDash = false;
             DashTime = Time.time;
+            dashAudio.Play();
         } 
 
         if (isDashing){
@@ -158,6 +162,7 @@ public class Player : MonoBehaviour
     public void PlayerJump(){
         if ((Input.GetButtonDown("Jump") && isGrounded || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
             myBody.AddForce(new Vector2(myBody.velocity.x, jumpForce), ForceMode2D.Impulse);
+            jumpAudio.Play();
         }
     }
 
@@ -177,10 +182,20 @@ public class Player : MonoBehaviour
         int finalDamage;
         float damageReduction;
         damageReduction = damage * (float)defend/100;
-        finalDamage = damage - (int)damageReduction;
-        Debug.Log("Damage Receive" + finalDamage);
 
-        
+        if (damageReduction > damage)
+        {
+            damageReduction = damage;
+        }
+
+        finalDamage = damage - (int)damageReduction;
+
+        if (finalDamage <= 10)
+        {
+            finalDamage = 10;
+        }
+
+        Debug.Log("Damage Receive" + finalDamage);
 
         if (!isInvincible)
         {

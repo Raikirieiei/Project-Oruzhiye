@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BringerAI : MonoBehaviour
 {
-    [Header("For Petrolling")]
+    [Header("For Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
@@ -13,35 +13,45 @@ public class BringerAI : MonoBehaviour
     [SerializeField] LayerMask obstaclesLayer;
     private bool checkingGround;
     private bool checkingWall;
-    private float moveDirection = 1;
-    private bool facingRight = true;
+    private float moveDirection = -1;
+    private bool facingRight = false;
     private bool isRetreating = false;
 
     [Header("For Attacking")]
-    [SerializeField] private float stepDistance;
     [SerializeField] int attackDamage;
     [SerializeField] float attackCooldown;
     private float attackTime;
     private bool canAttack = true;
-    private int atkPatternValue = 0;
 
     [Header("For Attack Pattern 1")]
-    [SerializeField] Transform attackHitbox1;
-    [SerializeField] Vector2 attackRange1;
-    [SerializeField] Vector2 hitboxSize1;
-    private bool inRangeAttack1;
+    [SerializeField] Transform attackHitbox;
+    [SerializeField] Vector2 attackRange;
+    [SerializeField] Vector2 hitboxSize;
+    private bool inRangeAttack;
 
-    [Header("For Attack Pattern 2")]
-    [SerializeField] Transform attackHitbox2;
-    [SerializeField] Vector2 attackRange2;
-    [SerializeField] Vector2 hitboxSize2;
-    private bool inRangeAttack2;
+    [Header("For Casting Magic")]
+    [SerializeField] float castCooldown;
+    [SerializeField] float shadowHandSpawnHeight = 2f;
+    [SerializeField] GameObject shadowHand;
+    [SerializeField] Transform[] shadowHandSpawnPoints;
+    private float castTime;
+    private bool canCast = true;
+    private int spellPatternValue = 0;
+
+    [Header("For Vanishing")]
+    [SerializeField] Transform marker;
+    [SerializeField] Vector2 markerSize;
+    [SerializeField] float vanishDistance;
+    [SerializeField] float vanishedCooldown;
+    private float vanishedTime;
+    private bool inVanishRange;
+    private bool canVanish = false;
 
     [Header("For Zoning - yellow")]
     [SerializeField] Vector2 retreatRange;
     private bool inRetreatRange;
 
-    [Header("For Seeing Player - red")]
+    [Header("For Player Detecting - red")]
     [SerializeField] Transform player;
     [SerializeField] Vector2 lineOfSight;
     [SerializeField] LayerMask playerLayer;
@@ -70,21 +80,18 @@ public class BringerAI : MonoBehaviour
         checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, obstaclesLayer);
 
         canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSight, 0, playerLayer);
-        inRangeAttack1 = Physics2D.OverlapBox(transform.position, attackRange1, 0, playerLayer);
-        inRangeAttack2 = Physics2D.OverlapBox(transform.position, attackRange2, 0, playerLayer);
+        inRangeAttack = Physics2D.OverlapBox(transform.position, attackRange, 0, playerLayer);
+        inVanishRange = Physics2D.OverlapBox(marker.position, markerSize, 0, playerLayer);
         inRetreatRange = Physics2D.OverlapBox(transform.position, retreatRange, 0, playerLayer);
 
-        if (Time.time >= attackTime + attackCooldown)
-        {
-            canAttack = true;
-        }
-
+        
+        CooldownHandler();
         AnimationController();
 
         if (!canSeePlayer)
         {
             Petrolling();
-        } else if (canSeePlayer & canAttack)
+        } else if (canAttack)
         {
             MoveTowardPlayer();
         } else if (inRetreatRange & !canAttack)
@@ -150,28 +157,49 @@ public class BringerAI : MonoBehaviour
         }
     }
 
+    void CooldownHandler()
+    {
+        if (Time.time >= attackTime + attackCooldown)
+        {
+            canAttack = true;
+        }
+
+        if (Time.time >= vanishedTime + vanishedCooldown)
+        {
+            canVanish = true;
+        }
+
+        if (Time.time >= castTime + castCooldown)
+        {
+            canCast = true;
+        }
+    }
+
     void attackOnCooldown()
     {
         canAttack = false;
         attackTime = Time.time;
-        if (atkPatternValue <= 3)
-        {
-            atkPatternValue += 2;
-        } else
-        {
-            atkPatternValue -=3;
-        }
     }
 
-    void Attack1()
+    void vanishOnCooldown()
+    {
+        canVanish = false;
+        vanishedTime = Time.time;
+    }
+
+    void castOnCooldown()
+    {
+        canCast = false;
+        castTime = Time.time;
+    }
+
+    void Attack()
     {
         float playerDir = playerDirection();
         enemyRB.velocity = Vector3.zero;
 
-        enemyRB.AddForce(new Vector2(stepDistance * moveDirection, 0), ForceMode2D.Impulse);
-
-        // enable attack hitbox 1
-        bool playerHit = Physics2D.OverlapBox(attackHitbox1.position, hitboxSize1, 0, playerLayer);
+        // enable attack hitbox
+        bool playerHit = Physics2D.OverlapBox(attackHitbox.position, hitboxSize, 0, playerLayer);
         if (playerHit)
         {
             Debug.Log("player hit by Attack1: -" + attackDamage + " HP");
@@ -180,20 +208,36 @@ public class BringerAI : MonoBehaviour
         }
     }
 
-    void Attack2()
+    void SingleHandAttack()
     {
-        float playerDir = playerDirection();
-        enemyRB.velocity = Vector3.zero;
+        Instantiate(shadowHand, new Vector2(
+            player.position.x, 
+            gameObject.transform.position.y + shadowHandSpawnHeight
+            ), 
+            Quaternion.identity
+        );
+        spellPatternValue += 1;
+    }
 
-        enemyRB.AddForce(new Vector2(stepDistance * 1.2f * moveDirection, 0), ForceMode2D.Impulse);
+    void MultipleHandAttack(int index)
+    {
+        Instantiate(shadowHand, shadowHandSpawnPoints[index].position, Quaternion.identity);
+        Instantiate(shadowHand, shadowHandSpawnPoints[index+1].position, Quaternion.identity);
+        spellPatternValue = 0;
+    }
 
-        // enable attack hitbox 2
-        bool playerHit = Physics2D.OverlapBox(attackHitbox2.position, hitboxSize2, 0, playerLayer);
-        if (playerHit)
+    void TeleportBehindPlayer()
+    {
+        float destinationX = player.position.x + (vanishDistance * moveDirection);
+        if (true)
         {
-            Debug.Log("player hit by Attack2: -" + attackDamage + " HP");
-            Player playerScript = player.GetComponent<Player>();
-            playerScript.TakeDamage(attackDamage, new Vector2(-playerDir, 0f));
+            gameObject.transform.position = new Vector3(
+                player.position.x + (vanishDistance * moveDirection), 
+                gameObject.transform.position.y, 
+                gameObject.transform.position.z
+            );
+        } else {
+            gameObject.transform.position = marker.position;
         }
     }
 
@@ -227,12 +271,14 @@ public class BringerAI : MonoBehaviour
     void AnimationController()
     {
         enemyAnim.SetFloat("speed", Math.Abs(enemyRB.velocity.x));
-        enemyAnim.SetBool("canSeePlayer", canSeePlayer);
         enemyAnim.SetBool("canAttack", canAttack);
-        enemyAnim.SetBool("inRangeAttack1", inRangeAttack1);
-        enemyAnim.SetBool("inRangeAttack2", inRangeAttack2);
+        enemyAnim.SetBool("canVanish", canVanish);
+        enemyAnim.SetBool("canCast", canCast);
+        enemyAnim.SetBool("canSeePlayer", canSeePlayer);
+        enemyAnim.SetBool("inRangeAttack", inRangeAttack);
+        enemyAnim.SetBool("inVanishRange", inVanishRange);
         enemyAnim.SetBool("isRetreating", isRetreating);
-        enemyAnim.SetInteger("atkPatternValue", atkPatternValue);
+        enemyAnim.SetInteger("spellPatternValue", spellPatternValue);
     }
 
     private void OnDrawGizmosSelected() 
@@ -252,12 +298,14 @@ public class BringerAI : MonoBehaviour
 
         // Attack Hitbox marker
         Gizmos.color = Color.black;
-        Gizmos.DrawWireCube(attackHitbox1.position, hitboxSize1);
-        Gizmos.DrawWireCube(attackHitbox2.position, hitboxSize2);
+        Gizmos.DrawWireCube(attackHitbox.position, hitboxSize);
 
         // Attack Range marker
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(transform.position, attackRange1);
-        Gizmos.DrawWireCube(transform.position, attackRange2); 
+        Gizmos.DrawWireCube(transform.position, attackRange);
+
+        // Stage Marker
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(marker.position, markerSize);
     }
 }
