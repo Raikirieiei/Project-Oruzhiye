@@ -4106,6 +4106,16 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 1694293316}
+    - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
+        type: 3}
+      propertyPath: sLevelToLoad
+      value: EndScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271886180919539058, guid: b2e937d220392114294ed6c1aff6396c,
+        type: 3}
+      propertyPath: useIntegerToLoadLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1271886180919539061, guid: b2e937d220392114294ed6c1aff6396c,
         type: 3}
       propertyPath: m_Name
