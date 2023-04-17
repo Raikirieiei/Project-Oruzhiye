@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
 
 
     public void PlayerJump(){
-        if ((Input.GetButtonDown("Jump") && isGrounded || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded) {
             myBody.AddForce(new Vector2(myBody.velocity.x, jumpForce), ForceMode2D.Impulse);
             jumpAudio.Play();
         }
