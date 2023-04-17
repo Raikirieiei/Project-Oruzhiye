@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
 
             GameObject gameObject = Instantiate(itemDropsList[i], transform.position, Quaternion.identity);
             Rigidbody2D dropRB = gameObject.GetComponent<Rigidbody2D>();
-            dropRB.AddForce(new Vector2(UnityEngine.Random.Range(-2, 2), 2), ForceMode2D.Impulse);
+            dropRB.AddForce(new Vector2(UnityEngine.Random.Range(-0.5f, 0.5f), 1f), ForceMode2D.Impulse);
         }
     }
 
