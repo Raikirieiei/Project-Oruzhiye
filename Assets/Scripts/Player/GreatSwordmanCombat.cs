@@ -20,9 +20,11 @@ public class GreatSwordmanCombat : PlayerCombat
 
     public void GSStopMoving(){
         player.runSpeed = 0;
+        player.canDashGS = false;
     }
 
     public void GSReturnToNormal(){
         player.runSpeed = stats.baseMoveSpeed.getValue();
+        player.canDashGS = true;
     }
 }

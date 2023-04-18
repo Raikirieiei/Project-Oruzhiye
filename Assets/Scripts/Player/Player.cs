@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     float DashTime;
     bool canDash = true;
     bool isDashing;
+    public bool canDashGS = true;
 
     private Vector3 m_Velocity = Vector3.zero;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
@@ -136,7 +137,7 @@ public class Player : MonoBehaviour
     }
 
     public void PlayerDash(){
-        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash){  
+        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash && canDashGS){  
             isDashing = true;
             isInvincible = true;
             Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER, true);
