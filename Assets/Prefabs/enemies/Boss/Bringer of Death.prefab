@@ -144,7 +144,7 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 512
-  attackDamage: 60
+  attackDamage: 75
   attackCooldown: 2
   attackHitbox: {fileID: 4064115352995581041}
   attackRange: {x: 8, y: 8}
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf2bf5411e2c24fabae40934aff35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1800
+  maxHealth: 2400
   currentHealth: 0
   damagePopUp: {fileID: 6795600252072831995, guid: 7f52e80815051f845acba6666cabbb58,
     type: 3}
@@ -257,6 +257,8 @@ MonoBehaviour:
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
   castAudio: {fileID: 0}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}
 --- !u!95 &5045759863137359671
 Animator:
   serializedVersion: 3

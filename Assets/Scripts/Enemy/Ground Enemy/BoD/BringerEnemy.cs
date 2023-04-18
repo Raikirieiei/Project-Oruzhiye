@@ -6,7 +6,7 @@ using UnityEngine;
 public class BringerEnemy : Enemy
 {
     [Header("Basic Attributes")]
-    private int defend = 15;
+    private int defend = 30;
     private bool enrage = false;
 
     private int finalDamage;
@@ -31,15 +31,14 @@ public class BringerEnemy : Enemy
         if (currentHealth <= 0)
         {
             Die();
-        } else if (defend == 15 && currentHealth <= 300 && !enrage)
+        } else if (currentHealth <= 300 && !enrage)
         {
             GameObject engage = Instantiate(damagePopUp, transform.position, Quaternion.identity);
-            engage.transform.GetChild(0).GetComponent<TextMesh>().text = "300";
+            engage.transform.GetChild(0).GetComponent<TextMesh>().text = "600";
             engage.transform.GetChild(0).GetComponent<TextMesh>().color = Color.green;
-            currentHealth += 300;
+            currentHealth += 600;
             enrage = true;
             defend = defend*2;
-            enemyAnim.SetTrigger("enrage");
         }
     }
 }

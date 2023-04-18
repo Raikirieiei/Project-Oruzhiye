@@ -3249,7 +3249,7 @@ GameObject:
   - component: {fileID: 1046876900}
   - component: {fileID: 1046876899}
   - component: {fileID: 1046876898}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47894,6 +47894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343900522}
   - component: {fileID: 1343900523}
+  - component: {fileID: 1343900524}
   m_Layer: 0
   m_Name: star
   m_TagString: Untagged
@@ -47968,6 +47969,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1343900524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343900521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b20dbe42cfad0d478b85372bee0c1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxEffect: 0.7
 --- !u!1001 &1356836737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48329,6 +48343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460490382}
   - component: {fileID: 1460490383}
+  - component: {fileID: 1460490384}
   m_Layer: 0
   m_Name: front-stone
   m_TagString: Untagged
@@ -48403,6 +48418,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1460490384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460490381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b20dbe42cfad0d478b85372bee0c1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxEffect: 0
 --- !u!1001 &1492731334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48493,6 +48521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568255163}
   - component: {fileID: 1568255164}
+  - component: {fileID: 1568255165}
   m_Layer: 0
   m_Name: back
   m_TagString: Untagged
@@ -48567,6 +48596,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1568255165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568255162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b20dbe42cfad0d478b85372bee0c1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxEffect: 1
 --- !u!1001 &1670958560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48908,6 +48950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782291819}
   - component: {fileID: 1782291820}
+  - component: {fileID: 1782291821}
   m_Layer: 0
   m_Name: back-stone
   m_TagString: Untagged
@@ -48982,6 +49025,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1782291821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782291818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b20dbe42cfad0d478b85372bee0c1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxEffect: 0.4
 --- !u!1001 &1987366344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49152,6 +49208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2127375665}
   - component: {fileID: 2127375666}
+  - component: {fileID: 2127375667}
   m_Layer: 0
   m_Name: gaze
   m_TagString: Untagged
@@ -49226,6 +49283,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2127375667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127375664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b20dbe42cfad0d478b85372bee0c1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxEffect: 0.6
 --- !u!95 &1521267729269126404
 Animator:
   serializedVersion: 3
@@ -49948,6 +50018,8 @@ MonoBehaviour:
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
   castAudio: {fileID: 0}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}
 --- !u!114 &8253933407458480665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49966,3 +50038,5 @@ MonoBehaviour:
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
   castAudio: {fileID: 0}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}

@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6ee00de4d6d3448a354c5b981e6e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 45
   player: {fileID: 0}
   playerLayer:
     serializedVersion: 2
@@ -200,6 +200,8 @@ MonoBehaviour:
   walkAudio: {fileID: 0}
   slamAudio: {fileID: 0}
   castAudio: {fileID: 0}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}
 --- !u!82 &1314001794587825225
 AudioSource:
   m_ObjectHideFlags: 0
