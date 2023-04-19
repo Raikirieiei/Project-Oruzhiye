@@ -8,8 +8,8 @@ public class SkillSelectorMenu : MonoBehaviour
 {
 
     public GameObject skillSelectorMenuUI;
-
     private GameObject character;
+    private Animator animator;
 
     private AbilityHolder characterAbilityHolder;
     private AbilityHolder2 characterAbilityHolder2;
@@ -62,6 +62,7 @@ public class SkillSelectorMenu : MonoBehaviour
         character = GameObject.FindWithTag("Player");
         characterAbilityHolder = character.GetComponent<AbilityHolder>();
         characterAbilityHolder2 = character.GetComponent<AbilityHolder2>();
+        animator = character.GetComponent<Animator>();
     }
 
     private void ChangeRewardText(int button, Ability reward){
@@ -102,6 +103,17 @@ public class SkillSelectorMenu : MonoBehaviour
     }
 
     public void SelectOptionOne(){
+        if(character.name == "Player 1"){
+            animator.SetBool("Spinning Slash", false);
+        }
+
+        else if(character.name == "Player 2"){
+            animator.SetBool("CrossSlash", false);
+        }
+
+        else if(character.name == "Player 3"){
+            animator.SetBool("ChargeSlash", false);
+        }
         
         characterAbilityHolder.ability = reward;
         rewardButton[0].interactable = false;
@@ -114,6 +126,17 @@ public class SkillSelectorMenu : MonoBehaviour
     }
 
     public void SelectOptionTwo(){
+        if(character.name == "Player 1"){
+            animator.SetBool("Projectile Slash", false);
+        }
+
+        else if(character.name == "Player 2"){
+            animator.SetBool("TripleStab", false);
+        }
+
+        else if(character.name == "Player 3"){
+            
+        }
         characterAbilityHolder2.ability = reward2;
         rewardButton[1].interactable = false;
         rewardDesc[1].text = "Already Chosen This Upgrade!";
